@@ -6,13 +6,13 @@ import lejos.utility.Delay;
 public class HelloWorld {
 
 	public static void main(String[] args) {
-		Button . LEDPattern (4);
-		Sound . beepSequenceUp ();
-		LCD . clear ();
-		LCD . drawString ( " HOLYy " , 2 , 2);
+		Button.LEDPattern(4);
+		Sound.beepSequenceUp();
+		LCD.clear();
+		LCD.drawString(" HOLYy", 2 , 2);
 		
-		LCD . drawString ( " SMOKE " ,2 ,3);
-		Delay . msDelay (1000);
+		LCD.drawString(" SMOKE ", 2 ,3);
+		Delay.msDelay(1000);
 	}
 
 }
