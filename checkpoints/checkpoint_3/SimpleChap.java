@@ -40,23 +40,30 @@ public class SimpleChap {
 			clap.fetchSample(level, 0);
 			distance.fetchSample(level2, 0);
 			
-			mLeft.startSynchronization();
 			if (level[0] == 1.0f) {
 				if (count) {
+					mLeft.startSynchronization();
 					mLeft.forward();
 					mRight.forward();
-					count = false;
+					mLeft.endSynchronization();
 				} else {
+					mLeft.startSynchronization();
 					mRight.stop();
 					mLeft.stop();
+					mLeft.endSynchronization();
 					Delay.msDelay(500);
+					mLeft.startSynchronization();
 					mLeft.rotate(707);
+					mRight.stop();
+					mLeft.endSynchronization();
 					Delay.msDelay(500);
+					mLeft.startSynchronization();
 					mLeft.forward();
 					mRight.forward();
+					mLeft.endSynchronization();
 				}
+				count = false;
 			}
-			mLeft.endSynchronization();
 		}
 		
 		sensor.close();
