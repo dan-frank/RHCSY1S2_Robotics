@@ -9,7 +9,7 @@ public class ClapClapCar {
 
 	public static void main(String[] args) {
 		float[] level = new float[1]; // A sound sample is just one number
-		NXTSoundSensor ss = new NXTSoundSensor(SensorPort.S1);
+		NXTSoundSensor ss = new NXTSoundSensor(SensorPort.S2);
 		SampleProvider sound = ss.getDBAMode();
 		
 		String soundLevel = "";
