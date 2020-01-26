@@ -27,14 +27,10 @@ public class ClapClapCar {
 			sound.fetchSample(level, 0);
 			
 			// Gets largest sound
-			if (level[0] > maxSoundLevel) {
-				maxSoundLevel = level[0];
-			}
+			if (level[0] > maxSoundLevel) { maxSoundLevel = level[0]; }
 			
 			// Gets smallest sound
-			if (level[0] < minSoundLevel) {
-				minSoundLevel = level[0];
-			}
+			if (level[0] < minSoundLevel) { minSoundLevel = level[0]; }
 			
 			soundLevelMax = "MAX:" + String.valueOf(maxSoundLevel);
 			soundLevelMin = "MIN:" + String.valueOf(minSoundLevel);
