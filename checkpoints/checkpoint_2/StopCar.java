@@ -1,3 +1,5 @@
+package checkpoints.checkpoint_2;
+
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.BaseRegulatedMotor;

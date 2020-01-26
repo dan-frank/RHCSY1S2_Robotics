@@ -1,3 +1,5 @@
+package checkpoints.checkpoint_1;
+
 import lejos.hardware.Button;
 import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;

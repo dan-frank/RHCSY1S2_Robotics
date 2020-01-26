@@ -1,3 +1,5 @@
+package checkpoints.checkpoint_2;
+
 import lejos.hardware.Sound;
 import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
