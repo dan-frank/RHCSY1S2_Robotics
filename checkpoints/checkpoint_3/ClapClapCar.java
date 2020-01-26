@@ -1,3 +1,5 @@
+package checkpoints.checkpoint_3;
+
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.NXTSoundSensor;
 import lejos.robotics.SampleProvider;
