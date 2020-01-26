@@ -51,6 +51,8 @@ public class FollowLine {
 		LCD.drawString(lightLevelAverage, 1, 3);
 		
 		sensor.close();
+		
+		Delay.msDelay(2000);
 	}
 
 }
