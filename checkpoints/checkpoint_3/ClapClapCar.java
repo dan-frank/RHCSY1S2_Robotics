@@ -8,20 +8,42 @@ import lejos.robotics.SampleProvider;
 public class ClapClapCar {
 
 	public static void main(String[] args) {
-		float[] level = new float[1]; // A sound sample is just one number
-		NXTSoundSensor ss = new NXTSoundSensor(SensorPort.S2);
-		SampleProvider sound = ss.getDBAMode();
+		float[] level = new float[2]; // A sound sample is just one number
+		NXTSoundSensor sensor = new NXTSoundSensor(SensorPort.S2);
+		SampleProvider sound = sensor.getDBAMode();
 		
-		String soundLevel = "";
+		float maxSoundLevel = 0;
+		float minSoundLevel = 1;
 		
-		while(true) {
+		boolean running = true;
+
+		// For print
+		String soundLevelMax = "";
+		String soundLevelMin = "";
+		
+		while(running) {
+			// Stores sound into level[0]
 			sound.fetchSample(level, 0);
 			
-			soundLevel = String.valueOf(level[0]);
+			// Gets largest sound
+			if (level[0] > maxSoundLevel) {
+				maxSoundLevel = level[0];
+			}
+			
+			// Gets smallest sound
+			if (level[0] < minSoundLevel) {
+				minSoundLevel = level[0];
+			}
+			
+			soundLevelMax = "MAX:" + String.valueOf(maxSoundLevel);
+			soundLevelMin = "MIN:" + String.valueOf(minSoundLevel);
 			
 			LCD.clear();
-			LCD.drawString(soundLevel, 2 , 2);
+			LCD.drawString(soundLevelMax, 2 , 2);
+			LCD.drawString(soundLevelMin, 2 ,3);
 		}
+		
+		sensor.close();
 	}
 
 }
