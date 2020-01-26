@@ -27,8 +27,8 @@ public class SimpleChap {
 		
 		BaseRegulatedMotor mLeft = new EV3LargeRegulatedMotor ( MotorPort.A );
 		BaseRegulatedMotor mRight = new EV3LargeRegulatedMotor ( MotorPort.B );
-		mLeft.setSpeed(360); // 1 Revolution Per Second ( RPS )
-		mRight.setSpeed(360);
+		mLeft.setSpeed(720); // 1 Revolution Per Second ( RPS )
+		mRight.setSpeed(720);
 		mLeft.synchronizeWith( new BaseRegulatedMotor[] { mRight });
 		
 		boolean count = true;
@@ -51,7 +51,7 @@ public class SimpleChap {
 					mRight.stop();
 					mLeft.stop();
 					mLeft.endSynchronization();
-					Delay.msDelay(500);
+					Delay.msDelay(100);
 					mLeft.startSynchronization();
 					mLeft.rotate(707);
 					mRight.stop();
@@ -67,6 +67,9 @@ public class SimpleChap {
 		}
 		
 		sensor.close();
+		mLeft.startSynchronization();
+			mLeft.stop(); mRight.stop();
+		mLeft.endSynchronization();
 		mLeft.close(); mRight.close();
 	}
 
