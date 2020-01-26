@@ -33,9 +33,12 @@ public class SimpleChap {
 		
 		boolean count = true;
 		
+		level2[0] = 1;
+		
 		// Runs until close to wall
 		while(level2[0] < 0.5) {
 			clap.fetchSample(level, 0);
+			distance.fetchSample(level2, 0);
 			
 			mLeft.startSynchronization();
 			if (level[0] == 1.0f) {
@@ -54,8 +57,6 @@ public class SimpleChap {
 				}
 			}
 			mLeft.endSynchronization();
-			
-			distance.fetchSample(level2, 0);
 		}
 		
 		sensor.close();
