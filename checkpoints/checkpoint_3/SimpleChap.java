@@ -35,7 +35,7 @@ public class SimpleChap {
 		distance.fetchSample(level2, 0);
 		
 		// Follows the line
-		while(level[0] > 0.50) {
+		while(!Button.ENTER.isDown()) {
 			// Stores light into level[0]
 			clap.fetchSample(level, 0);
 			
