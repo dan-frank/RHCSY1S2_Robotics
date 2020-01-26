@@ -36,7 +36,7 @@ public class SimpleChap {
 		level2[0] = 1;
 		
 		// Runs until close to wall
-		while(level2[0] < 0.5) {
+		while(level2[0] > 0.5) {
 			clap.fetchSample(level, 0);
 			distance.fetchSample(level2, 0);
 			
