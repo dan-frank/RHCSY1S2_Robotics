@@ -23,7 +23,7 @@ public class FollowLine {
 		String lightLevelMax = "";
 		String lightLevelMin = "";
 		
-		while(!!Button.ENTER.isPressed()) {
+		while(!Button.ENTER.isPressed()) {
 			// Stores sound into level[0]
 			light.fetchSample(level, 0);
 			
