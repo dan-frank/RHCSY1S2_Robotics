@@ -32,11 +32,9 @@ public class SimpleChap {
 		mLeft.synchronizeWith( new BaseRegulatedMotor[] { mRight });
 		
 		boolean count = true;
-		distance.fetchSample(level2, 0);
 		
-		// Follows the line
-		while(!Button.ENTER.isDown()) {
-			// Stores light into level[0]
+		// Runs until close to wall
+		while(level2[0] < 0.5) {
 			clap.fetchSample(level, 0);
 			
 			mLeft.startSynchronization();
@@ -48,12 +46,15 @@ public class SimpleChap {
 				} else {
 					mRight.stop();
 					mLeft.stop();
+					Delay.msDelay(500);
 					mLeft.rotate(707);
 					Delay.msDelay(500);
-					count = true;
+					mLeft.forward();
+					mRight.forward();
 				}
 			}
 			mLeft.endSynchronization();
+			
 			distance.fetchSample(level2, 0);
 		}
 		
