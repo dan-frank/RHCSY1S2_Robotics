@@ -4,6 +4,7 @@ import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.NXTSoundSensor;
 import lejos.robotics.SampleProvider;
+import lejos.utility.Delay;
 
 public class ClapClapCar {
 
@@ -38,9 +39,12 @@ public class ClapClapCar {
 			soundLevelMax = "MAX:" + String.valueOf(maxSoundLevel);
 			soundLevelMin = "MIN:" + String.valueOf(minSoundLevel);
 			
-			LCD.clear();
-			LCD.drawString(soundLevelMax, 2 , 2);
-			LCD.drawString(soundLevelMin, 2 ,3);
+			LCD.clear(2);
+			LCD.clear(3);
+			LCD.drawString(soundLevelMax, 1, 2);
+			LCD.drawString(soundLevelMin, 1, 3);
+			
+			Delay.msDelay(200);
 		}
 		
 		sensor.close();
