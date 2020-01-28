@@ -1,3 +1,5 @@
+package checkpoints.checkpoint_3;
+
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
