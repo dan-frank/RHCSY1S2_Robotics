@@ -1,7 +1,7 @@
 package checkpoints.checkpoint_3;
 
-import lejos.hardware.Button;
-import lejos.hardware.lcd.LCD;
+//import lejos.hardware.Button;
+//import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -66,6 +66,7 @@ public class SimpleChap {
 		}
 
 		sensor.close();
+		sensor2.close();
 		mLeft.startSynchronization();
 		mLeft.stop();
 		mRight.stop();

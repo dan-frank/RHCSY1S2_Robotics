@@ -5,7 +5,7 @@ import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.hardware.sensor.SensorMode;
-import lejos.utility.Delay;
+//import lejos.utility.Delay;
 
 public class DistanceCheck {
 
@@ -24,6 +24,8 @@ public class DistanceCheck {
 			}
 
 		}
+		
+		sensor2.close();
 
 	}
 
