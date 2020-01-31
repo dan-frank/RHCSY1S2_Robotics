@@ -27,7 +27,7 @@ public class PilotSquare {
 	final static float WHEELTHICKNESS = 26; // The diameter (mm) of the wheels
 	final static float AXLELENGTH = 147 - WHEELTHICKNESS; // The distance (mm) your two driven wheels
 	final static float ANGULARSPEED = 100; // How fast around corners (degrees/sec)
-	final static float LINEARSPEED = 50; // How fast in a straight line (mm/sec)
+	final static float LINEARSPEED = 150; // How fast in a straight line (mm/sec)
 	
 	public static void main(String[] args) {
 		// Wheel Diameter 60mm, both wheels set 29mm from car centre
@@ -53,7 +53,7 @@ public class PilotSquare {
 		lines[2] = new Line (500, 550, 500, 0);
 		lines[3] = new Line (250, 0, 500, 0);
 		
-		Rectangle bounds = new Rectangle (0, 0, 750, 800);
+		Rectangle bounds = new Rectangle (0, 0, 800, 700);
 		
 		LineMap map = new LineMap(lines, bounds);
 		PathFinder pf = new ShortestPathFinder(map);
@@ -62,7 +62,7 @@ public class PilotSquare {
 			int posXStart = 140,
 				posYStart = 80,
 				posAngle  = 90,
-				posXEnd   = 650,
+				posXEnd   = 700,
 				posYEnd   = 200;
 			
 			Path path = pf.findRoute(new Pose(posXStart, posYStart, posAngle), new Waypoint(posXEnd, posYEnd));
