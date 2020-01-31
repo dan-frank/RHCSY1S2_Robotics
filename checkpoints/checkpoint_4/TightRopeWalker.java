@@ -18,7 +18,7 @@ public class TightRopeWalker {
 
 	final static float WHEELDIAMETER = 56; // The diameter (mm) of the wheels
 	final static float WHEELTHICKNESS = 26; // The diameter (mm) of the wheels
-	final static float AXLELENGTH = 147 - (WHEELTHICKNESS * 2); // The distance (mm) your two driven wheels
+	final static float AXLELENGTH = 147 - WHEELTHICKNESS; // The distance (mm) your two driven wheels
 	final static float ANGULARSPEED = 100; // How fast around corners (degrees/sec)
 	final static float LINEARSPEED = 70; // How fast in a straight line (mm/sec)
 
