@@ -26,8 +26,8 @@ public class PilotSquare {
 		Wheel[] ws = new Wheel[] { wR, wL };
 		Chassis chassis = new WheeledChassis(ws, WheeledChassis.TYPE_DIFFERENTIAL);
 		MovePilot plt = new MovePilot(chassis);
-		plt.setAngularSpeed(200);
-		plt.setLinearSpeed(360);
+		//plt.setAngularSpeed(200);
+		//plt.setLinearSpeed(360);
 		PoseProvider poseProvider = new OdometryPoseProvider(plt);
 		Navigator navigator = new Navigator(plt, poseProvider);
 		Path path = new Path();
