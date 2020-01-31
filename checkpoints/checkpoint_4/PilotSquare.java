@@ -27,7 +27,7 @@ public class PilotSquare {
 	final static float WHEELTHICKNESS = 26; // The diameter (mm) of the wheels
 	final static float AXLELENGTH = 147 - WHEELTHICKNESS; // The distance (mm) your two driven wheels
 	final static float ANGULARSPEED = 100; // How fast around corners (degrees/sec)
-	final static float LINEARSPEED = 70; // How fast in a straight line (mm/sec)
+	final static float LINEARSPEED = 50; // How fast in a straight line (mm/sec)
 	
 	public static void main(String[] args) {
 		// Wheel Diameter 60mm, both wheels set 29mm from car centre
@@ -40,6 +40,9 @@ public class PilotSquare {
 		
 		Chassis chassis = new WheeledChassis(ws, WheeledChassis.TYPE_DIFFERENTIAL);
 		MovePilot plt = new MovePilot(chassis);
+		
+		plt.setAngularSpeed(ANGULARSPEED);
+		plt.setLinearSpeed(LINEARSPEED);
 	
 		PoseProvider poseProvider = new OdometryPoseProvider(plt);
 		Navigator navigator = new Navigator(plt, poseProvider);
