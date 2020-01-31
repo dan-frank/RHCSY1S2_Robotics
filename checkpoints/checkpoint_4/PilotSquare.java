@@ -34,8 +34,8 @@ public class PilotSquare {
 		BaseRegulatedMotor motorL = new EV3LargeRegulatedMotor(MotorPort.A);
 		BaseRegulatedMotor motorR = new EV3LargeRegulatedMotor(MotorPort.B);
 	
-		Wheel wL = WheeledChassis.modelWheel(motorL, WHEELDIAMETER).offset(-AXLELENGTH / 2);
-		Wheel wR = WheeledChassis.modelWheel(motorR, WHEELDIAMETER).offset(AXLELENGTH / 2);
+		Wheel wL = WheeledChassis.modelWheel(motorL, WHEELDIAMETER).offset(-WHEELTHICKNESS);
+		Wheel wR = WheeledChassis.modelWheel(motorR, WHEELDIAMETER).offset(WHEELTHICKNESS);
 		Wheel[] ws = new Wheel[] {wR, wL};
 		
 		Chassis chassis = new WheeledChassis(ws, WheeledChassis.TYPE_DIFFERENTIAL);
@@ -61,9 +61,12 @@ public class PilotSquare {
 		try {
 			int posXStart = 140,
 				posYStart = 80,
-				posAngle  = 90,
-				posXEnd   = 700,
-				posYEnd   = 200;
+				posAngle  = 0,
+				posXEnd   = 200,
+				posYEnd   = 700;
+			
+			LCD.drawString(""+posXStart, 1,1);
+			LCD.drawString(""+posYStart, 1, 2);
 			
 			Path path = pf.findRoute(new Pose(posXStart, posYStart, posAngle), new Waypoint(posXEnd, posYEnd));
 			navigator.followPath(path);

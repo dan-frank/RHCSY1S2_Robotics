@@ -30,8 +30,8 @@ public class PathFinding {
 	public static void main(String[] args) throws Exception {
 		RegulatedMotor left = new EV3LargeRegulatedMotor(MotorPort.A);
 		RegulatedMotor right = new EV3LargeRegulatedMotor(MotorPort.B);
-		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(-AXLELENGTH);
-		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(AXLELENGTH);
+		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(-WHEELTHICKNESS);
+		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(WHEELTHICKNESS);
 		Chassis chassis = new WheeledChassis(new Wheel[]{wheelRight, wheelLeft}, WheeledChassis.TYPE_DIFFERENTIAL); 
 		
 		MovePilot robot = new MovePilot(chassis);
