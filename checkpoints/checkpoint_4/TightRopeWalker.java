@@ -17,20 +17,21 @@ import lejos.robotics.pathfinding.Path;
 public class TightRopeWalker {
 
 	final static float WHEELDIAMETER = 56; // The diameter (mm) of the wheels
-	final static float AXLELENGTH = 147; // The distance (mm) your two driven wheels
+	final static float WHEELTHICKNESS = 26; // The diameter (mm) of the wheels
+	final static float AXLELENGTH = 147 - (WHEELTHICKNESS * 2); // The distance (mm) your two driven wheels
 	final static float ANGULARSPEED = 100; // How fast around corners (degrees/sec)
 	final static float LINEARSPEED = 70; // How fast in a straight line (mm/sec)
 
 	public static void main (String[] args) {
 		BaseRegulatedMotor motorL = new EV3LargeRegulatedMotor(MotorPort.A);
-		// Create a ”Wheel” with Diameter 51mm and offset 22mm left of centre.
+		// Create a "Wheel" with Diameter 51mm and offset 22mm left of centre.
 		Wheel wheelL = WheeledChassis.modelWheel(motorL, WHEELDIAMETER).offset(-AXLELENGTH / 2);
 		
 		BaseRegulatedMotor motorR = new EV3LargeRegulatedMotor(MotorPort.B);
-		// Create a ”Wheel” with Diameter 51mm and offset 22mm left of centre.
+		// Create a "Wheel" with Diameter 51mm and offset 22mm left of centre.
 		Wheel wheelR = WheeledChassis.modelWheel(motorR, WHEELDIAMETER).offset(AXLELENGTH / 2);
 				
-		// Create a ”Chassis” with two wheels on it.
+		// Create a "Chassis" with two wheels on it.
 		Chassis chassis = new WheeledChassis((new Wheel[] {wheelR, wheelL}), WheeledChassis.TYPE_DIFFERENTIAL);
 		
 		// Finally create a pilot which can drive its wheels separately.
