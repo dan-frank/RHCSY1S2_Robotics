@@ -48,10 +48,10 @@ public class PilotSquare {
 		Navigator navigator = new Navigator(plt, poseProvider);
 		
 		Line[] lines = new Line[4];
-		lines[0] = new Line (250, 0, 250, 550);
-		lines[1] = new Line (250, 550, 500, 550);
-		lines[2] = new Line (500, 550, 500, 0);
-		lines[3] = new Line (250, 0, 500, 0);
+		lines[0] = new Line (250, -25, 250, 575);
+		lines[1] = new Line (275, 550, 525, 550);
+		lines[2] = new Line (500, 575, 500, -25);
+		lines[3] = new Line (275, 0, 525, 0);
 		
 		Rectangle bounds = new Rectangle (0, 0, 800, 700);
 		
