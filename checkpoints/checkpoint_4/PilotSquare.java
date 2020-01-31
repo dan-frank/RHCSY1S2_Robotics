@@ -48,23 +48,29 @@ public class PilotSquare {
 		Navigator navigator = new Navigator(plt, poseProvider);
 		
 		Line[] lines = new Line[4];
-		lines[0] = new Line (150, 0, 150, 700);
-		lines[1] = new Line (150, 700, 500, 700);
-		lines[2] = new Line (500, 700, 500, 0);
-		lines[3] = new Line (150, 0, 500, 0);
+		lines[0] = new Line (250, 0, 250, 550);
+		lines[1] = new Line (250, 550, 500, 550);
+		lines[2] = new Line (500, 550, 500, 0);
+		lines[3] = new Line (250, 0, 500, 0);
 		
-		Rectangle bounds = new Rectangle (0, 0, 700, 800);
+		Rectangle bounds = new Rectangle (0, 0, 750, 800);
 		
 		LineMap map = new LineMap(lines, bounds);
 		PathFinder pf = new ShortestPathFinder(map);
 		
 		try {
-			Path path = pf.findRoute(new Pose(150, 150, 0), new Waypoint(600, 200));
+			int posXStart = 140,
+				posYStart = 80,
+				posAngle  = 90,
+				posXEnd   = 650,
+				posYEnd   = 200;
+			
+			Path path = pf.findRoute(new Pose(posXStart, posYStart, posAngle), new Waypoint(posXEnd, posYEnd));
 			navigator.followPath(path);
 		} catch (DestinationUnreachableException e) {
 			LCD.clear();
 			LCD.drawString("Cannot reach", 1, 1);
-			LCD.drawString("destinations", 1, 2);
+			LCD.drawString("destination", 1, 2);
 		}
 		
 		navigator.waitForStop();
