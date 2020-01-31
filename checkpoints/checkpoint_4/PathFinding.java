@@ -21,12 +21,17 @@ import lejos.robotics.pathfinding.PathFinder;
 import lejos.robotics.pathfinding.ShortestPathFinder;
 
 public class PathFinding {
+	final static float WHEELDIAMETER = 56; // The diameter (mm) of the wheels
+	final static float WHEELTHICKNESS = 26; // The diameter (mm) of the wheels
+	final static float AXLELENGTH = 147 - WHEELTHICKNESS; // The distance (mm) your two driven wheels
+	final static float ANGULARSPEED = 100; // How fast around corners (degrees/sec)
+	final static float LINEARSPEED = 150; // How fast in a straight line (mm/sec)
 
 	public static void main(String[] args) throws Exception {
 		RegulatedMotor left = new EV3LargeRegulatedMotor(MotorPort.A);
 		RegulatedMotor right = new EV3LargeRegulatedMotor(MotorPort.B);
-		Wheel wheelLeft = WheeledChassis.modelWheel(left, 60).offset(-29);
-		Wheel wheelRight = WheeledChassis.modelWheel(right, 60).offset(29);
+		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(AXLELENGTH);
+		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(AXLELENGTH);
 		Chassis chassis = new WheeledChassis(new Wheel[]{wheelRight, wheelLeft}, WheeledChassis.TYPE_DIFFERENTIAL); 
 		
 		MovePilot robot = new MovePilot(chassis);
@@ -34,18 +39,18 @@ public class PathFinding {
 		
 		// Create a rudimentary map:
 		Line [] lines = new Line[4];
-		lines [0] = new Line(-20f, 20f, 100f, 20f);
-		lines [1] = new Line(-20f, 40f, 20f, 40f);
-		lines [2] = new Line(-20f, 60f, 20f, 60f);
-		lines [3] = new Line(-20f, 80f, 20f, 80f);
-		Rectangle bounds = new Rectangle(-50, -50, 250, 250);
+		lines [0] = new Line(-200f, 200f, 1000f, 200f);
+		lines [1] = new Line(-200f, 400f, 200f, 400f);
+		lines [2] = new Line(-200f, 600f, 200f, 600f);
+		lines [3] = new Line(-200f, 800f, 200f, 800f);
+		Rectangle bounds = new Rectangle(-500, -500, 2500, 2500);
 		LineMap myMap = new LineMap(lines, bounds);
 		
 		PathFinder pf = new ShortestPathFinder(myMap);
 		
 		Navigator nav = new Navigator(robot, posep) ;
 		System.out.println("Planning path...");
-		Path route = pf.findRoute(new Pose(0,0,0), new Waypoint(0, 100));
+		Path route = pf.findRoute(new Pose(0,0,0), new Waypoint(0, 1000));
 		System.out.println("Planned path...");
 		System.out.println(route.toString());
 		Button.ENTER.waitForPressAndRelease();
