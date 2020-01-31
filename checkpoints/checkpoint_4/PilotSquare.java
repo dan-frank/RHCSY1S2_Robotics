@@ -47,18 +47,19 @@ public class PilotSquare {
 		PoseProvider poseProvider = new OdometryPoseProvider(plt);
 		Navigator navigator = new Navigator(plt, poseProvider);
 		
-		Line [] lines = new Line[4];
-		lines[0] = new Line (210, 0, 210, 620);
-		lines[1] = new Line (210, 620, 380, 620);
-		lines[2] = new Line (380, 620, 380, 0);
-		lines[3] = new Line (210, 0, 380, 0);
-		Rectangle bounds = new Rectangle (-50, -50, 600, 800);
+		Line[] lines = new Line[4];
+		lines[0] = new Line (150, 0, 150, 700);
+		lines[1] = new Line (150, 700, 500, 700);
+		lines[2] = new Line (500, 700, 500, 0);
+		lines[3] = new Line (150, 0, 500, 0);
+		
+		Rectangle bounds = new Rectangle (0, 0, 700, 800);
 		
 		LineMap map = new LineMap(lines, bounds);
 		PathFinder pf = new ShortestPathFinder(map);
 		
 		try {
-			Path path = pf.findRoute(new Pose(130, 150, 90), new Waypoint(480, 200));
+			Path path = pf.findRoute(new Pose(150, 150, 90), new Waypoint(600, 200));
 			navigator.followPath(path);
 		} catch (DestinationUnreachableException e) {
 			LCD.clear();
