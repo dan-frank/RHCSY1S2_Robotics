@@ -59,7 +59,7 @@ public class PilotSquare {
 		PathFinder pf = new ShortestPathFinder(map);
 		
 		try {
-			Path path = pf.findRoute(new Pose(150, 150, 90), new Waypoint(600, 200));
+			Path path = pf.findRoute(new Pose(150, 150, 0), new Waypoint(600, 200));
 			navigator.followPath(path);
 		} catch (DestinationUnreachableException e) {
 			LCD.clear();
