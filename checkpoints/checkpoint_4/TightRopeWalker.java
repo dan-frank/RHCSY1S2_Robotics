@@ -44,7 +44,7 @@ public class TightRopeWalker {
 		Navigator navigator = new Navigator(plt, poseProvider);
 		Path path = new Path();
 		
-		path.add(new Waypoint(500, 0));
+		path.add(new Waypoint(50, 0));
 		path.add(new Waypoint(0, 0));
 		
 		navigator.followPath(path);
