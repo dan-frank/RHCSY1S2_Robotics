@@ -20,7 +20,7 @@ public class TightRopeWalker {
 	final static float WHEELTHICKNESS = 26; // The diameter (mm) of the wheels
 	final static float AXLELENGTH = 147 - WHEELTHICKNESS; // The distance (mm) your two driven wheels
 	final static float ANGULARSPEED = 100; // How fast around corners (degrees/sec)
-	final static float LINEARSPEED = 70; // How fast in a straight line (mm/sec)
+	final static float LINEARSPEED = 50; // How fast in a straight line (mm/sec)
 
 	public static void main (String[] args) {
 		BaseRegulatedMotor motorL = new EV3LargeRegulatedMotor(MotorPort.A);
@@ -37,8 +37,8 @@ public class TightRopeWalker {
 		// Finally create a pilot which can drive its wheels separately.
 		MovePilot plt = new MovePilot(chassis);
 		
-//		plt.setAngularSpeed(360);
-//		plt.setLinearSpeed(360);
+		plt.setAngularSpeed(ANGULARSPEED);
+		plt.setLinearSpeed(LINEARSPEED);
 		
 		PoseProvider poseProvider = new OdometryPoseProvider(plt);
 		Navigator navigator = new Navigator(plt, poseProvider);
