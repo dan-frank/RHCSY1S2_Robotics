@@ -35,12 +35,19 @@ public class PilotSquare {
 	
 		PoseProvider poseProvider = new OdometryPoseProvider(plt);
 		Navigator navigator = new Navigator(plt, poseProvider);
-		Path path = new Path();
-		path.add(new Waypoint(50, 0));
-		path.add(new Waypoint(50, 50));
-		path.add(new Waypoint(0, 50));
-		path.add(new Waypoint(0, 0));
+		
+		Line [] lines = new Line[4];
+		lines[0]= new Line (210,0,210, 620);
+		lines[1]= new Line (210, 620, 380,620);
+		lines[2]= new Line (380,620, 380, 0);
+		lines[3]= new Line (210,0,380,0);
+		Rectangle bounds = new Rectangle (-50,-50, 800,600);
+		|
+		LineMap map = new LineMap (lines,bounds);
+		PathFinder pf = new ShortestPathFinder(map);
+		Path path =pf.findRoute(new Pose(130,150,90),new Waypoint(480,200));
 		navigator.followPath(path);
+		
 		navigator.waitForStop();
 
 
