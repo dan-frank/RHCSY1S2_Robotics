@@ -19,27 +19,26 @@ public class SimpleChap {
 		NXTSoundSensor sensor = new NXTSoundSensor(SensorPort.S2);
 		SensorMode sound = (SensorMode) sensor.getDBAMode();
 		SampleProvider clap = new ClapFilter(sound, 0.6f, 100);
-		
+
 		float[] level2 = new float[1];
 		EV3UltrasonicSensor sensor2 = new EV3UltrasonicSensor(SensorPort.S1);
 		SensorMode distance = (SensorMode) sensor2.getDistanceMode();
-		
-		
-		BaseRegulatedMotor mLeft = new EV3LargeRegulatedMotor ( MotorPort.A );
-		BaseRegulatedMotor mRight = new EV3LargeRegulatedMotor ( MotorPort.B );
+
+		BaseRegulatedMotor mLeft = new EV3LargeRegulatedMotor(MotorPort.A);
+		BaseRegulatedMotor mRight = new EV3LargeRegulatedMotor(MotorPort.B);
 		mLeft.setSpeed(720); // 1 Revolution Per Second ( RPS )
 		mRight.setSpeed(720);
-		mLeft.synchronizeWith( new BaseRegulatedMotor[] { mRight });
-		
+		mLeft.synchronizeWith(new BaseRegulatedMotor[] { mRight });
+
 		boolean count = true;
-		
+
 		level2[0] = 1;
-		
+
 		// Runs until close to wall
-		while(level2[0] > 0.5) {
+		while (level2[0] > 0.5) {
 			clap.fetchSample(level, 0);
 			distance.fetchSample(level2, 0);
-			
+
 			if (level[0] == 1.0f) {
 				if (count) {
 					mLeft.startSynchronization();
@@ -65,12 +64,14 @@ public class SimpleChap {
 				count = false;
 			}
 		}
-		
+
 		sensor.close();
 		mLeft.startSynchronization();
-			mLeft.stop(); mRight.stop();
+		mLeft.stop();
+		mRight.stop();
 		mLeft.endSynchronization();
-		mLeft.close(); mRight.close();
+		mLeft.close();
+		mRight.close();
 	}
 
 }
