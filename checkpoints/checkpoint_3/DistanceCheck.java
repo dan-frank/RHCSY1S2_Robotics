@@ -21,8 +21,6 @@ public class DistanceCheck {
 				LCD.clear();
 				String display = String.valueOf(level2[0]);
 				LCD.drawString(display, 2, 2);
-			
-
 			}
 
 		}

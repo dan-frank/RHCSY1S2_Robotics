@@ -48,7 +48,7 @@ public class ClapFilter implements SampleProvider {
 	 * @param index the index to fill with the result
 	 */
 	public void fetchSample(float level[], int index) {
-		level[index] = 0.0f; // default - no clap : false 
+		level[index] = 0.0f; // default - no clap : false
 		long now = System.currentTimeMillis();
 		if (now - lastHeard > timeGap) {
 			ss.fetchSample(level, index);
