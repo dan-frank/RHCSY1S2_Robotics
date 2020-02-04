@@ -23,15 +23,15 @@ import lejos.robotics.pathfinding.ShortestPathFinder;
 public class PathFinding {
 	final static float WHEELDIAMETER = 56; // The diameter (mm) of the wheels
 	final static float WHEELTHICKNESS = 26; // The diameter (mm) of the wheels
-	final static float AXLELENGTH = 147 - WHEELTHICKNESS; // The distance (mm) your two driven wheels
+	final static float AXLELENGTH = (147 - WHEELTHICKNESS) / 2; // The distance (mm) your two driven wheels
 	final static float ANGULARSPEED = 100; // How fast around corners (degrees/sec)
 	final static float LINEARSPEED = 150; // How fast in a straight line (mm/sec)
 
 	public static void main(String[] args) throws Exception {
 		RegulatedMotor left = new EV3LargeRegulatedMotor(MotorPort.A);
 		RegulatedMotor right = new EV3LargeRegulatedMotor(MotorPort.B);
-		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(-WHEELTHICKNESS);
-		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(WHEELTHICKNESS);
+		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(-AXLELENGTH);
+		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(AXLELENGTH);
 		Chassis chassis = new WheeledChassis(new Wheel[]{wheelRight, wheelLeft}, WheeledChassis.TYPE_DIFFERENTIAL); 
 		
 		MovePilot robot = new MovePilot(chassis);
