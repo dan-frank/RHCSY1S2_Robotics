@@ -30,8 +30,8 @@ public class PathFinding {
 	public static void main(String[] args) throws Exception {
 		RegulatedMotor left = new EV3LargeRegulatedMotor(MotorPort.A);
 		RegulatedMotor right = new EV3LargeRegulatedMotor(MotorPort.B);
-		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(-AXLELENGTH);
-		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(AXLELENGTH);
+		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(-WHEELTHICKNESS);
+		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(WHEELTHICKNESS);
 		Chassis chassis = new WheeledChassis(new Wheel[]{wheelRight, wheelLeft}, WheeledChassis.TYPE_DIFFERENTIAL); 
 		
 		MovePilot robot = new MovePilot(chassis);
@@ -39,18 +39,18 @@ public class PathFinding {
 		
 		// Create a rudimentary map:
 		Line [] lines = new Line[4];
-		lines [0] = new Line(-200f, 200f, 1000f, 200f);
-		lines [1] = new Line(-200f, 400f, 200f, 400f);
-		lines [2] = new Line(-200f, 600f, 200f, 600f);
-		lines [3] = new Line(-200f, 800f, 200f, 800f);
-		Rectangle bounds = new Rectangle(-500, -500, 2500, 2500);
+		lines [0] = new Line(-20f, 20f, 100f, 20f);
+		lines [1] = new Line(-20f, 40f, 20f, 40f);
+		lines [2] = new Line(-20f, 60f, 20f, 60f);
+		lines [3] = new Line(-20f, 80f, 20f, 80f);
+		Rectangle bounds = new Rectangle(-50, -50, 250, 250);
 		LineMap myMap = new LineMap(lines, bounds);
 		
 		PathFinder pf = new ShortestPathFinder(myMap);
 		
 		Navigator nav = new Navigator(robot, posep) ;
 		System.out.println("Planning path...");
-		Path route = pf.findRoute(new Pose(0,0,0), new Waypoint(0, 1000));
+		Path route = pf.findRoute(new Pose(0, 0, 0), new Waypoint(0, 100));
 		System.out.println("Planned path...");
 		System.out.println(route.toString());
 		Button.ENTER.waitForPressAndRelease();
