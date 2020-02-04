@@ -36,8 +36,8 @@ public class PilotSquare {
 		BaseRegulatedMotor motorL = new EV3LargeRegulatedMotor(MotorPort.A);
 		BaseRegulatedMotor motorR = new EV3LargeRegulatedMotor(MotorPort.B);
 	
-		Wheel wL = WheeledChassis.modelWheel(motorL, WHEELDIAMETER).offset(-WHEELTHICKNESS);
-		Wheel wR = WheeledChassis.modelWheel(motorR, WHEELDIAMETER).offset(WHEELTHICKNESS);
+		Wheel wL = WheeledChassis.modelWheel(motorL, WHEELDIAMETER).offset(-AXLELENGTH);
+		Wheel wR = WheeledChassis.modelWheel(motorR, WHEELDIAMETER).offset(AXLELENGTH);
 		Wheel[] ws = new Wheel[] {wR, wL};
 		
 		Chassis chassis = new WheeledChassis(ws, WheeledChassis.TYPE_DIFFERENTIAL);
@@ -55,7 +55,7 @@ public class PilotSquare {
 		lines[2] = new Line(250f, 270f, 400f, 270f);
 		lines[3] = new Line(370f, 300f, 370f, -20f);
 		
-		Rectangle bounds = new Rectangle (0, 0, 800, 700);
+		Rectangle bounds = new Rectangle (-50, -50, 800, 700);
 		
 		LineMap map = new LineMap(lines, bounds);
 		PathFinder pf = new ShortestPathFinder(map);
