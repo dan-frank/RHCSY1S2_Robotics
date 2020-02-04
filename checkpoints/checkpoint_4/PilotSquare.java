@@ -30,6 +30,8 @@ public class PilotSquare {
 	final static float LINEARSPEED = 150; // How fast in a straight line (mm/sec)
 	
 	public static void main(String[] args) {
+		LCD.drawString("VERSION: 0.20", 1,1);
+		
 		// Wheel Diameter 60mm, both wheels set 29mm from car centre
 		BaseRegulatedMotor motorL = new EV3LargeRegulatedMotor(MotorPort.A);
 		BaseRegulatedMotor motorR = new EV3LargeRegulatedMotor(MotorPort.B);
@@ -48,10 +50,10 @@ public class PilotSquare {
 		Navigator navigator = new Navigator(plt, poseProvider);
 		
 		Line[] lines = new Line[4];
-		lines[0] = new Line(250f, -20f, 400f, -20f);
-		lines[1] = new Line(250f, -20f, 250f, 300f);
-		lines[2] = new Line(250f, 300f, 400f, 300f);
-		lines[3] = new Line(400f, 300f, 400f, -20f);
+		lines[0] = new Line(250f, 0f, 400f, 0f);
+		lines[1] = new Line(280f, -20f, 280f, 300f);
+		lines[2] = new Line(250f, 270f, 400f, 270f);
+		lines[3] = new Line(370f, 300f, 370f, -20f);
 		
 		Rectangle bounds = new Rectangle (0, 0, 800, 700);
 		
@@ -65,8 +67,10 @@ public class PilotSquare {
 				posXEnd   = 600,
 				posYEnd   = 200;
 			
-			LCD.drawString(""+posXStart, 1,1);
-			LCD.drawString(""+posYStart, 1, 2);
+			LCD.drawString("SRTX:"+posXStart, 1, 2);
+			LCD.drawString("SRTY"+posYStart, 1, 3);
+			LCD.drawString("ENDX:"+posXEnd, 1, 4);
+			LCD.drawString("ENDY:"+posYEnd, 1, 5);
 			
 			Path path = pf.findRoute(new Pose(posXStart, posYStart, posAngle), new Waypoint(posXEnd, posYEnd));
 			navigator.followPath(path);
