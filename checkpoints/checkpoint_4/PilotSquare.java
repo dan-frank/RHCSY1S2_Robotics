@@ -49,7 +49,7 @@ public class PilotSquare {
 		
 		Line[] lines = new Line[4];
 		lines[0] = new Line(150f, -20f, 300f, -20f);
-		lines[1] = new Line(150f, -20f, 150f, 200f);
+		lines[1] = new Line(150f, -20f, 150f, 300f);
 		lines[2] = new Line(150f, 300f, 300f, 300f);
 		lines[3] = new Line(300f, 300f, 300f, -20f);
 		
@@ -62,8 +62,8 @@ public class PilotSquare {
 			int posXStart = 140,
 				posYStart = 80,
 				posAngle  = 0,
-				posXEnd   = 200,
-				posYEnd   = 700;
+				posXEnd   = 600,
+				posYEnd   = 200;
 			
 			LCD.drawString(""+posXStart, 1,1);
 			LCD.drawString(""+posYStart, 1, 2);
