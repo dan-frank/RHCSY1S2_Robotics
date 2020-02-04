@@ -1,6 +1,7 @@
 package checkpoints.checkpoint_4;
 
 import lejos.hardware.Button;
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
@@ -23,15 +24,15 @@ import lejos.robotics.pathfinding.ShortestPathFinder;
 public class PathFinding {
 	final static float WHEELDIAMETER = 56; // The diameter (mm) of the wheels
 	final static float WHEELTHICKNESS = 26; // The diameter (mm) of the wheels
-	final static float AXLELENGTH = 147 - WHEELTHICKNESS; // The distance (mm) your two driven wheels
+	final static float AXLELENGTH = (147 - WHEELTHICKNESS) / 2; // The distance (mm) your two driven wheels
 	final static float ANGULARSPEED = 100; // How fast around corners (degrees/sec)
 	final static float LINEARSPEED = 150; // How fast in a straight line (mm/sec)
 
 	public static void main(String[] args) throws Exception {
 		RegulatedMotor left = new EV3LargeRegulatedMotor(MotorPort.A);
 		RegulatedMotor right = new EV3LargeRegulatedMotor(MotorPort.B);
-		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(-WHEELTHICKNESS);
-		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(WHEELTHICKNESS);
+		Wheel wheelLeft = WheeledChassis.modelWheel(left, WHEELDIAMETER).offset(-AXLELENGTH);
+		Wheel wheelRight = WheeledChassis.modelWheel(right, WHEELDIAMETER).offset(AXLELENGTH);
 		Chassis chassis = new WheeledChassis(new Wheel[]{wheelRight, wheelLeft}, WheeledChassis.TYPE_DIFFERENTIAL); 
 		
 		MovePilot robot = new MovePilot(chassis);
@@ -39,18 +40,24 @@ public class PathFinding {
 		
 		// Create a rudimentary map:
 		Line [] lines = new Line[4];
-		lines [0] = new Line(-20f, 20f, 100f, 20f);
-		lines [1] = new Line(-20f, 40f, 20f, 40f);
-		lines [2] = new Line(-20f, 60f, 20f, 60f);
-		lines [3] = new Line(-20f, 80f, 20f, 80f);
-		Rectangle bounds = new Rectangle(-50, -50, 250, 250);
+		lines[0] = new Line(250f, 0f, 400f, 0f);
+		lines[1] = new Line(280f, -20f, 280f, 300f);
+		lines[2] = new Line(250f, 270f, 400f, 270f);
+		lines[3] = new Line(370f, 300f, 370f, -20f);
+		
+		Rectangle bounds = new Rectangle (-50, -50, 800, 700);
 		LineMap myMap = new LineMap(lines, bounds);
 		
 		PathFinder pf = new ShortestPathFinder(myMap);
 		
 		Navigator nav = new Navigator(robot, posep) ;
 		System.out.println("Planning path...");
-		Path route = pf.findRoute(new Pose(0, 0, 0), new Waypoint(0, 100));
+		int posXStart = 140,
+				posYStart = 80,
+				posAngle  = 0,
+				posXEnd   = 600,
+				posYEnd   = 200;
+		Path route = pf.findRoute(new Pose(posXStart, posYStart, posAngle), new Waypoint(posXEnd, posYEnd));
 		System.out.println("Planned path...");
 		System.out.println(route.toString());
 		Button.ENTER.waitForPressAndRelease();
