@@ -49,9 +49,9 @@ public class PilotSquare {
 		
 		Line[] lines = new Line[4];
 		lines[0] = new Line(150f, -20f, 300f, -20f);
-		lines[0] = new Line(150f, -20f, 150f, 200f);
+		lines[1] = new Line(150f, -20f, 150f, 200f);
 		lines[2] = new Line(150f, 300f, 300f, 300f);
-		lines[2] = new Line(300f, 300f, 300f, -20f);
+		lines[3] = new Line(300f, 300f, 300f, -20f);
 		
 		Rectangle bounds = new Rectangle (0, 0, 800, 700);
 		
