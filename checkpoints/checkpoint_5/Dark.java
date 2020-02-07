@@ -10,7 +10,7 @@ import lejos.robotics.subsumption.Behavior;
 public class Dark implements Behavior {
 	private double averageAmb;
 	private MovePilot p;
-	private double[] s = new double[1];
+	private double[] s;
 	private SampleProvider sp;
 	private float[] samples = new float[1];
 

@@ -6,7 +6,7 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Trundle implements Behavior {
 	private MovePilot pilot;
-	private double[] s = new double[1];
+	private double[] s;
 
 	Trundle(MovePilot p, double[] speed) {
 		this.pilot = p;
