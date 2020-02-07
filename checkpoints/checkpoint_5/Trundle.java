@@ -5,11 +5,12 @@ import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class Trundle implements Behavior {
-	private MovePilot pilot;
+	private MovePilot p;
 	private double[] s;
+	private double so = 0;
 
-	Trundle(MovePilot p, double[] speed) {
-		this.pilot = p;
+	Trundle(MovePilot pilot, double[] speed) {
+		this.p = pilot;
 		this.s = speed;
 	}
 
@@ -18,8 +19,9 @@ public class Trundle implements Behavior {
 		LCD.clear(5);
 		LCD.drawString("Trundle", 1, 5);
 		
-		pilot.setLinearSpeed(s[0]);
-		if (!pilot.isMoving()) { pilot.forward(); }
+		p.setLinearSpeed(s[0]);
+		p.forward();
+		so = s[0];
 	}
 
 	// Since action returns immediately this is probably never called
@@ -28,6 +30,6 @@ public class Trundle implements Behavior {
 
 	// Is it my turn?
 	public boolean takeControl() {
-		return true;
+		return so != s[0];
 	}
 }
