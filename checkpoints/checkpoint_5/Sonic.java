@@ -7,6 +7,7 @@ public class Sonic implements Behavior {
 	
 	private MovePilot p;
 	private double[] s;
+	private double so = 0;
 	
 	Sonic (MovePilot pilot, double[] speed) {
 		this.p = pilot;
@@ -14,6 +15,7 @@ public class Sonic implements Behavior {
 	}
 	
 	public void action() {
+		so = s[0];
 		p.setLinearSpeed(s[0]);
 	}
 
@@ -23,7 +25,7 @@ public class Sonic implements Behavior {
 
 	// Is it my turn?
 	public boolean takeControl() {
-		return true;
+		return so != s[0];
 	}
 
 }
