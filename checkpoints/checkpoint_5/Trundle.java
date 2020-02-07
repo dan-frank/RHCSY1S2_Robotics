@@ -6,9 +6,11 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Trundle implements Behavior {
 	private MovePilot pilot;
+	private double[] s = new double[1];
 
-	Trundle(MovePilot p) {
+	Trundle(MovePilot p, double[] speed) {
 		this.pilot = p;
+		this.s = speed;
 	}
 
 	// Start trundling and return control immediately.
@@ -16,6 +18,7 @@ public class Trundle implements Behavior {
 		LCD.clear(5);
 		LCD.drawString("Trundle", 1, 5);
 		
+		pilot.setLinearSpeed(s[0]);
 		if (!pilot.isMoving()) { pilot.forward(); }
 	}
 

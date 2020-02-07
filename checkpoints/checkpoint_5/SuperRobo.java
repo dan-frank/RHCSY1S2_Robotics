@@ -59,11 +59,13 @@ public class SuperRobo {
 		LCD.drawString(lightLevelAverage, 1, 4);
 	
 		MovePilot pilot = getPilot(56.0, 73.5);
-		pilot.setLinearSpeed(100);
 		
-		Behavior trundle = new Trundle(pilot);
-		Behavior light = new Light(pilot, lightLevelAvg, sensor);
-		Behavior dark = new Dark(pilot, lightLevelAvg, sensor);
+		double[] speed = new double[1];
+		speed[0] = 100;
+		
+		Behavior trundle = new Trundle(pilot, speed);
+		Behavior light = new Light(pilot, speed, lightLevelAvg, sensor);
+		Behavior dark = new Dark(pilot, speed, lightLevelAvg, sensor);
 		Behavior backup = new Backup(pilot, us);
 		Behavior emergencyStop = new EmergencyStop(pilot);
 		Behavior batteryLevel = new BatteryLevel();

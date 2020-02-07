@@ -10,11 +10,13 @@ import lejos.robotics.subsumption.Behavior;
 public class Light implements Behavior {
 	private double averageAmb;
 	private MovePilot p;
+	private double[] s = new double[1];
 	private SampleProvider sp;
 	private float[] samples = new float[1];
 
-	Light(MovePilot p, double averageAmb, EV3ColorSensor cs) {
+	Light(MovePilot p, double[] speed, double averageAmb, EV3ColorSensor cs) {
 		this.p = p;
+		this.s = speed;
 		this.averageAmb = averageAmb;
 		this.sp = cs.getAmbientMode();
 
@@ -24,7 +26,7 @@ public class Light implements Behavior {
 		LCD.clear(5);
 		LCD.drawString("Light", 1, 5);
 		
-		p.setLinearSpeed(150);
+		s[0] = 150;
 		if (!p.isMoving()) { p.forward(); }
 	}
 
