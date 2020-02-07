@@ -25,7 +25,6 @@ public class Light implements Behavior {
 		LCD.drawString("Light", 1, 5);
 		
 		p.setLinearSpeed(150);
-		p.travel(1);
 		if (!p.isMoving()) { p.forward(); }
 	}
 

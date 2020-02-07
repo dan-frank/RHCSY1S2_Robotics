@@ -22,7 +22,7 @@ public class Backup implements Behavior {
 	public void action() {
 		LCD.clear(5);
 		LCD.drawString("Backup", 1, 5);
-		
+		turner.setAngularSpeed(100);
 		turner.travel(-200);
 		turner.rotate((2 * rgen.nextInt(2) - 1) * 30);
 	}
