@@ -10,16 +10,16 @@ import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class Dark implements Behavior {
-	private MovePilot pilot;
 	private double averageAmb;
-	private EV3ColorSensor cs = new EV3ColorSensor(SensorPort.S3);
-	private SampleProvider sp = cs.getAmbientMode();
-
+	private MovePilot turner;
+	private EV3UltrasonicSensor us = new EV3UltrasonicSensor(SensorPort.S1);
+	private SampleProvider sp = us.getDistanceMode();
+	private Random rgen = new Random();
 	private float[] samples = new float[1];
 
-	Dark(MovePilot p,double averageAmb) {
-		pilot = p;
-		this.averageAmb= averageAmb;
+	Dark(MovePilot p, double averageAmb) {
+		turner = p;
+		this.averageAmb = averageAmb;
 	}
 
 	public void action() {
