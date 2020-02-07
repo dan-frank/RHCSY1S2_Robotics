@@ -25,7 +25,8 @@ public class Backup implements Behavior {
 	}
 
 // It is not sensible to suppress this Behavior. Just let it finish.
-	public void suppress() {}
+	public void suppress() {
+	}
 
 // Is it my turn?
 	public boolean takeControl() {
