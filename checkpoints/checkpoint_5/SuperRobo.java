@@ -70,7 +70,7 @@ public class SuperRobo {
 		Behavior batteryLevel = new BatteryLevel();
 		Behavior emergencyStop = new EmergencyStop(pilot);
 		
-		Arbitrator ab = new Arbitrator(new Behavior[]{trundle, batteryLevel, emergencyStop, light, dark, backup});
+		Arbitrator ab = new Arbitrator(new Behavior[]{trundle, light, dark, backup, batteryLevel, emergencyStop});
         ab.go();
         
         sensor.close();
