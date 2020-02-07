@@ -6,18 +6,22 @@ import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
 public class BatteryLevel implements Behavior {
+	
+	@Override
+	public boolean takeControl() {
+		return (Battery.getVoltage() < 7.5);
+	}
 
-	private void action() {
+	@Override
+	public void action() {
 		LCD.clear(1);
 		Delay.msDelay(500);
 		LCD.drawString("BATTERY LEVEL LOW!!!!", 1, 1);
 		Delay.msDelay(500);
 	}
-		
-	private void suppress() {}
-	
-	private boolean takeControl() {
-		return (Battery.getVoltage() < 7.5);
+
+	@Override
+	public void suppress() {
 	}
 
 }
