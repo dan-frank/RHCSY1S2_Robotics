@@ -7,25 +7,23 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.SampleProvider;
 import lejos.robotics.chassis.Chassis;
 import lejos.robotics.chassis.Wheel;
 import lejos.robotics.chassis.WheeledChassis;
 import lejos.robotics.navigation.MovePilot;
+import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
 public class SuperRobo {
 
-	public static void main(String[] args) {
-		MovePilot pilot = getPilot(56.0, 73.5);
-		pilot.setLinearSpeed(200);
-		Behavior trundle = new Trundle(pilot);
-		Behavior backup = new Backup(pilot);
-		float[] level = new float[2];
+	public static void main(String[] args) {		
+		float[] level = new float[1];
 
 		EV3ColorSensor sensor = new EV3ColorSensor(SensorPort.S3);
-		SampleProvider light = sensor.getAmbientMode();
+		SampleProvider sensorLight = sensor.getAmbientMode();
 
 		double maxLightLevel = 0;
 		double minLightLevel = 1;
@@ -36,52 +34,56 @@ public class SuperRobo {
 
 		// Gets the average light levels
 		while (!Button.ENTER.isDown()) {
-			// Stores light into level[0]
-			light.fetchSample(level, 0);
+			sensorLight.fetchSample(level, 0);
 
-			// Gets largest sound
-			if (level[0] > maxLightLevel) {
-				maxLightLevel = level[0];
-			}
-
-			// Gets smallest sound
-			if (level[0] < minLightLevel) {
-				minLightLevel = level[0];
-			}
+			if (level[0] > maxLightLevel) { maxLightLevel = level[0]; }
+			if (level[0] < minLightLevel) { minLightLevel = level[0]; }
 
 			lightLevelMax = "MAX:" + String.valueOf(maxLightLevel);
 			lightLevelMin = "MIN:" + String.valueOf(minLightLevel);
 
-			LCD.clear(1);
 			LCD.clear(2);
-			LCD.drawString(lightLevelMax, 1, 1);
-			LCD.drawString(lightLevelMin, 1, 2);
+			LCD.clear(3);
+			LCD.drawString(lightLevelMax, 1, 2);
+			LCD.drawString(lightLevelMin, 1, 3);
 
 			Delay.msDelay(200);
 		}
 
 		double lightLevelAvg = (maxLightLevel + minLightLevel) / 2;
 		String lightLevelAverage = "AVG:" + lightLevelAvg;
-
-		LCD.clear(3);
-		LCD.drawString(lightLevelAverage, 1, 3);
-
-		Behavior dark = new Dark(pilot, lightLevelAvg);
 		
-		sensor.close();
+		EV3UltrasonicSensor us = new EV3UltrasonicSensor(SensorPort.S1);
 
+		LCD.clear(4);
+		LCD.drawString(lightLevelAverage, 1, 4);
+	
+		MovePilot pilot = getPilot(56.0, 73.5);
+		pilot.setLinearSpeed(100);
+		
+		Behavior trundle = new Trundle(pilot);
+		Behavior light = new Light(pilot, lightLevelAvg, sensor);
+		Behavior dark = new Dark(pilot, lightLevelAvg, sensor);
+		Behavior backup = new Backup(pilot, us);
+		Behavior emergencyStop = new EmergencyStop(pilot);
+		Behavior batteryLevel = new BatteryLevel();
+		
+		Arbitrator ab = new Arbitrator(new Behavior[]{trundle, light, dark, backup, batteryLevel, emergencyStop});
+        ab.go();
+        
+        sensor.close();
 	}
 
 	private static MovePilot getPilot(double diam , double offset) {
-		BaseRegulatedMotor mL = new EV3LargeRegulatedMotor(MotorPort.A) ;
-		Wheel wL = WheeledChassis.modelWheel (mL,diam).offset(-1 * offset);
-		BaseRegulatedMotor mR = new EV3LargeRegulatedMotor(MotorPort.B) ;
-		Wheel wR = WheeledChassis.modelWheel (mR, diam ).offset(offset) ;
-		Wheel[] ws = new Wheel[] {wR, wL} ;
-		Chassis chassis = new WheeledChassis (ws, WheeledChassis.TYPE_DIFFERENTIAL);
-		return new MovePilot(chassis) ;
-	}
+		BaseRegulatedMotor mL = new EV3LargeRegulatedMotor(MotorPort.A);
+		BaseRegulatedMotor mR = new EV3LargeRegulatedMotor(MotorPort.B);
 		
-
-
+		Wheel wL = WheeledChassis.modelWheel (mL,diam).offset(-1 * offset);
+		Wheel wR = WheeledChassis.modelWheel (mR, diam ).offset(offset);		
+		Wheel[] ws = new Wheel[] {wR, wL};
+		
+		Chassis chassis = new WheeledChassis (ws, WheeledChassis.TYPE_DIFFERENTIAL);
+		
+		return new MovePilot(chassis);
+	}
 }

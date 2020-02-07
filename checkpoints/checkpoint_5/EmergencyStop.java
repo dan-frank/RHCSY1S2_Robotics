@@ -1,30 +1,28 @@
 package checkpoints.checkpoint_5;
 
 import lejos.hardware.Button;
-import lejos.hardware.motor.BaseRegulatedMotor;
-import lejos.hardware.motor.EV3LargeRegulatedMotor;
-import lejos.hardware.port.MotorPort;
+import lejos.hardware.lcd.LCD;
+import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class EmergencyStop implements Behavior {
+	private MovePilot p;
+	
+	EmergencyStop(MovePilot p){
+		this.p = p;
+	}
 
 	@Override
 	public boolean takeControl() {
-		return Button.ENTER.isDown(); // Returns a boolean
+		return Button.ESCAPE.isDown(); // Returns a boolean
 	}
 
 	@Override
 	public void action() {
-		BaseRegulatedMotor mLeft = new EV3LargeRegulatedMotor(MotorPort.A);
-		BaseRegulatedMotor mRight = new EV3LargeRegulatedMotor(MotorPort.B);
+		LCD.clear(5);
+		LCD.drawString("Stop", 1, 5);
 		
-		mLeft.startSynchronization();
-		mLeft.stop();
-		mRight.stop();
-		mLeft.endSynchronization();
-		
-		mLeft.close();
-		mRight.close();
+		p.stop();
 	}
 
 	@Override

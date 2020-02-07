@@ -7,9 +7,11 @@ import lejos.utility.Delay;
 
 public class BatteryLevel implements Behavior {
 	
+	BatteryLevel(){}
+	
 	@Override
 	public boolean takeControl() {
-		return (Battery.getVoltage() < 7.5);
+		return (Battery.getVoltage() < 7);
 	}
 
 	@Override

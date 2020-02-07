@@ -1,42 +1,39 @@
+package checkpoints.checkpoint_5;
 
 
-
-
-import lejos.hardware.port.SensorPort;
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3ColorSensor;
-
 import lejos.robotics.SampleProvider;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class Dark implements Behavior {
 	private double averageAmb;
-	private MovePilot turner;
-	private EV3UltrasonicSensor us = new EV3UltrasonicSensor(SensorPort.S1);
-	private SampleProvider sp = us.getDistanceMode();
-	private Random rgen = new Random();
+	private MovePilot p;
+	private SampleProvider sp;
 	private float[] samples = new float[1];
 
-	Dark(MovePilot p, double averageAmb) {
-		turner = p;
+	Dark(MovePilot p, double averageAmb, EV3ColorSensor cs) {
+		this.p = p;
 		this.averageAmb = averageAmb;
+		this.sp = cs.getAmbientMode();
 	}
 
 	public void action() {
-		double cur = pilot.getLinearSpeed();
-		pilot.setLinearSpeed(cur/2);
-		pilot.forward();
+		LCD.clear(5);
+		LCD.drawString("Dark", 1, 5);
 		
-		
+		p.setLinearSpeed(50);
+		if (!p.isMoving()) { p.forward(); }
 	}
 
-// It is not sensible to suppress this Behavior. Just let it finish.
+	// It is not sensible to suppress this Behavior. Just let it finish.
 	public void suppress() {
 	}
 
-// Is it my turn?
+	// Is it my turn?
 	public boolean takeControl() {
 		sp.fetchSample(samples, 0);
-		return (samples[0] < averageAmb);
+		return samples[0] < averageAmb;
 	}
 }
