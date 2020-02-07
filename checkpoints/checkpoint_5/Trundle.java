@@ -13,6 +13,7 @@ public class Trundle implements Behavior {
 // Start trundling and return control immediately.
 	public void action() {
 		pilot.forward();
+	
 	}
 
 // Since action returns immediately this is probably never called
