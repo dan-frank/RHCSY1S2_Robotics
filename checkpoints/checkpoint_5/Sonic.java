@@ -15,8 +15,9 @@ public class Sonic implements Behavior {
 	}
 	
 	public void action() {
-		so = s[0];
 		p.setLinearSpeed(s[0]);
+		p.forward();
+		so = s[0];
 	}
 
 	// It is not sensible to suppress this Behavior. Just let it finish.
