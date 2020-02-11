@@ -1,18 +1,17 @@
 package checkpoints.checkpoint_5;
 
-import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class Trundle implements Behavior {
 	private MovePilot p;
-	private double[] s;
-	private double so = 0;
+//	private double[] s;
+//	private double so = 0;
 
 	Trundle(MovePilot pilot, double[] speed) {
 		this.p = pilot;
-		this.s = speed;
+//		this.s = speed;
 	}
 
 	// Start trundling and return control immediately.
@@ -22,7 +21,7 @@ public class Trundle implements Behavior {
 		
 		p.setLinearSpeed(100);
 		if (!p.isMoving()) {p.forward();}
-		so = s[0];
+//		so = s[0];
 	}
 
 	// Since action returns immediately this is probably never called

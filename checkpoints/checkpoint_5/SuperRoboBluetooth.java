@@ -17,7 +17,7 @@ import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
-public class SuperRobo {
+public class SuperRoboBluetooth {
 
 	public static void main(String[] args) {		
 		float[] level = new float[1];
@@ -70,7 +70,7 @@ public class SuperRobo {
 		Behavior batteryLevel = new BatteryLevel();
 		Behavior emergencyStop = new EmergencyStop(pilot);
 		
-		Arbitrator ab = new Arbitrator(new Behavior[]{batteryLevel, trundle, backup, emergencyStop});
+		Arbitrator ab = new Arbitrator(new Behavior[]{trundle, batteryLevel, backup, emergencyStop});
         ab.go();
         
         sensor.close();

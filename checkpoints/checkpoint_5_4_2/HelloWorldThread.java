@@ -1,0 +1,19 @@
+package checkpoints.checkpoint_5_4_2;
+
+import lejos.hardware.lcd.LCD;
+
+public class HelloWorldThread extends Thread {
+	private int i = 0;
+	
+	public HelloWorldThread() {
+	}
+
+	public void run() {
+		while (true) {
+			LCD.drawString("Hello World:", 0, 0); LCD.drawInt(i, 0, 1);
+			LCD.refresh();
+			i++;
+		}
+	}
+
+}
