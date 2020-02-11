@@ -10,7 +10,7 @@ public class HelloWorldThread extends Thread {
 	public void run() {
 		while (true) {
 			LCD.drawString("Hello World:", 0, 0); LCD.drawInt(i, 0, 1);
-			LCD.refresh();
+			LCD.clear(0);
 			i++;
 		}
 	}

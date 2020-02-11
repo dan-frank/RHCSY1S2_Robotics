@@ -1,10 +1,10 @@
-package checkpoints.checkpoint_5_4;
+package checkpoints.checkpoint_5_4_2;
 
 import java.io.File;
 import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 
-public class TunePlayer extends Thread {
+public class TunePlayerThread extends Thread {
 	public void run() {
 		int count = 1;
 		while (true) {

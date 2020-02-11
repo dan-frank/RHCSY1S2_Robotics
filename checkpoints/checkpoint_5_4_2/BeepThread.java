@@ -1,6 +1,7 @@
 package checkpoints.checkpoint_5_4_2;
 
 import lejos.hardware.Sound;
+import lejos.utility.Delay;
 
 public class BeepThread extends Thread {
 	public BeepThread() {}
@@ -8,6 +9,7 @@ public class BeepThread extends Thread {
 	public void run() {
 		while (true) {
 			Sound.twoBeeps();
+			Delay.msDelay(1000);
 		}
 	}
 }
