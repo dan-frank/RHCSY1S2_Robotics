@@ -5,9 +5,12 @@ import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 
 public class TunePlayerThread extends Thread {
+	private int count;
+	
 	public void run() {
-		int count = 1;
-		while (true) {
+		count = 1;
+		
+		while (!isInterrupted()) {
 			LCD.drawInt(count++, 0, 6);
 			playTune();
 		}
@@ -18,7 +21,7 @@ public class TunePlayerThread extends Thread {
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			LCD.drawString("TunePlayer Sleep Error", 0, 5);
 		}
 	}
 }

@@ -8,7 +8,7 @@ public class HelloWorldThread extends Thread {
 	public HelloWorldThread() {}
 
 	public void run() {
-		while (true) {
+		while (!isInterrupted()) {
 			LCD.drawString("Hello World:", 0, 0); LCD.drawInt(i, 0, 1);
 			LCD.clear(0);
 			i++;
