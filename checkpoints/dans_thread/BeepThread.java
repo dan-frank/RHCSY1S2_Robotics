@@ -1,4 +1,4 @@
-package checkpoints.checkpoint_5_4_2;
+package checkpoints.dans_thread;
 
 import lejos.hardware.Sound;
 import lejos.utility.Delay;

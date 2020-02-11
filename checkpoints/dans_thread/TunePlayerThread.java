@@ -1,4 +1,4 @@
-package checkpoints.checkpoint_5_4_2;
+package checkpoints.dans_thread;
 
 import java.io.File;
 import lejos.hardware.Sound;
@@ -14,9 +14,9 @@ public class TunePlayerThread extends Thread {
 	}
 	
 	private void playTune() {
-		int time = Sound.playSample(new File("Trumpet.wav"));
+		int time = Sound.playSample(new File("./checkpoints/dans_thread/Trumpet.wav"));
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

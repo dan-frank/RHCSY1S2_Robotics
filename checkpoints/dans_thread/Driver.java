@@ -1,8 +1,9 @@
-package checkpoints.checkpoint_5_4_2;
+package checkpoints.dans_thread;
 
 import lejos.hardware.Button;
+import lejos.utility.Delay;
 
-public class ThreadTest1 {
+public class Driver {
 	private static HelloWorldThread hwt;
 	private static MoveThread mt;
 //	private static BeepThread bt;
@@ -19,7 +20,9 @@ public class ThreadTest1 {
 //		bt.start();
 		tpt.start();
 		
-		while(!Button.ESCAPE.isDown()){	}
+		while(!Button.ENTER.isDown()){}
+		
+		Delay.msDelay(5000);
 		
 		System.exit(0);
 	}
