@@ -4,14 +4,19 @@ import lejos.hardware.Button;
 
 public class ThreadTest1 {
 	private static HelloWorldThread hwt;
+	private static MoveThread mt;
+	private static BeepThread bt;
 	
 	public static void main(String[] args){
 		hwt = new HelloWorldThread();
-		hwt.start();
+		mt = new MoveThread();
+		bt = new BeepThread();
 		
-		while(!Button.ESCAPE.isDown()){
-			
-		}
+		hwt.start();
+		mt.start();
+		bt.start();
+		
+		while(!Button.ESCAPE.isDown()){	}
 		
 		System.exit(0);
 	}

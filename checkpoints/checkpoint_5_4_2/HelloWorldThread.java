@@ -5,8 +5,7 @@ import lejos.hardware.lcd.LCD;
 public class HelloWorldThread extends Thread {
 	private int i = 0;
 	
-	public HelloWorldThread() {
-	}
+	public HelloWorldThread() {}
 
 	public void run() {
 		while (true) {
