@@ -17,7 +17,7 @@ public class MoveThread extends Thread {
 		mLeft.setSpeed(360);
 		mRight.setSpeed(100);
 		
-		while (!isInterrupted()) {
+		while (true) {
 			mLeft.synchronizeWith(new BaseRegulatedMotor[] {mRight});
 			mLeft.startSynchronization();
 			mLeft.forward();

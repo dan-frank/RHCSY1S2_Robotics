@@ -10,18 +10,18 @@ public class TunePlayerThread extends Thread {
 	public void run() {
 		count = 1;
 		
-		while (!isInterrupted()) {
+		while (true) {
 			LCD.drawInt(count++, 0, 6);
 			playTune();
 		}
 	}
 	
 	private void playTune() {
-		int time = Sound.playSample(new File("./checkpoints/dans_thread/Trumpet.wav"));
+		int time = Sound.playSample(new File("Trumpet.wav"));
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
-			LCD.drawString("TunePlayer Sleep Error", 0, 5);
+			LCD.drawString("TunePlayer Sleep Error", 1, 5);
 		}
 	}
 }

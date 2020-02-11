@@ -1,32 +1,25 @@
 package checkpoints.dans_thread;
 
 import lejos.hardware.Button;
-import lejos.utility.Delay;
 
 public class Driver {
 	private static HelloWorldThread hwt;
-	private static MoveThread mt;
+//	private static BeepThread bt;
 	private static TunePlayerThread tpt;
+	private static MoveThread mt;
 	
 	public static void main(String[] args){
 		hwt = new HelloWorldThread();
-		mt = new MoveThread();
+//		bt = new BeepThread();
 		tpt = new TunePlayerThread();
-		
+		mt = new MoveThread();
+
 		hwt.start();
-		mt.start();
 		tpt.start();
+//		bt.start();
+		mt.start();
 		
-		while(!Button.ENTER.isDown()){}
-		
-		hwt.interrupt();
-		
-		while(!Button.ENTER.isDown()){}
-		
-		mt.interrupt();
-		tpt.interrupt();
-		
-		Delay.msDelay(5000);
+		while(!Button.ENTER.isDown()) {}
 		
 		System.exit(0);
 	}
