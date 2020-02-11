@@ -16,7 +16,7 @@ public class TunePlayerThread extends Thread {
 	private void playTune() {
 		int time = Sound.playSample(new File("Trumpet.wav"));
 		try {
-			Thread.sleep(time);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
