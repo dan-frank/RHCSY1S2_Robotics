@@ -1,5 +1,6 @@
 package checkpoints.checkpoint_5;
 
+import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
@@ -19,8 +20,8 @@ public class Trundle implements Behavior {
 		LCD.clear(5);
 		LCD.drawString("Trundle", 1, 5);
 		
-		p.setLinearSpeed(s[0]);
-		p.forward();
+		p.setLinearSpeed(100);
+		if (!p.isMoving()) {p.forward();}
 		so = s[0];
 	}
 
@@ -30,6 +31,6 @@ public class Trundle implements Behavior {
 
 	// Is it my turn?
 	public boolean takeControl() {
-		return so != s[0];
+		return true;
 	}
 }

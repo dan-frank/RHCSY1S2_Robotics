@@ -27,7 +27,6 @@ public class Light implements Behavior {
 		LCD.drawString("Light", 1, 5);
 		
 		s[0] = 150;
-		if (!p.isMoving()) { p.forward(); }
 	}
 
 	// It is not sensible to suppress this Behavior. Just let it finish.
