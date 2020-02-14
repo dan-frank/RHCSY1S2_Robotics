@@ -15,10 +15,10 @@ public class MotorFlip {
 		
 	}
 	public void pin() {
-		m.rotate(180);
+		m.rotate(90);
 	}
 	public void retract() {
-		m.rotate(-180);
+		m.rotate(-90);
 		
 	}
 	
