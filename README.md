@@ -11,11 +11,12 @@
 
 - [x] Initialise Rube!
 - [ ] Motors
-	- [ ] Flip cube
-		- [ ] Flip cube
-		- [ ] Return to default
-	- [ ] Rotate cube
-		- [ ] Rotate cube 90deg clockwise
+	- [x] Flip cube
+		- [x] Flip cube
+		- [x] Pin Cube
+		- [x] Return to default
+	- [x] Rotate cube
+		- [x] Rotate cube 90deg clockwise
 	- [ ] Scan colour
 		- [ ] Lift sensor
 			- [ ] (2, 2)
