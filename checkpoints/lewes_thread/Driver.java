@@ -1,4 +1,4 @@
-package checkpoints.checkpoint_lblock;
+package checkpoints.lewes_thread;
 
 
 import lejos.hardware.Button;
@@ -10,11 +10,13 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 
 public class Driver {
 	public static void main(String[] args) {
+		
+		boolean[] pass = new boolean[1]; 
 		BaseRegulatedMotor mL = new EV3LargeRegulatedMotor(MotorPort.A);
 		BaseRegulatedMotor mR = new EV3LargeRegulatedMotor(MotorPort.B);
 		EV3UltrasonicSensor us = new EV3UltrasonicSensor(SensorPort.S1);
-		DistThread distCheck = new DistThread(us);
-		MoveThread moveThread = new MoveThread(mL, mR);
+		DistThread distCheck = new DistThread(us, pass);
+		MoveThread moveThread = new MoveThread(mL, mR, pass);
 		distCheck.start();
 		moveThread.start();
 		

@@ -1,4 +1,4 @@
-package checkpoints.checkpoint_lblock;
+package checkpoints.lewes_thread;
 
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
@@ -8,7 +8,7 @@ public class DistThread extends Thread {
 	private EV3UltrasonicSensor us;
 	private int count = 0;
 
-	public DistThread(EV3UltrasonicSensor _us) {
+	public DistThread(EV3UltrasonicSensor _us, boolean[] _pass) {
 		us = _us;
 	}
 
