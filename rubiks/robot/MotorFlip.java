@@ -10,8 +10,15 @@ public class MotorFlip {
 		this.m=m;
 		
 	}
-	public void rightTurn() {
-		m.rotate
+	public void flip() {
+		m.rotate(360);
+		
+	}
+	public void pin() {
+		m.rotate(180);
+	}
+	public void retract() {
+		m.rotate(-180);
 		
 	}
 	
