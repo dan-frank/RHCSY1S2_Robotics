@@ -12,9 +12,22 @@
 - [x] Initialise Rube!
 - [ ] Motors
 	- [ ] Flip cube
+		- [ ] Flip cube
+		- [ ] Return to default
 	- [ ] Rotate cube
-- [ ] Scan colours
-	- [ ] Store into array
+		- [ ] Rotate cube 90deg clockwise
+	- [ ] Scan colour
+		- [ ] Lift sensor
+			- [ ] (2, 2)
+			- [ ] (2, 3)
+			- [ ] (1, 3)
+			- [ ] (1, 2)
+			- [ ] (1, 1)
+			- [ ] (2, 1)
+			- [ ] (3, 1)
+			- [ ] (3, 2)
+			- [ ] (3, 3)
+		- [ ] Return to default
 - [x] Link [cs0x7f's rubiks algorith](https://github.com/cs0x7f/min2phase)
 - [ ] Read if cube is put in
 - [ ] Program cube moves
