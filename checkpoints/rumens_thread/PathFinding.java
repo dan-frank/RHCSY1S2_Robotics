@@ -1,3 +1,5 @@
+package checkpoints.rumens_thread;
+
 import lejos.hardware.Button;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;

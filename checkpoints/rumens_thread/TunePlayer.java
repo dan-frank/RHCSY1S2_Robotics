@@ -1,3 +1,5 @@
+package checkpoints.rumens_thread;
+
 import java.io.File;
 import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
