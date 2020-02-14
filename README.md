@@ -28,6 +28,7 @@
 			- [ ] (3, 2)
 			- [ ] (3, 3)
 		- [ ] Return to default
+- [ ] Store colours in
 - [x] Link [cs0x7f's rubiks algorith](https://github.com/cs0x7f/min2phase)
 - [ ] Read if cube is put in
 - [ ] Program cube moves
