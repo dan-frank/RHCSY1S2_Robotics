@@ -5,26 +5,22 @@ import lejos.hardware.motor.BaseRegulatedMotor;
 public class MotorRotate {
 	
 	private BaseRegulatedMotor m;
+	private int ninetyDegrees = 270;
 	private int rotate;
-	private float speed;
+	private float speed = 360f;
 
 	public MotorRotate(BaseRegulatedMotor m) {
 		this.m = m;
-		this.rotate = 360;
-		this.speed = 360f;
+		this.m.setSpeed(this.speed);
+		this.rotate = ninetyDegrees;
 	}
 
-	public void setRotate(int rotate) {
-		this.rotate = rotate;
-	}
-
-	public void setSpeed(float speed) {
-		this.speed = speed;
+	public void setRotate(int multiplier) {
+		this.rotate = ninetyDegrees * multiplier;
 	}
 	
 	public void rotate() {
-		m.setSpeed(speed);
-		m.rotateTo(rotate);
-		rotate = 360;
+		m.rotate(rotate);
+		rotate = ninetyDegrees;
 	}
 }
