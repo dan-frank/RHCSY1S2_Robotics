@@ -7,13 +7,14 @@
 - Rumen [ragnar764](https://github.com/ragnar764)
 - Megan [meganhardman](https://github.com/meganhardman)
 
-## Rubiks Plan
+## Rube's Rubiks Plan
 
+- [x] Initialise Rube!
 - [ ] Scan colours
 - [ ] Flip cube
 - [ ] Read if cube is put in
 - [ ] Rotate cube
-- [x] Link (cs0x7f's rubiks algorith)[https://github.com/cs0x7f/min2phase]
+- [x] Link [cs0x7f's rubiks algorith](https://github.com/cs0x7f/min2phase)
 - [ ] Program cube moves
 
 ## Checkpoints
