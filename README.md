@@ -13,7 +13,7 @@
 - [ ] Flip cube
 - [ ] Read if cube is put in
 - [ ] Rotate cube
-- [ ] Link algorithm
+- [x] Link (cs0x7f's rubiks algorith)[https://github.com/cs0x7f/min2phase]
 - [ ] Program cube moves
 
 ## Checkpoints
