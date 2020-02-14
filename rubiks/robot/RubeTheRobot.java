@@ -19,6 +19,9 @@ public class RubeTheRobot {
 		
 		MotorRotate motorRotate = new MotorRotate(motorPortRotate);
 		motorRotate.rotate();
+		
+		MotorFlip motorFlip = new MotorFlip(motorPortFlip);
+		motorFlip.flip();
 
 		Delay.msDelay(5000);
 	}
