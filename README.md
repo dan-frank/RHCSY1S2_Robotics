@@ -102,6 +102,24 @@ Measure
 
 `[0], [1], [5], [2], [3], [4]`
 
+### Ports
+
+#### Motors
+
+
+Read Cube (*MotorPort A*)
+
+Flip Cube (*MotorPort B*)
+
+Rotate Cube (*MotorPort C*)
+
+
+#### Sensors
+
+Ultrasonic Sensor (*SensorPort 1*)
+
+Colour Sensor (*SensorPort 2*)
+
 ### Test Cubes
 
 `"UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"`
