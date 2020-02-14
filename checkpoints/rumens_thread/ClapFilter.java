@@ -1,3 +1,5 @@
+package checkpoints.rumens_thread;
+
 import lejos.hardware.sensor.SensorMode;
 import lejos.robotics.SampleProvider;
 

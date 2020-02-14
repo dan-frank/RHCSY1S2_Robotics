@@ -1,3 +1,5 @@
+package checkpoints.rumens_thread;
+
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

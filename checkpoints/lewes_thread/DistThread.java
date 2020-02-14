@@ -7,9 +7,11 @@ import lejos.robotics.SampleProvider;
 public class DistThread extends Thread {
 	private EV3UltrasonicSensor us;
 	private int count = 0;
+	private boolean[] pass;
 
 	public DistThread(EV3UltrasonicSensor _us, boolean[] _pass) {
 		us = _us;
+		pass = _pass;
 	}
 
 	public void run() {
@@ -19,13 +21,18 @@ public class DistThread extends Thread {
 		while (!stop(samples[0])) {
 			sp.fetchSample(samples, 0);
 			count++;
-			
+
 			LCD.drawString("" + samples[0], 1, 1);
-			LCD.drawString("Count: " + count, 1, 2);
+			LCD.drawString("Count: ", 1, 2);
+			LCD.drawString("" + count, 4, 3);
+
 		}
 		LCD.clear();
-		LCD.drawString("Total Count: " + count, 1, 1);
-		LCD.drawString("First small distance:" + samples[0], 1, 2);
+		LCD.drawString("Tot. Count: ", 1, 1);
+		LCD.drawString("" + count, 4, 2);
+		LCD.drawString("Term. Dist:", 1, 3);
+		LCD.drawString("" + samples[0], 4, 4);
+		pass[0] = true;
 	}
 
 	public boolean stop(float sample) {
