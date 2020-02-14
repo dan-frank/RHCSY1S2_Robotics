@@ -1,5 +1,4 @@
-package checkpoints.checkpoint_5_4;
-
+package checkpoints.checkpoint_lblock;
 import java.io.File;
 import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
@@ -9,10 +8,9 @@ public class TunePlayer extends Thread {
 		int count = 1;
 		while (true) {
 			LCD.drawInt(count++, 0, 6);
-			playTune();
+			playTune(); 
 		}
 	}
-	
 	private void playTune() {
 		int time = Sound.playSample(new File("Trumpet.wav"));
 		try {

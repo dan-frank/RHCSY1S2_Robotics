@@ -1,5 +1,4 @@
-package checkpoints.checkpoint_5_4;
-
+package checkpoints.checkpoint_lblock;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -24,7 +23,7 @@ public class MainClass {
 
 	public static void main(String[] args) throws IOException {
 		byte[] buffer = new byte[MAX_READ];
-		(new TunePlayer()).start();
+		//(new TunePlayer()).start();
 		
 		LCD.drawString("Waiting  ", 0, 0);
 		SocketAddress sa = new InetSocketAddress(IPaddress, port);
@@ -34,7 +33,7 @@ public class MainClass {
 			// This connection fail is just ignored - we were probably not trying to connect because there was no
 			// Android device
 			// Could be Timeout or just a normal IO exception
-			LCD.drawString(ex.getMessage(), 0, 6);
+			LCD.drawString(ex.getMessage(), 0,6);
 			connection = null;
 		}
 		if (connection != null) {
