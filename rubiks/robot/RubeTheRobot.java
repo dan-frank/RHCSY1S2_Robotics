@@ -13,20 +13,21 @@ public class RubeTheRobot {
 	private static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor(MotorPort.C);
 
 	public static void main(String[] args) {
+		MotorRotate motorRotate = new MotorRotate(motorPortRotate);
+		MotorFlip motorFlip     = new MotorFlip(motorPortFlip);
+		
 		LCD.clear();
 		LCD.drawString("Hello!", 0, 1);
 		LCD.drawString("My name is Rube!", 0, 2);
 		
-		MotorRotate motorRotate = new MotorRotate(motorPortRotate);
-		motorRotate.rotate();
 		
-		MotorFlip motorFlip = new MotorFlip(motorPortFlip);
+		motorRotate.rotate();
 		motorFlip.flip();
-		motorFlip.pin();
-		Delay.msDelay(500);
-		motorFlip.retract();
-
-		Delay.msDelay(5000);
+		
+		for (int i = 0; i < 10; i++) {
+			motorRotate.rotate();
+			Delay.msDelay(500);
+		}
 	}
 
 }
