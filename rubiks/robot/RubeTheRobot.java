@@ -22,6 +22,9 @@ public class RubeTheRobot {
 		
 		MotorFlip motorFlip = new MotorFlip(motorPortFlip);
 		motorFlip.flip();
+		motorFlip.pin();
+		Delay.msDelay(500);
+		motorFlip.retract();
 
 		Delay.msDelay(5000);
 	}
