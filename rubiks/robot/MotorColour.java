@@ -5,15 +5,14 @@ import lejos.hardware.motor.BaseRegulatedMotor;
 public class MotorColour {
 
 	private BaseRegulatedMotor m;
-	private int rMiddle, rEdge, rIn, rOut, rBack;
+	private int rMiddle = 50000,
+			rEdge = 150,
+			rIn = 150,
+			rOut = rIn * -1,
+			rBack = 50000;
 
-	public MotorColour(BaseRegulatedMotor _m) {
-		this.m = _m;
-		this.rMiddle = 150;
-		this.rEdge = 10;
-		this.rIn = 15;
-		this.rOut = rIn * -1;
-		this.rBack = 140;
+	public MotorColour(BaseRegulatedMotor m) {
+		this.m = m;
 	}
 
 	public void goMiddle() {

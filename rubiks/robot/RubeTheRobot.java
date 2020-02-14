@@ -18,22 +18,21 @@ public class RubeTheRobot {
 		MotorRotate motorRotate = new MotorRotate(motorPortRotate);
 		
 		LCD.clear();
-		LCD.drawString("Hello!", 0, 1);
-		LCD.drawString("My name is Rube!", 0, 2);
+		LCD.drawString("Hello there!", 1, 1);
+		LCD.drawString("My name is Rube!", 1, 2);
 		
 		motorColour.goMiddle();
-		motorColour.goEdge();
-		motorColour.goOut();
-		motorColour.goIn();
+		Delay.msDelay(200);
 		motorColour.goBack();
 		
 		motorRotate.rotate();
 		motorFlip.flip();
 		
-		for (int i = 0; i < 10; i++) {
-			motorRotate.rotate();
-			Delay.msDelay(500);
-		}
+		motorFlip.pin();
+		motorRotate.rotate();
+		motorRotate.rotate();
+		motorFlip.retract();
+		motorFlip.flip();
 	}
 
 }
