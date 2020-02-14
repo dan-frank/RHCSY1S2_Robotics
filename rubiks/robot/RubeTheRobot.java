@@ -8,18 +8,24 @@ import lejos.hardware.port.MotorPort;
 import lejos.utility.Delay;
 
 public class RubeTheRobot {
-	private static BaseRegulatedMotor motorPortColour   = new EV3MediumRegulatedMotor(MotorPort.A);
+	private static BaseRegulatedMotor motorPortColour = new EV3MediumRegulatedMotor(MotorPort.A);
 	private static BaseRegulatedMotor motorPortFlip   = new EV3LargeRegulatedMotor(MotorPort.B);
 	private static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor(MotorPort.C);
 
 	public static void main(String[] args) {
-		MotorRotate motorRotate = new MotorRotate(motorPortRotate);
+		MotorColour motorColour = new MotorColour(motorPortColour);
 		MotorFlip motorFlip     = new MotorFlip(motorPortFlip);
+		MotorRotate motorRotate = new MotorRotate(motorPortRotate);
 		
 		LCD.clear();
 		LCD.drawString("Hello!", 0, 1);
 		LCD.drawString("My name is Rube!", 0, 2);
 		
+		motorColour.goMiddle();
+		motorColour.goEdge();
+		motorColour.goOut();
+		motorColour.goIn();
+		motorColour.goBack();
 		
 		motorRotate.rotate();
 		motorFlip.flip();
