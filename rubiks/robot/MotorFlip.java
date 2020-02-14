@@ -1,10 +1,19 @@
 package rubiks.robot;
 
 public class MotorFlip {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	private BaseRegulatedMotor m;
+	
+	
+	MotorFlip(BaseRegulatedMotor m)
+	{
+		
+		this.m=m;
+		
 	}
+	public void rightTurn() {
+		m.rotate
+		
+	}
+	
 
 }
