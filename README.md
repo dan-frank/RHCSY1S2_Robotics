@@ -23,11 +23,10 @@
 
 ### Colours Array
 
-
-#### The cube will be read by the algorithm such as the following:
+#### The Cube
 
 ```
-/** prepare scrambledCube as
+/**
  *
  *             |************|
  *             |*U1**U2**U3*|
@@ -50,10 +49,13 @@
  *             |************|
  *             |*D7**D8**D9*|
  *             |************|
- *
- * -> U1 U2 ... U9 R1 ... R9 F1 ... F9 D1 ... D9 L1 ... L9 B1 ... B9
+ * 
  */
-```
+ ```
+
+#### The cube will be read by the algorithm in the following string:
+
+`"U1 U2 ... U9 R1 ... R9 F1 ... F9 D1 ... D9 L1 ... L9 B1 ... B9"`
 
 #### Our cube will be need to placed in the cage to match the following key:
 
@@ -69,7 +71,7 @@
 
 **D**: Down/Bottom = Yellow
 
-#### We store the cube into the following array:####
+#### We store the cube into the following array:
 
 ```
 [
@@ -85,10 +87,15 @@
 #### Motor actions to read cube:
 
 Measure
+
 -> Flip -> Measure
+
 -> Flip -> Measure
+
 -> Flip -> Measure
+
 -> Rotate -> Flip -> Measure
+
 -> Flip -> Flip -> Measure
 
 #### Convert array to string in following order
@@ -102,9 +109,11 @@ Measure
 Moves to solve: ""
 
 `"FUUFUUFUURRRRRRRRRDFFDFFDFFBDDBDDBDDLLLLLLLLLBBUBBUBBU"`
+
 Moves to solve: "L  "
 
 `"DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU"`
+
 Moves to solve: "U  L2 R2 U2 B2 D' R2 D  B  D2 L' R  U  F' D  F  D' R  F2"
 
 ## Checkpoints
