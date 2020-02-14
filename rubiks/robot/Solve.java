@@ -88,7 +88,6 @@ public class Solve {
 		 */
 
 		String scrambledCube;
-//		"DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU"
 		scrambledCube = args[0];
 //		scrambledCube can also be obtained by specific moves
 //		scrambledCube = Tools.fromScramble("L' B2 D' B U' D' R2 B' U F B' L' R U' F' L' U2 L' F U2 B2 L' R2 U2 D");
