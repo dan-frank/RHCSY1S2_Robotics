@@ -8,7 +8,7 @@ import lejos.utility.Delay;
 
 public class RubeTheRobot {
 
-	private BaseRegulatedMotor motorPortRead   = new EV3LargeRegulatedMotor(MotorPort.A);
+	private BaseRegulatedMotor motorPortColour = new EV3LargeRegulatedMotor(MotorPort.A);
 	private BaseRegulatedMotor motorPortFlip   = new EV3LargeRegulatedMotor(MotorPort.B);
 	private BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor(MotorPort.C);
 
