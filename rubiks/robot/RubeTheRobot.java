@@ -3,12 +3,12 @@ package rubiks.robot;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
+import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.utility.Delay;
 
 public class RubeTheRobot {
-
-	private static BaseRegulatedMotor motorPortColour = new EV3LargeRegulatedMotor(MotorPort.A);
+	private static BaseRegulatedMotor motorPortColour   = new EV3MediumRegulatedMotor(MotorPort.A);
 	private static BaseRegulatedMotor motorPortFlip   = new EV3LargeRegulatedMotor(MotorPort.B);
 	private static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor(MotorPort.C);
 
