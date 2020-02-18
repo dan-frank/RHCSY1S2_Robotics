@@ -1,5 +1,6 @@
 package rubiks.robot;
 
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -13,69 +14,84 @@ public class RubesMoves {
 	
 	public RubesMoves() { }
 	
-	public void solve(String move) {
-		switch (move) {
-			case "U  ":
+	public void run(String solvedcube) {
+		String[] moves = solvedcube.split("\\s+");
+		
+		for (int i = 0; i < moves.length; i ++) {
+			move(moves[i]);
+		}
+	}
+	
+	public void move(String action) {
+		switch (action) {
+			case "U":
 				up(1);
 				break;
-			case "U2 ":
+			case "U2":
 				up(2);
 				break;
-			case "U' ":
+			case "U'":
 				up(3);
 				break;
 				
-			case "D  ":
+			case "D":
 				down(1);
 				break;
-			case "D2 ":
+			case "D2":
 				down(2);
 				break;
-			case "D' ":
+			case "D'":
 				down(3);
 				break;
 
-			case "L  ":
+			case "L":
 				left(3);
 				break;
-			case "L2 ":
+			case "L2":
 				left(2);
 				break;
-			case "L' ":
+			case "L'":
 				left(1);
 				break;
 
-			case "R  ":
+			case "R":
 				right(3);
 				break;
-			case "R2 ":
+			case "R2":
 				right(2);
 				break;
-			case "R' ":
+			case "R'":
 				right(1);
 				break;
 
-			case "F  ":
+			case "F":
 				front(3);
 				break;
-			case "F2 ":
+			case "F2":
 				front(2);
 				break;
-			case "F' ":
+			case "F'":
 				front(1);
 				break;
 
-			case "B  ":
+			case "B":
 				back(3);
 				break;
-			case "B2 ":
+			case "B2":
 				back(2);
 				break;
-			case "B' ":
+			case "B'":
 				back(1);
 				break;
-
 		}
+	}
+	
+	private void rotateLoop(int times) {
+		motorFlip.pin();
+		for (int i = 0; i < times; i++) {
+			motorRotate.rotate();
+		}
+		motorFlip.retract();
 	}
 	
 	private void up(int times) {
@@ -134,13 +150,5 @@ public class RubesMoves {
 		motorFlip.flip();
 		motorFlip.flip();
 		motorRotate.rotate();
-	}
-	
-	private void rotateLoop(int times) {
-		motorFlip.pin();
-		for (int i = 0; i < times; i++) {
-			motorRotate.rotate();
-		}
-		motorFlip.retract();
 	}
 }

@@ -1,7 +1,7 @@
 package rubiks.robot;
 
 import lejos.hardware.lcd.LCD;
-
+import lejos.utility.Delay;
 import rubiks.robot.RubesMoves;
 
 public class RubeTheRobot {
@@ -10,7 +10,12 @@ public class RubeTheRobot {
 		LCD.drawString("Hello there!", 1, 1);
 		LCD.drawString("My name is Rube!", 1, 2);
 		
-		RubesMoves move = new RubesMoves();
-		move.solve("B  ");
+		String solvedcube = Solve.simpleSolve("DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU");
+		
+		RubesMoves moveRube = new RubesMoves();
+		moveRube.run(solvedcube);
+		
+		LCD.drawString("Finished", 0, 7);
+		Delay.msDelay(2000);
 	}
 }

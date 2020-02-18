@@ -4,9 +4,9 @@ import rubiks.solve.Search;
 
 public class Solve {
 
-	public static void simpleSolve(String scrambledCube) {
+	public static String simpleSolve(String scrambledCube) {
 		String result = new Search().solution(scrambledCube, 21, 100000000, 0, 0);
-		System.out.println(result);
+		return result;
 		// R2 U2 B2 L2 F2 U' L2 R2 B2 R2 D B2 F L' F U2 F' R' D' L2 R'
 	}
 
