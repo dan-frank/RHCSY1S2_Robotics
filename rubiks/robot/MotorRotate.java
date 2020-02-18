@@ -23,4 +23,10 @@ public class MotorRotate {
 		m.rotate(rotate);
 		rotate = ninetyDegrees;
 	}
+	
+	public void rotateAnti() {
+		setRotate(-1);
+		m.rotate(rotate);
+		rotate = ninetyDegrees;
+	}
 }

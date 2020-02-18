@@ -32,7 +32,7 @@
 - [ ] Store colours in
 - [x] Link [cs0x7f's rubiks algorith](https://github.com/cs0x7f/min2phase)
 - [ ] Read if cube is put in
-- [ ] Program cube moves
+- [x] Program cube moves
 - [ ] Show Rube's face while solving Cube
 
 
@@ -147,7 +147,7 @@ Moves to solve: "L  "
 
 `"DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU"`
 
-Moves to solve: "U  L2 R2 U2 B2 D' R2 D  B  D2 L' R  U  F' D  F  D' R  F2"
+Moves to solve: "U  L2 R2 U2 B2 D' R2 D  B  D2 L' R  U  F' D  F  D' R  F2 "
 
 ## Checkpoints
 
