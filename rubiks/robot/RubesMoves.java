@@ -92,11 +92,8 @@ public class RubesMoves {
 	
 	private static void rotateLoop(int times) {
 		motorFlip.pin();
-		
 		motorRotate.setRotate(times);
-		for (int i = 0; i < times; i++) {
-			motorRotate.rotate();
-		}
+		motorRotate.rotate();
 		motorFlip.retract();
 	}
 	
@@ -143,11 +140,13 @@ public class RubesMoves {
 		motorFlip.flip();
 		motorFlip.flip();
 		motorFlip.flip();
-		motorRotate.rotateAnti();
+		motorRotate.setRotate(-1);
+		motorRotate.rotate();
 	}
 
 	private static void back(int times) {
-		motorRotate.rotateAnti();
+		motorRotate.setRotate(-1);
+		motorRotate.rotate();
 		motorFlip.flip();
 		
 		rotateLoop(times);
