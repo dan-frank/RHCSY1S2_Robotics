@@ -2,28 +2,15 @@ package rubiks.robot;
 
 import lejos.hardware.lcd.LCD;
 
-import lejos.hardware.motor.BaseRegulatedMotor;
-import lejos.hardware.motor.EV3MediumRegulatedMotor;
-import lejos.hardware.port.MotorPort;
-import lejos.utility.Delay;
-
 import rubiks.robot.RubesMoves;
 
 public class RubeTheRobot {
-	private static BaseRegulatedMotor motorPortColour = new EV3MediumRegulatedMotor(MotorPort.A);
-
 	public static void main(String[] args) {
-		MotorColour motorColour = new MotorColour(motorPortColour);
-		
 		LCD.clear();
 		LCD.drawString("Hello there!", 1, 1);
 		LCD.drawString("My name is Rube!", 1, 2);
 		
-		motorColour.goMiddle();
-		Delay.msDelay(200);
-		motorColour.goBack();
-		
 		RubesMoves move = new RubesMoves();
-		move.solve("U  ");
+		move.solve("B  ");
 	}
 }
