@@ -18,10 +18,6 @@ public class RubesMoves {
 	private static final int two   =  2;
 	private static final int three = -1;
 	
-	// null constructor
-	public RubesMoves() {}
-	
-	
 	public static void run(String solvedcube) {
 		String[] moves = solvedcube.split("\\s+");
 		
