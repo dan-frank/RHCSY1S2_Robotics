@@ -23,6 +23,12 @@ public class RubeTheRobot {
 		
 		motorColour.goMiddle();
 		Delay.msDelay(200);
+		motorColour.goEdge();
+		Delay.msDelay(200);
+		motorColour.goIn();
+		Delay.msDelay(200);
+		motorColour.goOut();
+		Delay.msDelay(200);
 		motorColour.goBack();
 		
 		motorRotate.rotate();
