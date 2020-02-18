@@ -11,7 +11,9 @@ public class RubesMoves {
 	private MotorFlip motorFlip     = new MotorFlip(motorPortFlip);
 	private MotorRotate motorRotate = new MotorRotate(motorPortRotate);
 	
-	public RubesMoves(String move) {
+	public RubesMoves() { }
+	
+	public void solve(String move) {
 		switch (move) {
 			case "U  ":
 				upper(1);
