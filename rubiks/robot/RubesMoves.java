@@ -21,7 +21,7 @@ public class RubesMoves {
 	public static void run(String solvedcube) {
 		String[] moves = solvedcube.split("\\s+");
 		
-		for (int i = 0; i < moves.length; i ++) {
+		for (int i = 0; i < moves.length; i++) {
 			move(moves[i]);
 		}
 	}
