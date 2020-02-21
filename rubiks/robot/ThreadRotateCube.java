@@ -12,7 +12,8 @@ public class ThreadRotateCube extends Thread {
 	}
 	
 	public void run() {
-		Delay.msDelay(2000);
+		Delay.msDelay(2500);
+		m.setSpeed(360);
 		m.setRotate(threeSixty);
 		m.rotate();
 	}

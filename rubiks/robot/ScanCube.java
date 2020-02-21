@@ -7,7 +7,7 @@ public class ScanCube extends RubeDaddy {
 	private static ThreadMoveColourSensor tmcs;
 	private static int sidesOfCube = 6;
 	
-	public static void startDriving() {
+	public static void start() {
 		getThreadRoateCube();
 		getThreadMoveColourSensor();
   

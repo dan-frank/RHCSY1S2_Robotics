@@ -14,7 +14,7 @@ public class RubeTheRobot {
 		LCD.drawString("My name is Rube!", 1, 2);
 		LCD.drawString("I am going to solve a rubiks cube!", 1, 3);
 		
-		ScanCube.startDriving();
+		ScanCube.start();
 		
 //		String solvedcube = Solve.simpleSolve("BURUUDRDLUFFBRBBFLRUUBDRLFDRLURLBBLBDRUDBDFLDFLFUFRDFL");
 //		MoveRube.run(solvedcube);

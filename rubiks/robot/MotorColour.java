@@ -6,8 +6,8 @@ public class MotorColour extends RubeDaddy {
 
 	private BaseRegulatedMotor m;
 	private int posExtendFull = -690,
-			posEdge = -550,
-			posCorner = -500,
+			posEdge = -570,
+			posCorner = -520,
 			posStart = 0;
 
 	public MotorColour() {
