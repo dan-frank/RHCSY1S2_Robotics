@@ -6,7 +6,7 @@ import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.utility.Delay;
 
-import rubiks.robot.RubesMoves;
+import rubiks.robot.MoveRube;
 import rubiks.robot.Solve;
 
 public class RubeTheRobot {
@@ -30,7 +30,7 @@ public class RubeTheRobot {
 
 		
 		String solvedcube = Solve.simpleSolve("BURUUDRDLUFFBRBBFLRUUBDRLFDRLURLBBLBDRUDBDFLDFLFUFRDFL");
-		RubesMoves.run(solvedcube);
+		MoveRube.run(solvedcube);
 		
 		LCD.drawString("Finished", 0, 7);
 		Delay.msDelay(2000);
