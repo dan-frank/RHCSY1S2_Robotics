@@ -1,7 +1,5 @@
 package rubiks.robot;
 
-import lejos.hardware.Sound;
-
 public class ThreadRotateCube extends Thread {
 
 	private MotorRotate m;
@@ -14,6 +12,5 @@ public class ThreadRotateCube extends Thread {
 	public void run() {
 		m.setRotate(threeSixty);
 		m.rotate();
-		Sound.beep();
 	}
 }

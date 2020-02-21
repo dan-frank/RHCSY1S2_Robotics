@@ -15,22 +15,18 @@ public class RubeTheRobot {
 		LCD.drawString("My name is Rube!", 1, 2);
 		
 //		motorColour.goMiddle();
-//		Delay.msDelay(200);
 //		motorColour.goEdge();
-//		Delay.msDelay(200);
 //		motorColour.goIn();
-//		Delay.msDelay(200);
 //		motorColour.goOut();
-//		Delay.msDelay(200);
 //		motorColour.goBack();
 
 		
 //		String solvedcube = Solve.simpleSolve("BURUUDRDLUFFBRBBFLRUUBDRLFDRLURLBBLBDRUDBDFLDFLFUFRDFL");
 //		MoveRube.run(solvedcube);
-//		
-//		LCD.drawString("Finished", 0, 7);
-//		Delay.msDelay(2000);
 		
 		ScanCube.startDriving();
+		
+		LCD.drawString("Finished", 0, 7);
+		Delay.msDelay(2000);
 	}
 }
