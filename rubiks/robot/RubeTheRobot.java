@@ -20,8 +20,8 @@ public class RubeTheRobot {
 		
 		motorColour.goMiddle();
 		motorColour.goEdge();
-		motorColour.goIn();
 		motorColour.goOut();
+		motorColour.goIn();
 		motorColour.goBack();
 
 		
