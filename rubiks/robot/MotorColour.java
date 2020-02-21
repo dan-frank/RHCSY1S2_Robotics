@@ -5,34 +5,29 @@ import lejos.hardware.motor.BaseRegulatedMotor;
 public class MotorColour {
 
 	private BaseRegulatedMotor m;
-	private int rMiddle = -700,
-			rEdge = 150,
-			rIn = -150,
-			rOut = (rIn * -1),
-			rBack = 700;
+	private int posExtendFull = -690,
+			posEdge = -550,
+			posCorner = -500,
+			posStart = 0;
 
 	public MotorColour(BaseRegulatedMotor m) {
 		this.m = m;
 	}
 
-	public void goMiddle() {
-		m.rotate(rMiddle);
+	public void goCentre() {
+		m.rotateTo(posExtendFull);
 	}
 
 	public void goEdge() {
-		m.rotate(rEdge);
+		m.rotateTo(posEdge);
 	}
 
-	public void goOut() {
-		m.rotate(rOut);
+	public void goCorner() {
+		m.rotateTo(posCorner);
 	}
 
-	public void goIn() {
-		m.rotate(rIn);
-	}
-
-	public void goBack() {
-		m.rotate(rBack);
+	public void returnToStart() {
+		m.rotateTo(posStart);
 	}
 
 }
