@@ -19,13 +19,9 @@ public class RubeTheRobot {
 		LCD.drawString("My name is Rube!", 1, 2);
 		
 		motorColour.goMiddle();
-		Delay.msDelay(200);
 		motorColour.goEdge();
-		Delay.msDelay(200);
 		motorColour.goIn();
-		Delay.msDelay(200);
 		motorColour.goOut();
-		Delay.msDelay(200);
 		motorColour.goBack();
 
 		
