@@ -14,9 +14,9 @@ public class RubesMoves {
 	private static MotorRotate motorRotate = new MotorRotate(motorPortRotate);
 	
 	//	Moves
-	private static final int one   =  1;
-	private static final int two   =  2;
-	private static final int three = -1;
+	private static final int clockwise     =  1;
+	private static final int spin         =  2;
+	private static final int anticlockwise = -1;
 	
 	public static void run(String solvedcube) {
 		String[] moves = solvedcube.split("\\s+");
@@ -29,63 +29,63 @@ public class RubesMoves {
 	public static void move(String action) {
 		switch (action) {
 			case "U":
-				up(one);
+				up(clockwise);
 				break;
 			case "U2":
-				up(two);
+				up(spin);
 				break;
 			case "U'":
-				up(three);
+				up(anticlockwise);
 				break;
 				
 			case "D":
-				down(one);
+				down(clockwise);
 				break;
 			case "D2":
-				down(two);
+				down(spin);
 				break;
 			case "D'":
-				down(three);
+				down(anticlockwise);
 				break;
 
 			case "L":
-				left(three);
+				left(anticlockwise);
 				break;
 			case "L2":
-				left(two);
+				left(spin);
 				break;
 			case "L'":
-				left(one);
+				left(clockwise);
 				break;
 
 			case "R":
-				right(three);
+				right(anticlockwise);
 				break;
 			case "R2":
-				right(two);
+				right(spin);
 				break;
 			case "R'":
-				right(one);
+				right(clockwise);
 				break;
 
 			case "F":
-				front(three);
+				front(anticlockwise);
 				break;
 			case "F2":
-				front(two);
+				front(spin);
 				break;
 			case "F'":
-				front(one);
+				front(clockwise);
 				break;
 
 			case "B":
-				back(three);
+				back(anticlockwise);
 				break;
 			case "B2":
-				back(two);
+				back(spin);
 				break;
 			case "B'":
-				back(one);
+				back(clockwise);
 				break;
 		}
 	}
@@ -116,14 +116,14 @@ public class RubesMoves {
 		
 		rotateLoop(times);
 		
+		motorRotate.setRotate(spin);
+		motorRotate.rotate();
 		motorFlip.flip();
-		motorFlip.flip();
-		motorFlip.flip();		
 	}
 
 	private static void right(int times) {
-		motorFlip.flip();
-		motorFlip.flip();
+		motorRotate.setRotate(spin);
+		motorRotate.rotate();
 		motorFlip.flip();
 		
 		rotateLoop(times);
@@ -137,8 +137,8 @@ public class RubesMoves {
 		
 		rotateLoop(times);
 		
-		motorFlip.flip();
-		motorFlip.flip();
+		motorRotate.setRotate(spin);
+		motorRotate.rotate();
 		motorFlip.flip();
 		motorRotate.setRotate(-1);
 		motorRotate.rotate();
@@ -151,8 +151,8 @@ public class RubesMoves {
 		
 		rotateLoop(times);
 		
-		motorFlip.flip();
-		motorFlip.flip();
+		motorRotate.setRotate(spin);
+		motorRotate.rotate();
 		motorFlip.flip();
 		motorRotate.rotate();
 	}
