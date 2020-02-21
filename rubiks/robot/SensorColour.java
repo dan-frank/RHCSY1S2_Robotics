@@ -1,16 +1,13 @@
 package rubiks.robot;
 
-import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.SampleProvider;
 
-public class SensorColour extends RubeDaddy {
-	private EV3ColorSensor s;
+public class SensorColour implements RubeDaddy {
 	private SampleProvider mode;
 	private float[] measurement;
 	
 	public SensorColour() {
-		this.s = sensorPortColour;
-		this.mode = this.s.getRedMode();
+		this.mode = (SampleProvider) sensorColour.getRedMode();
 		this.measurement = new float[1];
 	}
 	

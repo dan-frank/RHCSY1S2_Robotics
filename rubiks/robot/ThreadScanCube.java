@@ -9,7 +9,7 @@ public class ThreadScanCube extends Thread {
 	private SensorColour s;
 	private String[] side;
 	private int tilesOnCube = 9;
-	private int[] tileOrder = {4, 5, 2, 1, 0, 3, 6, 7, 8};
+	private int[] tileOrder = { 4, 5, 2, 1, 0, 3, 6, 7, 8 };
 	
 	public ThreadScanCube() {
 		this.s = new SensorColour();
@@ -24,17 +24,17 @@ public class ThreadScanCube extends Thread {
 			side[pos] = getColour(s.scan());
 		}
 		
-		LCD.drawString(Arrays.deepToString(side), 0, 5);	
+		LCD.drawString(Arrays.deepToString(side), 0, 7);
 	}
 	
 	private String getColour(float measurement) {
 		String colour = "";
 		
-//		**U**: Upper/Top = White (0.85)
-//		**L** : Left = Green (0.22)
-//		**F**: Front = Red (0.51)
-//		**R**: Right = Blue (0.13)
-//		**B**: Back = Orange (0.67)
+//		**U**: Upper/Top   = White  (0.85)
+//		**L**: Left        = Green  (0.22)
+//		**F**: Front       = Red    (0.51)
+//		**R**: Right       = Blue   (0.13)
+//		**B**: Back        = Orange (0.67)
 //		**D**: Down/Bottom = Yellow (0.72)
 		
 		if (measurement == 0.85f) {
