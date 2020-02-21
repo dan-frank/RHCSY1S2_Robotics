@@ -1,23 +1,26 @@
 package rubiks.robot;
 
-import lejos.utility.Delay;
-
 public class ScanCube extends RubeDaddy {
 	private static ThreadRotateCube trc;
 	private static ThreadMoveColourSensor tmcs;
+	private static ThreadScanCube tsc;
 	private static int sidesOfCube = 6;
 	
 	public static void start() {
 		getThreadRoateCube();
 		getThreadMoveColourSensor();
+		getThreadScanCube();
   
 		sidesOfCube = 1;
-		for (int i = 0; i < sidesOfCube; i++) {
-			while (!trc.isAlive() && !tmcs.isAlive()) {
+		int i = 0;
+		while ((i < sidesOfCube) && trc.isAlive() && tmcs.isAlive() && tsc.isAlive()) {
+			if (!trc.isAlive() && !tmcs.isAlive() && !tsc.isAlive()) {
 				getThreadRoateCube();
 				getThreadMoveColourSensor();
+				getThreadScanCube();
+				
+				i++;
 			}
-			Delay.msDelay(4000);
 		}
 	}
 
@@ -29,5 +32,10 @@ public class ScanCube extends RubeDaddy {
 	public static void getThreadMoveColourSensor() {
 		tmcs = new ThreadMoveColourSensor();
 		tmcs.start();
+	}
+
+	public static void getThreadScanCube() {
+		tsc = new ThreadScanCube();
+		tsc.start();
 	}
 }
