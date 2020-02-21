@@ -1,5 +1,7 @@
 package rubiks.robot;
 
+import lejos.utility.Delay;
+
 public class ThreadRotateCube extends Thread {
 
 	private MotorRotate m;
@@ -10,6 +12,7 @@ public class ThreadRotateCube extends Thread {
 	}
 	
 	public void run() {
+		Delay.msDelay(2000);
 		m.setRotate(threeSixty);
 		m.rotate();
 	}
