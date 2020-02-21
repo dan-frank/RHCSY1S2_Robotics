@@ -1,5 +1,24 @@
 package rubiks.robot;
 
-public class ScanCube {
+import lejos.utility.Delay;
 
+public class ScanCube extends RubeDaddy {
+	private static ThreadRotateCube trc;
+	private static int sidesOfCube = 6;
+	
+	public static void startDriving() {
+		getThreadRoateCube();
+  
+		for (int i = 0; i < sidesOfCube; i++) {
+			while (!trc.isAlive()) {
+				getThreadRoateCube();
+			}
+			Delay.msDelay(4000);
+		}
+	}
+
+	public static void getThreadRoateCube() {
+		trc = new ThreadRotateCube();
+		trc.start();
+	}
 }
