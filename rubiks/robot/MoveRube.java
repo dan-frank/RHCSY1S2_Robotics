@@ -1,7 +1,5 @@
 package rubiks.robot;
 
-import lejos.hardware.motor.BaseRegulatedMotor;
-
 public class MoveRube {
 	//	Motors
 	private static MotorFlip motorFlip;  
@@ -12,9 +10,9 @@ public class MoveRube {
 	private static final int spin          =  2;
 	private static final int anticlockwise = -1;
 	
-	public static void run(String solvedcube, BaseRegulatedMotor mpf, BaseRegulatedMotor mpr) {
-		motorFlip   = new MotorFlip(mpf);
-		motorRotate = new MotorRotate(mpr);
+	public static void run(String solvedcube) {
+		motorFlip   = new MotorFlip();
+		motorRotate = new MotorRotate();
 		
 		String[] moves = solvedcube.split("\\s+");
 		

@@ -2,11 +2,11 @@ package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
 
-public class MotorFlip {
+public class MotorFlip extends RubeDaddy {
 	private BaseRegulatedMotor m;	
 	
-	MotorFlip(BaseRegulatedMotor m) {
-		this.m = m;
+	MotorFlip() {
+		this.m = motorPortFlip;
 	}
 	
 	public void flip() {

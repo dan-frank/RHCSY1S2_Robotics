@@ -1,9 +1,8 @@
 package rubiks.robot;
 
-import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.utility.Delay;
 
-public class ScanCube {
+public class ScanCube extends RubeDaddy {
 	private static ThreadRotateCube trc;
 	private static int sidesOfCube = 6;
 	
