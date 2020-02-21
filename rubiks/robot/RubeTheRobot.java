@@ -29,10 +29,10 @@ public class RubeTheRobot {
 		motorColour.goBack();
 
 		
-		String solvedcube = Solve.simpleSolve("BURUUDRDLUFFBRBBFLRUUBDRLFDRLURLBBLBDRUDBDFLDFLFUFRDFL");
-		MoveRube.run(solvedcube);
-		
-		LCD.drawString("Finished", 0, 7);
-		Delay.msDelay(2000);
+//		String solvedcube = Solve.simpleSolve("BURUUDRDLUFFBRBBFLRUUBDRLFDRLURLBBLBDRUDBDFLDFLFUFRDFL");
+//		MoveRube.run(solvedcube);
+//		
+//		LCD.drawString("Finished", 0, 7);
+//		Delay.msDelay(2000);
 	}
 }
