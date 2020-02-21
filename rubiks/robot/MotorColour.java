@@ -2,7 +2,7 @@ package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
 
-public class MotorColour {
+public class MotorColour extends RubeDaddy {
 
 	private BaseRegulatedMotor m;
 	private int rMiddle = -500,
@@ -11,8 +11,8 @@ public class MotorColour {
 			rOut = (rIn * -1),
 			rBack = 500;
 
-	public MotorColour(BaseRegulatedMotor m) {
-		this.m = m;
+	public MotorColour() {
+		this.m = motorPortColour;
 	}
 
 	public void goMiddle() {

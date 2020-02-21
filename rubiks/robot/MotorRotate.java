@@ -2,15 +2,15 @@ package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
 
-public class MotorRotate {
+public class MotorRotate extends RubeDaddy {
 
 	private BaseRegulatedMotor m;
 	private int ninetyDegrees = 270;
 	private int rotate;
 	private float speed = 360f;
 
-	public MotorRotate(BaseRegulatedMotor m) {
-		this.m = m;
+	public MotorRotate() {
+		this.m = motorPortRotate;
 		this.m.setSpeed(this.speed);
 		this.rotate = ninetyDegrees;
 	}
