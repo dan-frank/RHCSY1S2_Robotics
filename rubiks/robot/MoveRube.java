@@ -1,24 +1,21 @@
 package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
-import lejos.hardware.motor.EV3LargeRegulatedMotor;
-import lejos.hardware.port.MotorPort;
 
 public class MoveRube {
-	//	Motor Ports
-	private static BaseRegulatedMotor motorPortFlip   = new EV3LargeRegulatedMotor(MotorPort.B);
-	private static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor(MotorPort.C);
-	
 	//	Motors
-	private static MotorFlip motorFlip     = new MotorFlip(motorPortFlip);
-	private static MotorRotate motorRotate = new MotorRotate(motorPortRotate);
+	private static MotorFlip motorFlip;  
+	private static MotorRotate motorRotate;
 	
 	//	Moves
 	private static final int clockwise     =  1;
-	private static final int spin         =  2;
+	private static final int spin          =  2;
 	private static final int anticlockwise = -1;
 	
-	public static void run(String solvedcube) {
+	public static void run(String solvedcube, BaseRegulatedMotor mpf, BaseRegulatedMotor mpr) {
+		motorFlip   = new MotorFlip(mpf);
+		motorRotate = new MotorRotate(mpr);
+		
 		String[] moves = solvedcube.split("\\s+");
 		
 		for (int i = 0; i < moves.length; i++) {

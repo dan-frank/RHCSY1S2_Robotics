@@ -3,7 +3,7 @@ package rubiks.robot;
 import lejos.hardware.motor.BaseRegulatedMotor;
 
 public class MotorRotate {
-	
+
 	private BaseRegulatedMotor m;
 	private int ninetyDegrees = 270;
 	private int rotate;

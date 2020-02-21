@@ -3,8 +3,7 @@ package rubiks.robot;
 import lejos.hardware.motor.BaseRegulatedMotor;
 
 public class MotorFlip {
-	private BaseRegulatedMotor m;
-	
+	private BaseRegulatedMotor m;	
 	
 	MotorFlip(BaseRegulatedMotor m) {
 		this.m = m;
