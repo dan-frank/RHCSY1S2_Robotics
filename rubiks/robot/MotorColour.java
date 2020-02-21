@@ -9,7 +9,7 @@ public class MotorColour {
 			rEdge = 150,
 			rIn = -150,
 			rOut = (rIn * -1),
-			rBack = 675;
+			rBack = ((rMiddle * -1) - rOut);
 
 	public MotorColour(BaseRegulatedMotor m) {
 		this.m = m;
