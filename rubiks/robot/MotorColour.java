@@ -5,11 +5,11 @@ import lejos.hardware.motor.BaseRegulatedMotor;
 public class MotorColour {
 
 	private BaseRegulatedMotor m;
-	private int rMiddle = -500,
+	private int rMiddle = -700,
 			rEdge = 150,
 			rIn = -150,
 			rOut = (rIn * -1),
-			rBack = 500;
+			rBack = 700;
 
 	public MotorColour(BaseRegulatedMotor m) {
 		this.m = m;
