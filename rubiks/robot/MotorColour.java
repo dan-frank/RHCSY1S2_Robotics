@@ -2,7 +2,7 @@ package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
 
-public class MotorColour extends RubeDaddy {
+public class MotorColour implements RubeDaddy {
 
 	private BaseRegulatedMotor m;
 	private int posExtendFull = -690,

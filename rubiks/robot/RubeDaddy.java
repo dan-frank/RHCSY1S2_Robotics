@@ -8,15 +8,15 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 
-public class RubeDaddy {
+interface RubeDaddy {
 	// Motor Ports
-	protected final static BaseRegulatedMotor motorPortColour = new EV3MediumRegulatedMotor(MotorPort.A);
-	protected final static BaseRegulatedMotor motorPortFlip   = new EV3LargeRegulatedMotor (MotorPort.B);
-	protected final static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor (MotorPort.C);
+	public final static BaseRegulatedMotor motorPortColour = new EV3MediumRegulatedMotor(MotorPort.A);
+	public final static BaseRegulatedMotor motorPortFlip   = new EV3LargeRegulatedMotor (MotorPort.B);
+	public final static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor (MotorPort.C);
 	
 	// Sensor Ports
-	protected final static EV3UltrasonicSensor sensorPortUltraSonic = new EV3UltrasonicSensor(SensorPort.S1);
-	protected final static EV3ColorSensor      sensorPortColour     = new EV3ColorSensor     (SensorPort.S2);
+	public final static EV3UltrasonicSensor sensorUltrasonic = new EV3UltrasonicSensor(SensorPort.S1);
+	public final static EV3ColorSensor      sensorColour     = new EV3ColorSensor     (SensorPort.S2);
 	
 	// Arrays
 	String[][] scannedCube = new String[6][9];
