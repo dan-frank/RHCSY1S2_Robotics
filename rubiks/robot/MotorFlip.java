@@ -24,15 +24,18 @@ public class MotorFlip implements Behavior {
 		case RETRACT:
 			m.rotate(-90);
 			break;
+			
 		case PIN:
 			m.rotate(90);
 			break;
+			
 		case FLIP:
 			m.rotate(360);
 			break;
-		
+			
+		default:
+			break;
 		}
-		
 	}
 
 	@Override
