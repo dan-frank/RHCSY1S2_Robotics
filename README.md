@@ -34,8 +34,60 @@
 - [ ] Read if cube is put in
 - [x] Program cube moves
 - [ ] Show Rube's face while solving Cube
+- [ ] Make everything a behaviour
 
+### Behaviours
 
+- MotorColour
+- MotorFlip
+- MotorRotate
+- Scan
+- Solve
+- Move
+
+#### Friends
+
+- MoveCube (Scan, Move, MotorRotate, MotorFlip)
+	- States
+		- Move motor rotate
+			- Sub-states
+				- Clockwise
+				- Anticlockwise
+				- Uturn
+		- Move motor flip
+			- Sub-states
+				- Pin
+				- Retract
+				- Flip
+- Colour (Scan, MotorColour)
+	- States 
+		- Move motor colour
+			- Sub-states
+				- Centre
+				- Edge
+				- Corner
+				- Back
+		- Read sensor colour 
+- Cube (Scan, Solve, Move)
+	- States
+		- unread (Scan)
+		- read (Solve)
+		- solved (Move)
+		- complete (Special move)
+
+	
+MOTOR FLIP
+	
+	
+MOTOR COLOUR
+	- state centre
+	- state edge
+	- state corner
+	- state back
+	
+SENSOR COLOUR
+	- state read
+	
 ### Colours Array
 
 #### The Cube
