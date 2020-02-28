@@ -1,8 +1,9 @@
 package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
+import lejos.robotics.subsumption.Behavior;
 
-public class MotorRotate implements RubeDaddy {
+public class MotorRotate implements Behavior {
 
 	private BaseRegulatedMotor m;
 	
@@ -12,10 +13,26 @@ public class MotorRotate implements RubeDaddy {
 	private float speed;
 	private int rotate;
 
-	public MotorRotate() {
-		this.m = motorPortRotate;
+	public MotorRotate(BaseRegulatedMotor m) {
+		this.m = m;
 		this.speed = speedDefault;
 		this.rotate = ninetyDegrees;
+	}
+
+	@Override
+	public boolean takeControl() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void suppress() {
+		// TODO Auto-generated method stub
 	}
 
 	public void setRotate(int multiplier) {

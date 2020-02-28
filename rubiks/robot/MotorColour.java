@@ -1,8 +1,9 @@
 package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
+import lejos.robotics.subsumption.Behavior;
 
-public class MotorColour implements RubeDaddy {
+public class MotorColour implements Behavior {
 
 	private BaseRegulatedMotor m;
 	private int posExtendFull = -690,
@@ -10,8 +11,24 @@ public class MotorColour implements RubeDaddy {
 			posCorner = -510,
 			posStart = 0;
 
-	public MotorColour() {
-		this.m = motorPortColour;
+	public MotorColour(BaseRegulatedMotor m) {
+		this.m = m;
+	}
+
+	@Override
+	public boolean takeControl() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void suppress() {
+		// TODO Auto-generated method stub
 	}
 
 	public void goCentre() {
