@@ -25,6 +25,14 @@ public class FriendCube {
 		return stateCube;
 	}
 	
+	public void setScrambledCube(String scrambledCube) {
+		this.scrambledCube = scrambledCube;
+	}
+	
+	public String getScrambledCube() {
+		return scrambledCube;
+	}
+	
 	public void setSolvedCube(String[] solvedCube) {
 		this.solvedCube = solvedCube;
 	}
