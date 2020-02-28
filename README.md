@@ -47,18 +47,15 @@
 
 #### Friends
 
-- MoveCube (Scan, Move, MotorRotate, MotorFlip)
+- Cube (Scan, Solve, Move)
+	- Variable
+		- Scrambled Cube
+		- Solved Moves
 	- States
-		- Move motor rotate
-			- Sub-states
-				- Clockwise
-				- Anticlockwise
-				- Uturn
-		- Move motor flip
-			- Sub-states
-				- Pin
-				- Retract
-				- Flip
+		- unread (Scan)
+		- read (Solve)
+		- solved (Move)
+		- complete (Special move)
 - Colour (Scan, MotorColour)
 	- States 
 		- Move motor colour
@@ -67,27 +64,23 @@
 				- Edge
 				- Corner
 				- Back
-		- Read sensor colour 
-- Cube (Scan, Solve, Move)
+		- Read sensor colour
+			- Sub-states
+				- Read
+				- Don't Read
+- MoveCube (Scan, Move, MotorRotate, MotorFlip)
 	- States
-		- unread (Scan)
-		- read (Solve)
-		- solved (Move)
-		- complete (Special move)
+		- Move motor rotate
+			- Sub-states
+				- Clockwise
+				- Anti-clockwise
+				- U-turn
+		- Move motor flip
+			- Sub-states
+				- Pin
+				- Retract
+				- Flip
 
-	
-MOTOR FLIP
-	
-	
-MOTOR COLOUR
-	- state centre
-	- state edge
-	- state corner
-	- state back
-	
-SENSOR COLOUR
-	- state read
-	
 ### Colours Array
 
 #### The Cube
