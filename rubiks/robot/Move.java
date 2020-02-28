@@ -3,18 +3,21 @@ package rubiks.robot;
 import lejos.robotics.subsumption.Behavior;
 
 public class Move implements Behavior {
-	//	Motors
-	private static MotorFlip motorFlip;  
-	private static MotorRotate motorRotate;
+	// Friends
+	FriendCube friendCube;
 	
 	//	Moves
 	private static final int clockwise     =  1;
 	private static final int spin          =  2;
 	private static final int anticlockwise = -1;
 	
-	public static void run() {
-		String solvedcube = getSolvedcube();
-		String[] moves = solvedcube.split("\\s+");
+	
+	public Move(FriendCube friendCube) {
+		this.friendCube = friendCube;
+	}
+	
+	public void run() {
+		String[] moves = friendCube.getSolvedCube();
 		
 		for (int i = 0; i < moves.length; i++) {
 			move(moves[i]);
