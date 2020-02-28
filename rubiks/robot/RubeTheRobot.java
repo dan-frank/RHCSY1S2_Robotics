@@ -36,11 +36,13 @@ public class RubeTheRobot {
 
 //		while (!Button.ENTER.isDown()) { }
 
+		FriendColour friendColour = new FriendColour();
 		FriendCube friendCube = new FriendCube();
+		FriendMove friendMove = new FriendMove();
 		
-		Behavior motorColour = new MotorColour();
-		Behavior motorFlip = new MotorFlip();
-		Behavior motorRotate = new MotorRotate();
+		Behavior motorColour = new MotorColour(friendColour);
+		Behavior motorFlip = new MotorFlip(friendMove);
+		Behavior motorRotate = new MotorRotate(friendMove);
 		Behavior move = new Move(friendCube);
 
 		Behavior[] behaviours = new Behavior[] { motorColour, motorFlip, motorRotate, move };
