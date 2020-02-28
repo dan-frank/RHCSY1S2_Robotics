@@ -1,19 +1,20 @@
 package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
+import lejos.hardware.motor.EV3MediumRegulatedMotor;
+import lejos.hardware.port.MotorPort;
 import lejos.robotics.subsumption.Behavior;
 
 public class MotorColour implements Behavior {
 
-	private BaseRegulatedMotor m;
+	private final BaseRegulatedMotor m = new EV3MediumRegulatedMotor(MotorPort.A);
+
 	private int posExtendFull = -690,
 			posEdge = -560,
 			posCorner = -510,
 			posStart = 0;
 
-	public MotorColour(BaseRegulatedMotor m) {
-		this.m = m;
-	}
+	public MotorColour() {}
 
 	@Override
 	public boolean takeControl() {

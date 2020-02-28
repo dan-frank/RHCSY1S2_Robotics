@@ -13,22 +13,9 @@ import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
 public class RubeTheRobot {
-	// Motor Ports
-	private final static BaseRegulatedMotor motorPortColour = new EV3MediumRegulatedMotor(MotorPort.A);
-	private final static BaseRegulatedMotor motorPortFlip = new EV3LargeRegulatedMotor(MotorPort.B);
-	private final static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor(MotorPort.C);
-
 	// Sensor Ports
 	private final static EV3UltrasonicSensor sensorUltrasonic = new EV3UltrasonicSensor(SensorPort.S1);
 	private final static EV3ColorSensor sensorColour = new EV3ColorSensor(SensorPort.S2);
-
-	// Globals
-	String[][] scannedCube = new String[6][9];
-	private static String state = "";
-	private static String move = "";
-	private static String motor = "";
-	private static String scrambledcube = "";
-	private static String solvedcube = "";
 
 	public static void main(String[] args) {
 		LCD.clear();
@@ -51,9 +38,9 @@ public class RubeTheRobot {
 
 		FriendCube friendCube = new FriendCube();
 		
-		Behavior motorColour = new MotorColour(motorPortColour);
-		Behavior motorFlip = new MotorFlip(motorPortFlip);
-		Behavior motorRotate = new MotorRotate(motorPortRotate);
+		Behavior motorColour = new MotorColour();
+		Behavior motorFlip = new MotorFlip();
+		Behavior motorRotate = new MotorRotate();
 		Behavior move = new Move(friendCube);
 
 		Behavior[] behaviours = new Behavior[] { motorColour, motorFlip, motorRotate, move };

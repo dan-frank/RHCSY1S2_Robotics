@@ -1,14 +1,15 @@
 package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
+import lejos.hardware.motor.EV3LargeRegulatedMotor;
+import lejos.hardware.port.MotorPort;
 import lejos.robotics.subsumption.Behavior;
 
 public class MotorFlip implements Behavior {
-	private BaseRegulatedMotor m;	
+	private final BaseRegulatedMotor m = new EV3LargeRegulatedMotor(MotorPort.B);
+
 	
-	MotorFlip(BaseRegulatedMotor m) {
-		this.m = m;
-	}
+	MotorFlip() {}
 
 	@Override
 	public boolean takeControl() {
