@@ -8,20 +8,20 @@ package rubiks.robot;
 
 public class FriendColour {
 	
-	private StateMoveMotor stateMoveMotor;
+	private StateMoveColourMotor stateMoveColourMotor;
 	private StateReadColour stateReadColour;
 	
 	public FriendColour() {
-		this.stateMoveMotor = null;
+		this.stateMoveColourMotor = null;
 		this.stateReadColour = null;
 	}
 
-	public StateMoveMotor getStateMoveMotor() {
-		return stateMoveMotor;
+	public StateMoveColourMotor getStateMoveColourMotor() {
+		return stateMoveColourMotor;
 	}
 
-	public void setStateMoveMotor(StateMoveMotor stateMoveMotor) {
-		this.stateMoveMotor = stateMoveMotor;
+	public void setStateMoveColourMotor(StateMoveColourMotor stateMoveColourMotor) {
+		this.stateMoveColourMotor = stateMoveColourMotor;
 	}
 
 	public StateReadColour getStateReadColour() {
