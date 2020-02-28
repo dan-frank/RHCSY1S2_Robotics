@@ -14,16 +14,28 @@ package rubiks.robot;
 //			- Flip
 
 public class FriendMove {
-	private StateFlip   stateFlip;
+	private StateFlip stateFlip;
 	private StateRotate stateRotate;
 
 	public FriendMove() {
-		this.stateFlip   = null;
+		this.stateFlip = null;
 		this.stateRotate = null;
 
 	}
-	public StateFlip getStateFlip()     { return this.stateFlip;   }
-	public StateRotate getStateRotate() { return this.stateRotate; }
-    public void setStateFlip(StateFlip state)     { this.stateFlip   = state; }
-    public void setStateRotate(StateRotate state) { this.stateRotate = state; }
+
+	public void setStateFlip(StateFlip state) {
+		this.stateFlip = state;
+	}
+
+	public StateFlip getStateFlip() {
+		return this.stateFlip;
+	}
+
+	public void setStateRotate(StateRotate state) {
+		this.stateRotate = state;
+	}
+
+	public StateRotate getStateRotate() {
+		return this.stateRotate;
+	}
 }
