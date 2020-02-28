@@ -13,23 +13,42 @@ public class MotorColour implements Behavior {
 			posEdge = -560,
 			posCorner = -510,
 			posStart = 0;
+	private FriendColour friendColour;
 
-	public MotorColour() {}
+	public MotorColour(FriendColour friendColour) {
+		this.friendColour = friendColour;
+	}
 
 	@Override
 	public boolean takeControl() {
-		// TODO Auto-generated method stub
-		return false;
+		return friendColour.getStateMoveColourMotor() != null;
 	}
 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
+		switch(this.friendColour.getStateMoveColourMotor()) {
+		case BACK:
+			returnToStart();
+			break;
+		case CENTRE:
+			goCentre();
+			break;
+		case CORNER:
+			goCorner();
+			break;
+		case EDGE:
+			goEdge();
+			break;
+		default:
+			break;
+		
+		}
+		
 	}
 
 	@Override
 	public void suppress() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public void goCentre() {
