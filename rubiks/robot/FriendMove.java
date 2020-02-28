@@ -20,7 +20,6 @@ public class FriendMove {
 	public FriendMove() {
 		this.stateFlip = null;
 		this.stateRotate = null;
-
 	}
 
 	public void setStateFlip(StateFlip state) {
