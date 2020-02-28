@@ -5,34 +5,63 @@ import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
+import lejos.hardware.port.SensorPort;
+import lejos.hardware.sensor.EV3ColorSensor;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
+import lejos.robotics.subsumption.Arbitrator;
+import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
 public class RubeTheRobot {
-	private static BaseRegulatedMotor motorPortColour = new EV3MediumRegulatedMotor(MotorPort.A);
-	private static BaseRegulatedMotor motorPortFlip   = new EV3LargeRegulatedMotor(MotorPort.B);
-	private static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor(MotorPort.C);
+	// Motor Ports
+	private final static BaseRegulatedMotor motorPortColour = new EV3MediumRegulatedMotor(MotorPort.A);
+	private final static BaseRegulatedMotor motorPortFlip = new EV3LargeRegulatedMotor(MotorPort.B);
+	private final static BaseRegulatedMotor motorPortRotate = new EV3LargeRegulatedMotor(MotorPort.C);
+
+	// Sensor Ports
+	private final static EV3UltrasonicSensor sensorUltrasonic = new EV3UltrasonicSensor(SensorPort.S1);
+	private final static EV3ColorSensor sensorColour = new EV3ColorSensor(SensorPort.S2);
+
+	// Globals
+	String[][] scannedCube = new String[6][9];
+	private static String state = "";
+	private static String move = "";
+	private static String motor = "";
+	private static String scrambledcube = "";
+	private static String solvedcube = "";
 
 	public static void main(String[] args) {
-		MotorColour motorColour = new MotorColour(motorPortColour);
-		MotorFlip motorFlip     = new MotorFlip(motorPortFlip);
-		MotorRotate motorRotate = new MotorRotate(motorPortRotate);
-		
 		LCD.clear();
-		LCD.drawString("Hello there!", 1, 1);
-		LCD.drawString("My name is Rube!", 1, 2);
-		
-		motorColour.goMiddle();
-		Delay.msDelay(200);
-		motorColour.goBack();
-		
-		motorRotate.rotate();
-		motorFlip.flip();
-		
-		motorFlip.pin();
-		motorRotate.rotate();
-		motorRotate.rotate();
-		motorFlip.retract();
-		motorFlip.flip();
-	}
+		LCD.drawString("Hello there, my", 0, 1);
+		LCD.drawString("name is Rube!", 0, 2);
+		LCD.drawString("I am going to", 0, 3);
+		LCD.drawString("solve a rubiks", 0, 4);
+		LCD.drawString("cube!", 0, 5);
 
+//		ScanCube.start();
+
+//		SensorUltrasonic uc = new SensorUltrasonic();
+//		while (uc.scan() > 0.5f) {}
+
+//		String scrambledcube = ScanCube.start();
+//		String solvedcube = Solve.simpleSolve(scrambledcube);
+//		MoveRube.run(solvedcube);
+
+//		while (!Button.ENTER.isDown()) { }
+
+		FriendCube friendCube = new FriendCube();
+		
+		Behavior motorColour = new MotorColour(motorPortColour);
+		Behavior motorFlip = new MotorFlip(motorPortFlip);
+		Behavior motorRotate = new MotorRotate(motorPortRotate);
+		Behavior move = new Move(friendCube);
+
+		Behavior[] behaviours = new Behavior[] { motorColour, motorFlip, motorRotate, move };
+
+		Arbitrator arby = new Arbitrator(behaviours);
+		arby.go();
+
+		LCD.drawString("Finished", 0, 6);
+		Delay.msDelay(1000);
+	}
 }

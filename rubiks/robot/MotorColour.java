@@ -1,38 +1,50 @@
 package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
+import lejos.robotics.subsumption.Behavior;
 
-public class MotorColour {
+public class MotorColour implements Behavior {
 
 	private BaseRegulatedMotor m;
-	private int rMiddle = 50000,
-			rEdge = 150,
-			rIn = 150,
-			rOut = rIn * -1,
-			rBack = 50000;
+	private int posExtendFull = -690,
+			posEdge = -560,
+			posCorner = -510,
+			posStart = 0;
 
 	public MotorColour(BaseRegulatedMotor m) {
 		this.m = m;
 	}
 
-	public void goMiddle() {
-		m.rotate(rMiddle);
+	@Override
+	public boolean takeControl() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void suppress() {
+		// TODO Auto-generated method stub
+	}
+
+	public void goCentre() {
+		m.rotateTo(posExtendFull);
 	}
 
 	public void goEdge() {
-		m.rotate(rEdge);
+		m.rotateTo(posEdge);
 	}
 
-	public void goOut() {
-		m.rotate(rOut);
+	public void goCorner() {
+		m.rotateTo(posCorner);
 	}
 
-	public void goIn() {
-		m.rotate(rIn);
-	}
-
-	public void goBack() {
-		m.rotate(rBack);
+	public void returnToStart() {
+		m.rotateTo(posStart);
 	}
 
 }
