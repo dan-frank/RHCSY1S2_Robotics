@@ -30,18 +30,20 @@ public class MotorRotate implements Behavior {
 
 	@Override
 	public void action() {
+		friendMove.setInAction(true);
+		
 		switch (friendMove.getStateRotate()) {
 		case CLOCKWISE:
 			rotate();
 			break;
 
 		case ANTICLOCKWISE:
-			setRotate(-1);
+			friendMove.setStateRotateTimes(-1);
 			rotate();
 			break;
 
 		case UTURN:
-			setRotate(2);
+			friendMove.setStateRotateTimes(2);
 			rotate();
 			break;
 
@@ -55,8 +57,8 @@ public class MotorRotate implements Behavior {
 		// TODO Auto-generated method stub
 	}
 
-	public void setRotate(int multiplier) {
-		this.rotate = ninetyDegrees * multiplier;
+	public void setRotate() {
+		this.rotate = ninetyDegrees * friendMove.getStateRotateTimes();
 	}
 
 	public void setSpeed(float speed) {
@@ -64,8 +66,6 @@ public class MotorRotate implements Behavior {
 	}
 
 	public void rotate() {
-		friendMove.setInAction(true);
-		
 		m.setSpeed(speed);
 		m.rotate(rotate);
 		resetVars();
