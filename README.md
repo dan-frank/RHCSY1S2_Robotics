@@ -74,17 +74,17 @@
 
 #### Our cube will be need to placed in the cage to match the following key:
 
-**U**: Upper/Top = White
+**U**: Upper/Top = White (0.85)
 
-**L** : Left = Green
+**L** : Left = Green (0.22)
 
-**F**: Front = Red
+**F**: Front = Red (0.51)
 
-**R**: Right = Blue
+**R**: Right = Blue (0.13)
 
-**B**: Back = Orange
+**B**: Back = Orange (0.67)
 
-**D**: Down/Bottom = Yellow
+**D**: Down/Bottom = Yellow (0.72)
 
 #### We store the cube into the following array:
 

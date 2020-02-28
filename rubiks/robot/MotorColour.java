@@ -2,37 +2,32 @@ package rubiks.robot;
 
 import lejos.hardware.motor.BaseRegulatedMotor;
 
-public class MotorColour {
+public class MotorColour implements RubeDaddy {
 
 	private BaseRegulatedMotor m;
-	private int rMiddle = 50000,
-			rEdge = 150,
-			rIn = 150,
-			rOut = rIn * -1,
-			rBack = 50000;
+	private int posExtendFull = -690,
+			posEdge = -560,
+			posCorner = -510,
+			posStart = 0;
 
-	public MotorColour(BaseRegulatedMotor m) {
-		this.m = m;
+	public MotorColour() {
+		this.m = motorPortColour;
 	}
 
-	public void goMiddle() {
-		m.rotate(rMiddle);
+	public void goCentre() {
+		m.rotateTo(posExtendFull);
 	}
 
 	public void goEdge() {
-		m.rotate(rEdge);
+		m.rotateTo(posEdge);
 	}
 
-	public void goOut() {
-		m.rotate(rOut);
+	public void goCorner() {
+		m.rotateTo(posCorner);
 	}
 
-	public void goIn() {
-		m.rotate(rIn);
-	}
-
-	public void goBack() {
-		m.rotate(rBack);
+	public void returnToStart() {
+		m.rotateTo(posStart);
 	}
 
 }
