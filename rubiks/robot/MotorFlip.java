@@ -7,35 +7,37 @@ import lejos.robotics.subsumption.Behavior;
 
 public class MotorFlip implements Behavior {
 	private final BaseRegulatedMotor m = new EV3LargeRegulatedMotor(MotorPort.B);
+	private FriendMove friendMove;
 
-	
-	MotorFlip() {}
+	MotorFlip(FriendMove friendMove) {
+		this.friendMove = friendMove;
+	}
 
 	@Override
 	public boolean takeControl() {
-		// TODO Auto-generated method stub
-		return false;
+		return friendMove.getStateFlip() != null;
 	}
 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
+		switch (this.friendMove.getStateFlip()) {
+		case RETRACT:
+			m.rotate(-90);
+			break;
+		case PIN:
+			m.rotate(90);
+			break;
+		case FLIP:
+			m.rotate(360);
+			break;
+		
+		}
+		
 	}
 
 	@Override
 	public void suppress() {
 		// TODO Auto-generated method stub
 	}
-	
-	public void flip() {
-		m.rotate(360);
-	}
-	
-	public void pin() {
-		m.rotate(90);
-	}
-	
-	public void retract() {
-		m.rotate(-90);	
-	}
+
 }
