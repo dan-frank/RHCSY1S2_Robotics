@@ -1,6 +1,8 @@
 package rubiks.robot;
 
-public class MoveRube {
+import lejos.robotics.subsumption.Behavior;
+
+public class Move implements Behavior {
 	//	Motors
 	private static MotorFlip motorFlip;  
 	private static MotorRotate motorRotate;
@@ -10,15 +12,31 @@ public class MoveRube {
 	private static final int spin          =  2;
 	private static final int anticlockwise = -1;
 	
-	public static void run(String solvedcube) {
-		motorFlip   = new MotorFlip();
-		motorRotate = new MotorRotate();
-		
+	public static void run() {
+		String solvedcube = getSolvedcube();
 		String[] moves = solvedcube.split("\\s+");
 		
 		for (int i = 0; i < moves.length; i++) {
 			move(moves[i]);
 		}
+	}
+
+	@Override
+	public boolean takeControl() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void suppress() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public static void move(String action) {
