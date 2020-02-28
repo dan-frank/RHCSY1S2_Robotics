@@ -1,7 +1,7 @@
 package rubiks.robot;
 
 /*
- * This friend can only be called by these behaviours:
+ * This friend is used by these behaviours:
  * - Scan
  * - Solve
  * - Move
@@ -23,6 +23,14 @@ public class FriendCube {
 	
 	public StateCube getStateCube() {
 		return stateCube;
+	}
+	
+	public void setScrambledCube(String scrambledCube) {
+		this.scrambledCube = scrambledCube;
+	}
+	
+	public String getScrambledCube() {
+		return scrambledCube;
 	}
 	
 	public void setSolvedCube(String[] solvedCube) {
