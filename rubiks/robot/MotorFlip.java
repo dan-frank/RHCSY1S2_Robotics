@@ -20,17 +20,21 @@ public class MotorFlip implements Behavior {
 
 	@Override
 	public void action() {
+		friendMove.setInAction(true);
 		switch (this.friendMove.getStateFlip()) {
 		case RETRACT:
 			m.rotate(-90);
+			friendMove.setInAction(false);
 			break;
 			
 		case PIN:
 			m.rotate(90);
+			friendMove.setInAction(false);
 			break;
 			
 		case FLIP:
 			m.rotate(360);
+			friendMove.setInAction(false);
 			break;
 			
 		default:
