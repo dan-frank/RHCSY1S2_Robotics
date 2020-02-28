@@ -32,6 +32,12 @@ public class MotorRotate implements RubeDaddy {
 		resetVars();
 	}
 	
+	public void rotateHalf() {
+		m.setSpeed(speed);
+		m.rotate(rotate / 2);
+		resetVars();
+	}
+	
 	public void resetVars() {
 		rotate = ninetyDegrees;
 		speed = speedDefault;
