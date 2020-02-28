@@ -16,6 +16,7 @@ package rubiks.robot;
 public class FriendMove {
 	private StateFlip stateFlip;
 	private StateRotate stateRotate;
+	private boolean inAction = false; 
 
 	public FriendMove() {
 		this.stateFlip = null;
@@ -36,5 +37,13 @@ public class FriendMove {
 
 	public StateRotate getStateRotate() {
 		return this.stateRotate;
+	}
+	
+	public void setInAction(boolean inAction) {
+		this.inAction = inAction;
+	}
+	
+	public boolean getInAction() {
+		return this.inAction;
 	}
 }

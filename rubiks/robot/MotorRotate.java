@@ -64,6 +64,8 @@ public class MotorRotate implements Behavior {
 	}
 
 	public void rotate() {
+		friendMove.setInAction(true);
+		
 		m.setSpeed(speed);
 		m.rotate(rotate);
 		resetVars();
@@ -78,5 +80,7 @@ public class MotorRotate implements Behavior {
 	public void resetVars() {
 		rotate = ninetyDegrees;
 		speed = speedDefault;
+		
+		friendMove.setInAction(false);
 	}
 }
