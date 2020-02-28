@@ -1,7 +1,7 @@
 package rubiks.robot;
 
 /*
- * This friend can only be called by these behaviours:
+ * This friend is used by these behaviours:
  * - Scan
  * - Solve
  * - Move
