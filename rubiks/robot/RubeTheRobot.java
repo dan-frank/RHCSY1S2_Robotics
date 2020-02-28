@@ -43,7 +43,7 @@ public class RubeTheRobot {
 		Behavior motorColour = new MotorColour(friendColour);
 		Behavior motorFlip = new MotorFlip(friendMove);
 		Behavior motorRotate = new MotorRotate(friendMove);
-		Behavior move = new Move(friendCube);
+		Behavior move = new Move(friendCube, friendMove);
 
 		Behavior[] behaviours = new Behavior[] { motorColour, motorFlip, motorRotate, move };
 
