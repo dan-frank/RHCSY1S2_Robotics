@@ -38,12 +38,12 @@ public class MotorRotate implements Behavior {
 			break;
 
 		case ANTICLOCKWISE:
-			friendMove.setStateRotateTimes(-1);
+			setRotate(-1);
 			rotate();
 			break;
 
 		case UTURN:
-			friendMove.setStateRotateTimes(2);
+			setRotate(2);
 			rotate();
 			break;
 
@@ -57,8 +57,8 @@ public class MotorRotate implements Behavior {
 		// TODO Auto-generated method stub
 	}
 
-	public void setRotate() {
-		this.rotate = ninetyDegrees * friendMove.getStateRotateTimes();
+	public void setRotate(int times) {
+		this.rotate = ninetyDegrees * times;
 	}
 
 	public void setSpeed(float speed) {
