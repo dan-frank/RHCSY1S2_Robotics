@@ -1,6 +1,7 @@
 package rubiks.robot;
 
 import lejos.robotics.subsumption.Behavior;
+import lejos.utility.Delay;
 
 public class Move implements Behavior {
 	// Friends
@@ -17,23 +18,23 @@ public class Move implements Behavior {
 		this.friendMove = friendMove;
 	}
 
-	public void run() {
-		String[] moves = friendCube.getSolvedCube();
-
-		for (int i = 0; i < moves.length; i++) {
-			move(moves[i]);
-		}
-	}
-
 	@Override
 	public boolean takeControl() {
-		return friendCube.getStateCube() == StateCube.SOLVED;
+		StateCube state = friendCube.getStateCube();
+		System.out.println("Move: State = " + state);
+		System.out.println("Move: InAction = " + friendMove.getInAction());
+		boolean control = state == StateCube.SOLVED && !friendMove.getInAction();
+		Delay.msDelay(2000);
+		return control;
 	}
 
 	@Override
 	public void action() {
+		System.out.println("Move behavior action");
+		
 		String[] moves = friendCube.getSolvedCube();
 		for (int i = 0; i < moves.length; i++) {
+			reset();
 			move(moves[i]);
 		}
 	}
@@ -44,6 +45,7 @@ public class Move implements Behavior {
 	}
 
 	public void move(String action) {
+		System.out.println("Move Behavior Move");
 		switch (action) {
 		case "U":
 			up(clockwise);
@@ -107,13 +109,8 @@ public class Move implements Behavior {
 		}
 	}
 
-	private void rotateLoop(StateRotate rotate) {
-		pin();
-		rotate(rotate);
-		retract();
-	}
-
 	private void up(StateRotate rotate) {
+		System.out.println("Move behavior move up");
 		flip();
 		flip();
 
@@ -124,10 +121,12 @@ public class Move implements Behavior {
 	}
 
 	private void down(StateRotate rotate) {
+		System.out.println("Move behavior move down");
 		rotateLoop(rotate);
 	}
 
 	private void left(StateRotate rotate) {
+		System.out.println("Move behavior move left");
 		flip();
 
 		rotateLoop(rotate);
@@ -137,6 +136,7 @@ public class Move implements Behavior {
 	}
 
 	private void right(StateRotate rotate) {
+		System.out.println("Move behavior move right");
 		rotate(uturn);
 		flip();
 
@@ -146,6 +146,7 @@ public class Move implements Behavior {
 	}
 
 	private void front(StateRotate rotate) {
+		System.out.println("Move behavior move front");
 		rotate(clockwise);
 		flip();
 
@@ -157,6 +158,7 @@ public class Move implements Behavior {
 	}
 
 	private void back(StateRotate rotate) {
+		System.out.println("Move behavior move back");
 		rotate(anticlockwise);
 		flip();
 
@@ -166,30 +168,39 @@ public class Move implements Behavior {
 		flip();
 		rotate(clockwise);
 	}
+
+	private void rotateLoop(StateRotate rotate) {
+		System.out.println("Move behavior move rotate cube");
+		pin();
+		rotate(rotate);
+		retract();
+	}
 	
 	private void rotate(StateRotate rotate) {
+		System.out.println("Move behavior rotate");
 		friendMove.setStateRotate(rotate);
-		pause();
+//		while ()
 	}
 	
 	private void flip() {
+		System.out.println("Move behavior flip");
 		friendMove.setStateFlip(StateFlip.FLIP);
-		pause();
 	}
 
 	private void pin() {
+		System.out.println("Move behavior pin");
 		friendMove.setStateFlip(StateFlip.PIN);
-		pause();
 	}
 	
 	private void retract() {
+		System.out.println("Move behavior retract");
 		friendMove.setStateFlip(StateFlip.RETRACT);
-		pause();
 	}
 	
-	private void pause() {
-		while (friendMove.getInAction()) {}
-		friendMove.setStateFlip(null);
-		friendMove.setStateRotate(null);
+	private void reset() {
+		Delay.msDelay(1000);
+		System.out.println("Move behavior reset");
+		friendMove.setStateFlip(StateFlip.PAUSE);
+		friendMove.setStateRotate(StateRotate.PAUSE);
 	}
 }

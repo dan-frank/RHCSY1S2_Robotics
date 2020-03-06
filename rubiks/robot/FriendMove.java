@@ -19,8 +19,8 @@ public class FriendMove {
 	private boolean inAction; 
 
 	public FriendMove() {
-		this.stateFlip = null;
-		this.stateRotate = null;
+		this.stateFlip = StateFlip.PAUSE;
+		this.stateRotate = StateRotate.PAUSE;
 		this.inAction = false;
 	}
 
@@ -42,9 +42,11 @@ public class FriendMove {
 	
 	public void setInAction(boolean inAction) {
 		this.inAction = inAction;
+		System.out.println("FriendMoveInActionSet: " + this.inAction);
 	}
 	
 	public boolean getInAction() {
+		System.out.println("FriendMoveInActionCalled: " + this.inAction);
 		return this.inAction;
 	}
 }

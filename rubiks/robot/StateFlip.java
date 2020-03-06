@@ -1,7 +1,8 @@
 package rubiks.robot;
 
 enum StateFlip {
-	   PIN,
-	   FLIP,
-	   RETRACT
-	}
+	PAUSE,
+	PIN,
+	FLIP,
+	RETRACT
+}
