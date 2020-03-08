@@ -1,5 +1,6 @@
 package rubiks.robot;
 
+import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
@@ -22,11 +23,14 @@ public class RubeTheRobot {
 		System.out.println("Rube starts his journey");
 		
 //		LCD.clear();
-//		LCD.drawString("Hello there, my", 0, 1);
-//		LCD.drawString("name is Rube!", 0, 2);
-//		LCD.drawString("I am going to", 0, 3);
-//		LCD.drawString("solve a rubiks", 0, 4);
-//		LCD.drawString("cube!", 0, 5);
+//		LCD.drawString("Rube the Robot!", 0, 1);
+//		LCD.drawString("- Lewes Block", 0, 2);
+//		LCD.drawString("- Megan Hardman", 0, 3);
+//		LCD.drawString("- Daniel Lucas", 0, 4);
+//		LCD.drawString("- Rumen Yonkov", 0, 5);
+//		LCD.drawString("Version: 206", 0, 6);
+		
+//		Button.ENTER.waitForPressAndRelease();
 
 		FriendColour friendColour = new FriendColour();
 		FriendCube friendCube = new FriendCube();
