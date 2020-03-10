@@ -11,10 +11,12 @@ public class FriendCube {
 	private StateCube stateCube;
 	private String scrambledCube;
 	private String[] solvedCube;
+	private int solvedCubePos;
 	
 	public FriendCube() {
 		stateCube = StateCube.UNREAD;
 		solvedCube = new String[1];
+		solvedCubePos = 0;
 	}
 	
 	public void setStateCube(StateCube stateCube) {
@@ -39,5 +41,13 @@ public class FriendCube {
 	
 	public String[] getSolvedCube() {
 		return solvedCube;
+	}
+	
+	public void incrementSolvedCubePos() {
+		solvedCubePos++;
+	}
+	
+	public int getSolvedCubePos() {
+		return solvedCubePos;
 	}
 }

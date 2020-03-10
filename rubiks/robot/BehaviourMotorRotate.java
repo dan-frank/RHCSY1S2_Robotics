@@ -7,9 +7,9 @@ import lejos.hardware.port.MotorPort;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
-public class MotorRotate implements Behavior {
+public class BehaviourMotorRotate implements Behavior {
 
-	private final BaseRegulatedMotor m = new EV3LargeRegulatedMotor(MotorPort.C);
+	private BaseRegulatedMotor m;
 
 	private FriendMove friendMove;
 
@@ -19,7 +19,8 @@ public class MotorRotate implements Behavior {
 	private float speed;
 	private int rotate;
 
-	public MotorRotate(FriendMove friendMove) {
+	public BehaviourMotorRotate(FriendMove friendMove) {
+		this.m = friendMove.getMotorRotate();
 		this.friendMove = friendMove;
 		this.speed = speedDefault;
 		this.rotate = ninetyDegrees;
@@ -27,10 +28,7 @@ public class MotorRotate implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		StateRotate state = friendMove.getStateRotate();
-		System.out.println("Rotate: State = " + state);
-		while (friendMove.getInAction()) {}
-		return state != StateRotate.PAUSE && !friendMove.getInAction();
+		return friendMove.getStateRotate() != StateRotate.PAUSE && !friendMove.getInAction();
 	}
 
 	@Override
@@ -39,9 +37,23 @@ public class MotorRotate implements Behavior {
 		Delay.msDelay(1000);
 		System.out.println("Motor rotate action");
 		friendMove.setInAction(true);
-		
+
 		StateRotate state = friendMove.getStateRotate();
 		System.out.println("move action state: " + state);
+
+		int randomInt = (int) (3 * Math.random());
+		int num1 = randomInt;
+
+		if (num1 == 0) {
+			state = StateRotate.CLOCKWISE;
+		} else if (num1 == 1) {
+			state = StateRotate.ANTICLOCKWISE;
+		} else if (num1 == 2) {
+			state = StateRotate.UTURN;
+		} else {
+			state = StateRotate.PAUSE;
+		}
+
 		switch (state) {
 		case CLOCKWISE:
 			System.out.println("Motor rotate clockwise");
@@ -98,7 +110,7 @@ public class MotorRotate implements Behavior {
 	public void resetVars() {
 		rotate = ninetyDegrees;
 		speed = speedDefault;
-		
+
 		friendMove.setInAction(false);
 	}
 }

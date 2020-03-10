@@ -2,7 +2,7 @@ package rubiks.robot;
 
 import rubiks.solve.Search;
 
-public class Solve {
+public class BehaviourSolve {
 
 	public static String simpleSolve(String scrambledCube) {
 		String result = new Search().solution(scrambledCube, 21, 100000000, 0, 0);

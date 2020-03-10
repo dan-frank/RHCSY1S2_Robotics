@@ -5,7 +5,7 @@ import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.subsumption.Behavior;
 
-public class MotorColour implements Behavior {
+public class BehaviourMotorColour implements Behavior {
 
 	private final BaseRegulatedMotor m = new EV3MediumRegulatedMotor(MotorPort.A);
 
@@ -15,7 +15,7 @@ public class MotorColour implements Behavior {
 			posStart = 0;
 	private FriendColour friendColour;
 
-	public MotorColour(FriendColour friendColour) {
+	public BehaviourMotorColour(FriendColour friendColour) {
 		this.friendColour = friendColour;
 	}
 

@@ -6,19 +6,18 @@ import lejos.hardware.port.MotorPort;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
-public class MotorFlip implements Behavior {
-	private final BaseRegulatedMotor m = new EV3LargeRegulatedMotor(MotorPort.B);
+public class BehaviourMotorFlip implements Behavior {
+	private BaseRegulatedMotor m;
 	private FriendMove friendMove;
 
-	MotorFlip(FriendMove friendMove) {
+	BehaviourMotorFlip(FriendMove friendMove) {
 		this.friendMove = friendMove;
 	}
 
 	@Override
 	public boolean takeControl() {
-		StateFlip state = friendMove.getStateFlip();
-		System.out.println("Flip: State = " + state);
-		return state != StateFlip.PAUSE && !friendMove.getInAction();
+		this.m = friendMove.getMotorFlip();
+		return friendMove.getStateFlip() != StateFlip.PAUSE && !friendMove.getInAction();
 	}
 
 	@Override
