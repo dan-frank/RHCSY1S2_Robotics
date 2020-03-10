@@ -1,5 +1,6 @@
 package rubiks.robot;
 
+import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
@@ -16,6 +17,7 @@ public class RubeTheRobot {
 	public static void main(String[] args) {
 		Delay.msDelay(1000);
 		System.out.println("Rube starts his journey");
+<<<<<<< HEAD
 
 		LCD.clear();
 		LCD.drawString("Hello there, my", 0, 1);
@@ -25,6 +27,20 @@ public class RubeTheRobot {
 		LCD.drawString("cube!", 0, 5);
 		System.out.println("Rube states his purpose in life");
 
+=======
+		
+//		LCD.clear();
+//		LCD.drawString("Rube the Robot!", 0, 1);
+//		LCD.drawString("- Lewes Block", 0, 2);
+//		LCD.drawString("- Megan Hardman", 0, 3);
+//		LCD.drawString("- Daniel Lucas", 0, 4);
+//		LCD.drawString("- Rumen Yonkov", 0, 5);
+//		LCD.drawString("Version: 206", 0, 6);
+		
+//		Button.ENTER.waitForPressAndRelease();
+
+		FriendColour friendColour = new FriendColour();
+>>>>>>> 2921572bde02d8ee0b607b7cb80bd8f0ee7be02c
 		FriendCube friendCube = new FriendCube();
 		FriendMove friendMove = new FriendMove();
 		Delay.msDelay(1000);
