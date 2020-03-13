@@ -1,10 +1,10 @@
 public class FriendOne {
 	private boolean stateAction = true;
-	private boolean stateOne;
+	private StateCube stateOne;
 	private int count = 0;
 	
 	public FriendOne() {
-		stateOne = false;
+		stateOne = StateCube.UNREAD;
 	}
 	
 	public boolean getStateAction() {
@@ -23,11 +23,11 @@ public class FriendOne {
 		this.count = count;
 	}
 	
-	public boolean getStateOne() {
+	public StateCube getStateOne() {
 		return stateOne;
 	}
 	
-	public void setStateOne(boolean state) {
+	public void setStateOne(StateCube state) {
 		this.stateOne = state;
 	}
 }
