@@ -1,4 +1,3 @@
-
 public class FriendOne {
 	private boolean stateAction = true;
 	private boolean stateOne;
