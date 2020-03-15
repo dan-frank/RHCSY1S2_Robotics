@@ -25,7 +25,7 @@ public class BehaviourMoveActionBack implements Behavior {
 		if (actionStep < 7 && actionStep >= 0) {
 			switch (actionStep) {
 			case 0:
-				motorRotate.run(StateRotate.CLOCKWISE);
+				motorRotate.run(StateRotate.ANTICLOCKWISE);
 				break;
 			case 1:
 				motorFlip.run(StateFlip.FLIP);

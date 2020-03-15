@@ -2,18 +2,18 @@ import lejos.hardware.Sound;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
-public class ScanBehaviour implements Behavior {
-	private FriendOne friendOne;
+public class BehaviourScan implements Behavior {
+	private FriendCube friendCube;
 	private FriendMove friendMove;
 	
-	public ScanBehaviour(FriendOne friendOne, FriendMove friendMove) {
-		this.friendOne = friendOne;
+	public BehaviourScan(FriendCube friendCube, FriendMove friendMove) {
+		this.friendCube = friendCube;
 		this.friendMove = friendMove;
 	}
 	
 	@Override
 	public boolean takeControl() {
-		return friendOne.getStateAction() && !friendMove.getInActionMove();
+		return friendCube.getStateCube() == StateCube.UNREAD && !friendMove.getInActionMove();
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class ScanBehaviour implements Behavior {
 		Delay.msDelay(1000);
 		Sound.buzz();
 		
-		int suppresscount = friendOne.getStateActionCount();
+		int suppresscount = friendCube.getSolvedCubePos();
 		
 		if (suppresscount % 2 == 0) {
 			friendMove.setTotalRotations(StateRotate.UTURN);
@@ -38,11 +38,11 @@ public class ScanBehaviour implements Behavior {
 		
 		
 		suppresscount++;
-		friendOne.setStateActionCount(suppresscount);
+		friendCube.incrementSolvedCubePos();
 		
 		System.out.println("behaviour one supress count: " + suppresscount);
 		if (suppresscount == 10) {
-			friendOne.setStateAction(false);
+			friendCube.setStateCube(StateCube.READ);
 		}
 	}
 

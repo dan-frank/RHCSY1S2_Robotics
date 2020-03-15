@@ -8,15 +8,17 @@ public class TestMain {
 		Delay.msDelay(1000);
 		System.out.println("Rube starts his long and arduous journey...");
 
-		FriendOne friendOne = new FriendOne();
+		FriendCube friendCube = new FriendCube();
 		FriendMove friendMove = new FriendMove();
 
 		MotorRotate motorRotate = new MotorRotate(friendMove);
 		MotorFlip motorFlip = new MotorFlip(friendMove);
 		Delay.msDelay(1000);
 		System.out.println("Rube made some friends along the way...");
+		
+		friendCube.setStateCube(StateCube.SOLVED);
 
-		Behavior moveController = new BehaviourMoveActionController(friendOne, friendMove);
+		Behavior moveController = new BehaviourMoveActionController(friendCube, friendMove);
 		Behavior moveActionUp = new BehaviourMoveActionUp(friendMove, motorRotate, motorFlip);
 		Behavior moveActionDown = new BehaviourMoveActionDown(friendMove, motorRotate, motorFlip);
 		Behavior moveActionLeft = new BehaviourMoveActionLeft(friendMove, motorRotate, motorFlip);
