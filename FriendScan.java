@@ -21,7 +21,7 @@ public class FriendScan {
 	private final BaseRegulatedMotor motorColour = new EV3MediumRegulatedMotor(MotorPort.A);
 	
 	public FriendScan() {
-		this.stateScan = stateScan.DONTREAD;
+		this.stateScan = StateScan.DONTREAD;
 		this.inAction = false;
 		this.actionStep = 0;
 	}

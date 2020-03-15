@@ -2,10 +2,8 @@ import lejos.hardware.motor.BaseRegulatedMotor;
 
 public class MotorFlip {
 	private BaseRegulatedMotor m;
-	private FriendMove friendMove;
 
 	MotorFlip(FriendMove friendMove) {
-		this.friendMove = friendMove;
 		m = friendMove.getMotorFlip();
 	}
 
