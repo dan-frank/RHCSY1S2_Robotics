@@ -22,7 +22,7 @@ public class BehaviourMoveActionRight implements Behavior {
 	public void action() {
 		int actionStep = friendMove.getActionStep();
 		
-		if (actionStep < 6 && actionStep >= 0) {
+		if (actionStep < 7 && actionStep >= 0) {
 			switch (actionStep) {
 			case 0:
 				motorRotate.run(StateRotate.UTURN);
@@ -40,6 +40,9 @@ public class BehaviourMoveActionRight implements Behavior {
 				motorFlip.run(StateFlip.RETRACT);
 				break;
 			case 5:
+				motorRotate.run(StateRotate.UTURN);
+				break;
+			case 6:
 				motorFlip.run(StateFlip.FLIP);
 				break;
 			}

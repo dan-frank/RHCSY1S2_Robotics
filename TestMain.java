@@ -17,8 +17,11 @@ public class TestMain {
 		System.out.println("Rube made some friends along the way...");
 		
 		friendCube.setStateCube(StateCube.SOLVED);
+		friendCube.setSolvedCube(new String[] { "L", "U", "D", "L", "R'", "F2", "B'" });
+		Delay.msDelay(1000);
+		System.out.println("Rube made fake friends...");
 
-		Behavior moveController = new BehaviourMoveActionController(friendCube, friendMove);
+		Behavior moveController = new BehaviourMoveController(friendCube, friendMove);
 		Behavior moveActionUp = new BehaviourMoveActionUp(friendMove, motorRotate, motorFlip);
 		Behavior moveActionDown = new BehaviourMoveActionDown(friendMove, motorRotate, motorFlip);
 		Behavior moveActionLeft = new BehaviourMoveActionLeft(friendMove, motorRotate, motorFlip);
