@@ -3,10 +3,10 @@ import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
 public class ScanBehaviour implements Behavior {
-	private FriendOne friendOne;
+	private FriendCube friendOne;
 	private FriendMove friendMove;
 	
-	public ScanBehaviour(FriendOne friendOne, FriendMove friendMove) {
+	public ScanBehaviour(FriendCube friendOne, FriendMove friendMove) {
 		this.friendOne = friendOne;
 		this.friendMove = friendMove;
 	}

@@ -3,17 +3,17 @@ import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
 public class BehaviourMoveActionController implements Behavior {
-	private FriendOne friendOne;
+	private FriendCube friendCube;
 	private FriendMove friendMove;
 	
-	public BehaviourMoveActionController(FriendOne friendOne, FriendMove friendMove) {
-		this.friendOne = friendOne;
+	public BehaviourMoveActionController(FriendCube friendCube, FriendMove friendMove) {
+		this.friendCube = friendCube;
 		this.friendMove = friendMove;
 	}
 	
 	@Override
 	public boolean takeControl() {
-		return friendOne.getStateAction() && !friendMove.getInActionMove();
+		return friendCube.getStateCube() == StateCube.SOLVED && !friendMove.getInActionMove();
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class BehaviourMoveActionController implements Behavior {
 		Delay.msDelay(1000);
 		Sound.buzz();
 		
-		int suppresscount = friendOne.getStateActionCount();
+		int suppresscount = friendCube.getSolvedCubePos();
 		
 		if (suppresscount % 2 == 0) {
 			friendMove.setTotalRotations(StateRotate.UTURN);
@@ -36,13 +36,11 @@ public class BehaviourMoveActionController implements Behavior {
 		System.out.println("statemoveaction + " + friendMove.getStateMoveAction());
 
 		
-		
-		suppresscount++;
-		friendOne.setStateActionCount(suppresscount);
+		friendCube.incrementSolvedCubePos();
 		
 		System.out.println("behaviour one supress count: " + suppresscount);
 		if (suppresscount == 10) {
-			friendOne.setStateAction(false);
+			friendCube.setStateCube(StateCube.COMPLETE);
 		}
 	}
 
