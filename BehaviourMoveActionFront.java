@@ -22,7 +22,7 @@ public class BehaviourMoveActionFront implements Behavior {
 	public void action() {
 		int actionStep = friendMove.getActionStep();
 		
-		if (actionStep < 7 && actionStep >= 0) {
+		if (actionStep < 8 && actionStep >= 0) {
 			switch (actionStep) {
 			case 0:
 				motorRotate.run(StateRotate.CLOCKWISE);
@@ -44,6 +44,9 @@ public class BehaviourMoveActionFront implements Behavior {
 				break;
 			case 6:
 				motorFlip.run(StateFlip.FLIP);
+				break;
+			case 7:
+				motorRotate.run(StateRotate.CLOCKWISE);
 				break;
 			}
 			
