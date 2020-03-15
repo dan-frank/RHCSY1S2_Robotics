@@ -1,6 +1,4 @@
-import lejos.hardware.Sound;
 import lejos.hardware.motor.BaseRegulatedMotor;
-import lejos.utility.Delay;
 
 public class MotorRotate {
 
@@ -24,25 +22,21 @@ public class MotorRotate {
 	public void run(StateRotate state) {
 		switch (state) {
 		case CLOCKWISE:
-			System.out.println("Motor rotate clockwise");
 			rotate();
 			break;
 
 		case ANTICLOCKWISE:
-			System.out.println("Motor rotate anticlockwise");
 			setRotate(-1);
 			rotate();
 			break;
 
 		case UTURN:
-			System.out.println("Motor rotate uturn");
 			setRotate(2);
 			rotate();
 			break;
 
 		case PAUSE:
 		default:
-			System.out.println("Motor rotate pause");
 			break;
 		}
 	}
@@ -70,7 +64,5 @@ public class MotorRotate {
 	public void resetVars() {
 		rotate = ninetyDegrees;
 		speed = speedDefault;
-
-		friendMove.setInAction(false);
 	}
 }

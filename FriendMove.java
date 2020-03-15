@@ -69,6 +69,10 @@ public class FriendMove {
 	public void setActionStep(int actionStep) {
 		this.actionStep = actionStep;
 	}
+	
+	public void resetActionStep() {
+		this.actionStep = 0;
+	}
 
 	public int getActionStep() {
 		return this.actionStep;

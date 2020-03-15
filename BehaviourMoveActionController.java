@@ -2,11 +2,11 @@ import lejos.hardware.Sound;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
-public class BehaviourOne implements Behavior {
+public class BehaviourMoveActionController implements Behavior {
 	private FriendOne friendOne;
 	private FriendMove friendMove;
 	
-	public BehaviourOne(FriendOne friendOne, FriendMove friendMove) {
+	public BehaviourMoveActionController(FriendOne friendOne, FriendMove friendMove) {
 		this.friendOne = friendOne;
 		this.friendMove = friendMove;
 	}
@@ -25,11 +25,11 @@ public class BehaviourOne implements Behavior {
 		
 		if (suppresscount % 2 == 0) {
 			friendMove.setTotalRotations(StateRotate.UTURN);
-			friendMove.setStateMoveAction(StateMoveAction.LEFT);
+			friendMove.setStateMoveAction(StateMoveAction.FRONT);
 			friendMove.setInAction(true);
 		} else {
 			friendMove.setTotalRotations(StateRotate.CLOCKWISE);
-			friendMove.setStateMoveAction(StateMoveAction.LEFT);
+			friendMove.setStateMoveAction(StateMoveAction.DOWN);
 			friendMove.setInAction(true);
 		}
 		

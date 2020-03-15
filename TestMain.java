@@ -6,19 +6,30 @@ public class TestMain {
 
 	public static void main(String[] args) {
 		Delay.msDelay(1000);
-		
+		System.out.println("Rube starts his long and arduous journey...");
+
 		FriendOne friendOne = new FriendOne();
 		FriendMove friendMove = new FriendMove();
-		
-		Behavior one = new BehaviourOne(friendOne, friendMove);
-		Behavior moveActionLeft = new BehaviourMoveActionLeft(friendMove);
-		Behavior moveRotate = new BehaviourMotorRotate(friendMove);
-		Behavior moveFlip = new BehaviourMotorFlip(friendMove);
-		Delay.msDelay(1000);
 
-		Behavior[] behaviours = new Behavior[] { moveRotate, moveFlip, one, moveActionLeft };
+		MotorRotate motorRotate = new MotorRotate(friendMove);
+		MotorFlip motorFlip = new MotorFlip(friendMove);
+		Delay.msDelay(1000);
+		System.out.println("Rube made some friends along the way...");
+
+		Behavior moveController = new BehaviourMoveActionController(friendOne, friendMove);
+		Behavior moveActionUp = new BehaviourMoveActionUp(friendMove, motorRotate, motorFlip);
+		Behavior moveActionDown = new BehaviourMoveActionDown(friendMove, motorRotate, motorFlip);
+		Behavior moveActionLeft = new BehaviourMoveActionLeft(friendMove, motorRotate, motorFlip);
+		Behavior moveActionRight = new BehaviourMoveActionRight(friendMove, motorRotate, motorFlip);
+		Behavior moveActionFront = new BehaviourMoveActionFront(friendMove, motorRotate, motorFlip);
+		Behavior moveActionBack = new BehaviourMoveActionBack(friendMove, motorRotate, motorFlip);
+		Delay.msDelay(1000);
+		System.out.println("Rube developed behaviours...");
+
+		Behavior[] behaviours = new Behavior[] { moveController, moveActionUp, moveActionDown, moveActionLeft, moveActionRight, moveActionFront, moveActionBack };
 		Arbitrator arby = new Arbitrator(behaviours);
 		Delay.msDelay(1000);
+		System.out.println("Rube met arby...");
 		arby.go();
 	}
 

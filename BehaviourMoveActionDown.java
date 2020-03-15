@@ -1,13 +1,13 @@
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
-public class BehaviourMoveActionLeft implements Behavior {
+public class BehaviourMoveActionDown implements Behavior {
 
 	private FriendMove friendMove;
 	private MotorRotate motorRotate;
 	private MotorFlip motorFlip;
 	
-	public BehaviourMoveActionLeft(FriendMove friendMove, MotorRotate motorRotate, MotorFlip motorFlip) {
+	public BehaviourMoveActionDown(FriendMove friendMove, MotorRotate motorRotate, MotorFlip motorFlip) {
 		this.friendMove = friendMove;
 		this.motorRotate = motorRotate;
 		this.motorFlip = motorFlip;
@@ -15,31 +15,34 @@ public class BehaviourMoveActionLeft implements Behavior {
 	
 	@Override
 	public boolean takeControl() {
-		return friendMove.getStateMoveAction() == StateMoveAction.LEFT;
+		return friendMove.getStateMoveAction() == StateMoveAction.UP;
 	}
 
 	@Override
 	public void action() {
 		int actionStep = friendMove.getActionStep();
 		
-		if (actionStep < 6 && actionStep >= 0) {
+		if (actionStep < 7 && actionStep >= 0) {
 			switch (actionStep) {
 			case 0:
 				motorFlip.run(StateFlip.FLIP);
 				break;
 			case 1:
-				motorFlip.run(StateFlip.PIN);
+				motorFlip.run(StateFlip.FLIP);
 				break;
 			case 2:
-				motorRotate.run(friendMove.getTotalRotations());
+				motorFlip.run(StateFlip.PIN);
 				break;
 			case 3:
-				motorFlip.run(StateFlip.RETRACT);
+				motorRotate.run(friendMove.getTotalRotations());
 				break;
 			case 4:
-				motorRotate.run(StateRotate.UTURN);
+				motorFlip.run(StateFlip.RETRACT);
 				break;
 			case 5:
+				motorFlip.run(StateFlip.FLIP);
+				break;
+			case 6:
 				motorFlip.run(StateFlip.FLIP);
 				break;
 			}
