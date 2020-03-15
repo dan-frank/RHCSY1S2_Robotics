@@ -16,11 +16,14 @@ public class TestMain {
 		Delay.msDelay(1000);
 		System.out.println("Rube made some friends along the way...");
 		
-		friendCube.setStateCube(StateCube.SOLVED);
+		friendCube.setStateCube(StateCube.READ);
+		friendCube.setScrambledCube("DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU");
 		friendCube.setSolvedCube(new String[] { "L", "U", "D", "L", "R'", "F2", "B'" });
 		Delay.msDelay(1000);
 		System.out.println("Rube made fake friends...");
 
+		Behavior solveControler = new BehaviourSolveController(friendCube);
+		
 		Behavior moveController = new BehaviourMoveController(friendCube, friendMove);
 		Behavior moveActionUp = new BehaviourMoveActionUp(friendMove, motorRotate, motorFlip);
 		Behavior moveActionDown = new BehaviourMoveActionDown(friendMove, motorRotate, motorFlip);
@@ -31,7 +34,7 @@ public class TestMain {
 		Delay.msDelay(1000);
 		System.out.println("Rube developed behaviours...");
 
-		Behavior[] behaviours = new Behavior[] { moveController, moveActionUp, moveActionDown, moveActionLeft, moveActionRight, moveActionFront, moveActionBack };
+		Behavior[] behaviours = new Behavior[] { solveControler, moveController, moveActionUp, moveActionDown, moveActionLeft, moveActionRight, moveActionFront, moveActionBack };
 		Arbitrator arby = new Arbitrator(behaviours);
 		Delay.msDelay(1000);
 		System.out.println("Rube met arby...");

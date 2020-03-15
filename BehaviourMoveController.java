@@ -26,7 +26,7 @@ public class BehaviourMoveController implements Behavior {
 
 		friendCube.incrementSolvedCubePos();
 		
-		if (solvedCubePos == solvedCube.length) {
+		if (solvedCubePos >= solvedCube.length) {
 			friendCube.setStateCube(StateCube.COMPLETE);
 		} else {
 			String move = solvedCube[solvedCubePos];
