@@ -11,10 +11,12 @@ public class TestMain {
 		FriendMove friendMove = new FriendMove();
 		
 		Behavior one = new BehaviourOne(friendOne, friendMove);
-		Behavior rotate = new BehaviourMotorRotate(friendMove);
+		Behavior moveActionLeft = new BehaviourMoveActionLeft(friendMove);
+		Behavior moveRotate = new BehaviourMotorRotate(friendMove);
+		Behavior moveFlip = new BehaviourMotorFlip(friendMove);
 		Delay.msDelay(1000);
 
-		Behavior[] behaviours = new Behavior[] { one, rotate };
+		Behavior[] behaviours = new Behavior[] { moveRotate, moveFlip, one, moveActionLeft };
 		Arbitrator arby = new Arbitrator(behaviours);
 		Delay.msDelay(1000);
 		arby.go();

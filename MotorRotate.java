@@ -1,9 +1,8 @@
 import lejos.hardware.Sound;
 import lejos.hardware.motor.BaseRegulatedMotor;
-import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
-public class BehaviourMotorRotate implements Behavior {
+public class MotorRotate {
 
 	private BaseRegulatedMotor m;
 
@@ -15,60 +14,30 @@ public class BehaviourMotorRotate implements Behavior {
 	private float speed;
 	private int rotate;
 
-	public BehaviourMotorRotate(FriendMove friendMove) {
-		this.m = friendMove.getMotorRotate();
+	public MotorRotate(FriendMove friendMove) {
 		this.friendMove = friendMove;
+		this.m = friendMove.getMotorRotate();
 		this.speed = speedDefault;
 		this.rotate = ninetyDegrees;
 	}
 
-	@Override
-	public boolean takeControl() {
-		return friendMove.getStateRotate() != StateRotate.PAUSE && !friendMove.getInAction();
-	}
-
-	@Override
-	public void action() {
-		Sound.beep();
-		Delay.msDelay(1000);
-		System.out.println("Motor rotate action");
-		friendMove.setInAction(true);
-
-		StateRotate state = friendMove.getStateRotate();
-		System.out.println("move action state: " + state);
-
-		int randomInt = (int) (3 * Math.random());
-		int num1 = randomInt;
-
-		if (num1 == 0) {
-			state = StateRotate.CLOCKWISE;
-		} else if (num1 == 1) {
-			state = StateRotate.ANTICLOCKWISE;
-		} else if (num1 == 2) {
-			state = StateRotate.UTURN;
-		} else {
-			state = StateRotate.PAUSE;
-		}
-
+	public void run(StateRotate state) {
 		switch (state) {
 		case CLOCKWISE:
 			System.out.println("Motor rotate clockwise");
 			rotate();
-			Delay.msDelay(3000);
 			break;
 
 		case ANTICLOCKWISE:
 			System.out.println("Motor rotate anticlockwise");
 			setRotate(-1);
 			rotate();
-			Delay.msDelay(3000);
 			break;
 
 		case UTURN:
 			System.out.println("Motor rotate uturn");
 			setRotate(2);
 			rotate();
-			Delay.msDelay(3000);
 			break;
 
 		case PAUSE:
@@ -76,11 +45,6 @@ public class BehaviourMotorRotate implements Behavior {
 			System.out.println("Motor rotate pause");
 			break;
 		}
-	}
-
-	@Override
-	public void suppress() {
-		// TODO Auto-generated method stub
 	}
 
 	public void setRotate(int times) {

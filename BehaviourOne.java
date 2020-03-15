@@ -5,7 +5,6 @@ import lejos.utility.Delay;
 public class BehaviourOne implements Behavior {
 	private FriendOne friendOne;
 	private FriendMove friendMove;
-	private int suppresscount = 0;
 	
 	public BehaviourOne(FriendOne friendOne, FriendMove friendMove) {
 		this.friendOne = friendOne;
@@ -14,32 +13,40 @@ public class BehaviourOne implements Behavior {
 	
 	@Override
 	public boolean takeControl() {
-		return friendOne.getStateAction();
+		return friendOne.getStateAction() && !friendMove.getInActionMove();
 	}
 
 	@Override
 	public void action() {
-		Sound.buzz();
-		friendMove.setStateRotate(StateRotate.CLOCKWISE);
 		Delay.msDelay(1000);
-		System.out.println("friend move in action: " + friendMove.getInAction());
-		while (friendMove.getInAction()) {}
-		friendMove.setStateRotate(StateRotate.UTURN);
+		Sound.buzz();
+		
+		int suppresscount = friendOne.getStateActionCount();
+		
+		if (suppresscount % 2 == 0) {
+			friendMove.setTotalRotations(StateRotate.UTURN);
+			friendMove.setStateMoveAction(StateMoveAction.LEFT);
+			friendMove.setInAction(true);
+		} else {
+			friendMove.setTotalRotations(StateRotate.CLOCKWISE);
+			friendMove.setStateMoveAction(StateMoveAction.LEFT);
+			friendMove.setInAction(true);
+		}
+		
+		System.out.println("statemoveaction + " + friendMove.getStateMoveAction());
+
 		
 		
-		
-		
-		
-		friendOne.setStateActionCount(friendOne.getStateActionCount() + 1);
 		suppresscount++;
+		friendOne.setStateActionCount(suppresscount);
+		
 		System.out.println("behaviour one supress count: " + suppresscount);
-		if (friendOne.getStateActionCount() == 10) {
+		if (suppresscount == 10) {
 			friendOne.setStateAction(false);
 		}
 	}
 
 	@Override
-	public void suppress() {
-	}
+	public void suppress() { }
 
 }
