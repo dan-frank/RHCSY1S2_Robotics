@@ -2,11 +2,11 @@ import lejos.hardware.Sound;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
-public class BehaviourScan implements Behavior {
+public class BehaviourScanController implements Behavior {
 	private FriendCube friendCube;
 	private FriendMove friendMove;
 	
-	public BehaviourScan(FriendCube friendCube, FriendMove friendMove) {
+	public BehaviourScanController(FriendCube friendCube, FriendMove friendMove) {
 		this.friendCube = friendCube;
 		this.friendMove = friendMove;
 	}
