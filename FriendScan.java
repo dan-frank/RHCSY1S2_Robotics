@@ -5,6 +5,7 @@ import lejos.hardware.port.MotorPort;
 
 public class FriendScan {
 	private StateScan stateScan;
+	private StateMoveColourMotor stateMoveColourMotor;
 	private boolean inAction;
 	private int actionStep;
 	
@@ -16,12 +17,11 @@ public class FriendScan {
 		this.actionStep = actionStep;
 	}
 
-	private final BaseRegulatedMotor motorFlip = new EV3LargeRegulatedMotor(MotorPort.B);
-	private final BaseRegulatedMotor motorRotate = new EV3LargeRegulatedMotor(MotorPort.C);
 	private final BaseRegulatedMotor motorColour = new EV3MediumRegulatedMotor(MotorPort.A);
 	
 	public FriendScan() {
-		this.stateScan = stateScan.DONTREAD;
+		this.stateMoveColourMotor = StateMoveColourMotor.BACK;
+		this.stateScan = StateScan.DONTREAD;
 		this.inAction = false;
 		this.actionStep = 0;
 	}
@@ -42,15 +42,16 @@ public class FriendScan {
 		this.inAction = inAction;
 	}
 
-	public BaseRegulatedMotor getMotorFlip() {
-		return motorFlip;
-	}
-
-	public BaseRegulatedMotor getMotorRotate() {
-		return motorRotate;
-	}
 
 	public BaseRegulatedMotor getMotorColour() {
 		return motorColour;
+	}
+
+	public StateMoveColourMotor getStateMoveColourMotor() {
+		return stateMoveColourMotor;
+	}
+
+	public void setStateMoveColourMotor(StateMoveColourMotor stateMoveColourMotor) {
+		this.stateMoveColourMotor = stateMoveColourMotor;
 	}
 }
