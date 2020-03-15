@@ -4,8 +4,6 @@ public class MotorRotate {
 
 	private BaseRegulatedMotor m;
 
-	private FriendMove friendMove;
-
 	private final float speedDefault = 360f;
 	private final int ninetyDegrees = 270;
 
@@ -13,7 +11,6 @@ public class MotorRotate {
 	private int rotate;
 
 	public MotorRotate(FriendMove friendMove) {
-		this.friendMove = friendMove;
 		this.m = friendMove.getMotorRotate();
 		this.speed = speedDefault;
 		this.rotate = ninetyDegrees;
