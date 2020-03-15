@@ -18,7 +18,6 @@ public class TestMain {
 		
 		friendCube.setStateCube(StateCube.READ);
 		friendCube.setScrambledCube("DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU");
-		friendCube.setSolvedCube(new String[] { "L", "U", "D", "L", "R'", "F2", "B'" });
 		Delay.msDelay(1000);
 		System.out.println("Rube made fake friends...");
 

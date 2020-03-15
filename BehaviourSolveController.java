@@ -23,11 +23,9 @@ public class BehaviourSolveController implements Behavior {
 		String solvedString = simpleSolve(friendCube.getScrambledCube());
 		System.out.println("solvedString:" + solvedString);
 		String[] solvedCube = new String[0];
-		solvedCube = solvedString.split(" ");
-		
-		for (int i = 0; i < solvedCube.length; i++) {
-			System.out.println("sc[" + i + "]:" + solvedCube[i]);
-		}
+		solvedCube = solvedString.split("\\s+");
+
+		friendCube.setSolvedCube(solvedCube);
 		
 		friendCube.setStateCube(StateCube.SOLVED);
 		Delay.msDelay(1000);
