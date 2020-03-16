@@ -18,7 +18,7 @@ public class BehaviourRunningController implements Behavior {
 	@Override
 	public boolean takeControl() {
 		distance.fetchSample(sample, 0);
-		return sample[0] < 0.15f && sample[0] > 0.5f;
+		return (sample[0] < 0.15f && friendCube.getStateCubeExists() == StateCubeExists.NOCUBE) && sample[0] > 0.5f;
 	}
 
 	@Override
