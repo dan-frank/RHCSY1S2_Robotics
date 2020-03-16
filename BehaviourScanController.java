@@ -14,7 +14,8 @@ public class BehaviourScanController implements Behavior {
 	private EV3ColorSensor colourSensor;
 	private float[][][] scrambledCubeArray;
 	private SampleProvider sampleProvider;
-	private float[] sample;
+	private float[][] cubeValues;
+	private String cube;
 
 	public BehaviourScanController(FriendCube friendCube, FriendMove friendMove, FriendScan friendScan,
 			MotorColour motorColour, MotorRotate motorRotate, MotorFlip motorFlip, EV3ColorSensor colourSensor) {
@@ -26,8 +27,10 @@ public class BehaviourScanController implements Behavior {
 		this.motorFlip = motorFlip;
 		this.colourSensor = colourSensor;
 		this.scrambledCubeArray = FriendScan.getScrambledCubeArray();
-		this.sampleProvider = colourSensor.getRGBMode();
-		this.sample = new float[3];
+		this.sampleProvider = colourSensor.getRedMode();
+		this.sideValues = new float[9];
+		this.cubeValues = new float[6][9];
+		this.cube = "";
 	}
 
 	@Override
@@ -113,6 +116,35 @@ public class BehaviourScanController implements Behavior {
 
 	@Override
 	public void suppress() {
+	}
+	
+	public String valueConverter(float[][] cubeValues) {
+//			**U**: Upper/Top   = White  (0.85)
+//			**L**: Left        = Green  (0.22)
+//			**F**: Front       = Red    (0.51)
+//			**R**: Right       = Blue   (0.13)
+//			**B**: Back        = Orange (0.67)
+//			**D**: Down/Bottom = Yellow (0.72)
+		
+		for (float[] sideValues : cubeValues) {
+			for (float square : sideValues) {
+				if (square >= 0.80f && square <= 1.00f) {
+					cube += "U";
+				} else if (square >= 0.20f && square <= 0.30f) {
+					cube += "L";
+				} else if (square >= 0.45f && square <= 0.55f) {
+					cube += "F";
+				} else if (square >= 0.10f && square <= 0.20f) {
+					cube += "R";
+				} else if (square >= 0.60f && square <= 0.70f) {
+					cube += "B";
+				} else if (square >= 0.70f && square <= 0.80f) {
+					cube += "D";
+				}
+			}
+		}
+		
+		return cube;
 	}
 
 }
