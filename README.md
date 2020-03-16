@@ -32,9 +32,54 @@
 - [ ] Store colours in
 - [x] Link [cs0x7f's rubiks algorith](https://github.com/cs0x7f/min2phase)
 - [ ] Read if cube is put in
-- [ ] Program cube moves
+- [x] Program cube moves
 - [ ] Show Rube's face while solving Cube
+- [ ] Make everything a behaviour
 
+### Behaviours
+
+- MotorColour
+- MotorFlip
+- MotorRotate
+- Scan
+- Solve
+- Move
+
+#### Friends
+
+- Cube (Scan, Solve, Move)
+	- Variable
+		- Scrambled Cube
+		- Solved Moves
+	- States
+		- unread (Scan)
+		- read (Solve)
+		- solved (Move)
+		- complete (Special move)
+- Colour (Scan, MotorColour)
+	- States 
+		- Move motor colour
+			- Sub-states
+				- Centre
+				- Edge
+				- Corner
+				- Back
+		- Read sensor colour
+			- Sub-states
+				- Read
+				- Don't Read
+- MoveCube (Scan, Move, MotorRotate, MotorFlip)
+	- States
+		- Move motor rotate
+			- Sub-states
+				- Clockwise
+				- Anti-clockwise
+				- U-turn
+		- Move motor flip
+			- Sub-states
+				- Pin
+				- Retract
+				- Flip
 
 ### Colours Array
 
@@ -74,17 +119,17 @@
 
 #### Our cube will be need to placed in the cage to match the following key:
 
-**U**: Upper/Top = White
+**U**: Upper/Top = White (0.85)
 
-**L** : Left = Green
+**L** : Left = Green (0.22)
 
-**F**: Front = Red
+**F**: Front = Red (0.51)
 
-**R**: Right = Blue
+**R**: Right = Blue (0.13)
 
-**B**: Back = Orange
+**B**: Back = Orange (0.67)
 
-**D**: Down/Bottom = Yellow
+**D**: Down/Bottom = Yellow (0.72)
 
 #### We store the cube into the following array:
 
@@ -147,7 +192,7 @@ Moves to solve: "L  "
 
 `"DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU"`
 
-Moves to solve: "U  L2 R2 U2 B2 D' R2 D  B  D2 L' R  U  F' D  F  D' R  F2"
+Moves to solve: "U  L2 R2 U2 B2 D' R2 D  B  D2 L' R  U  F' D  F  D' R  F2 "
 
 ## Checkpoints
 

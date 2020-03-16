@@ -15,7 +15,7 @@ public class FollowLine {
 	public static void main(String[] args) {
 		float[] level = new float[2]; // A sound sample is just one number
 		EV3ColorSensor sensor = new EV3ColorSensor(SensorPort.S3);
-		SampleProvider light = sensor.getRedMode();
+		SampleProvider light  = sensor.getRedMode();
 
 		float maxLightLevel = 0;
 		float minLightLevel = 1;
