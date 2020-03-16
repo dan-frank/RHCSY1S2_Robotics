@@ -13,7 +13,7 @@ public class BehaviourMoveController implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return friendCube.getStateCube() == StateCube.SOLVED && !friendMove.getInActionMove();
+		return friendCube.getStateCube() == StateCube.SOLVED && !friendMove.getInActionMove() && friendCube.getStateCubeExists() == StateCubeExists.CUBE;
 	}
 
 	@Override

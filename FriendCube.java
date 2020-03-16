@@ -6,15 +6,25 @@
  */
 
 public class FriendCube {
+	private StateCubeExists stateCubeExists;
 	private StateCube stateCube;
 	private String scrambledCube;
 	private String[] solvedCube;
 	private int solvedCubePos;
 	
 	public FriendCube() {
+		stateCubeExists = StateCubeExists.NOCUBE;
 		stateCube = StateCube.UNREAD;
 		solvedCube = new String[1];
 		solvedCubePos = 0;
+	}
+	
+	public void setStateCubeExists(StateCubeExists stateCubeExists) {
+		this.stateCubeExists = stateCubeExists;
+	}
+	
+	public StateCubeExists getStateCubeExists() {
+		return stateCubeExists;
 	}
 	
 	public void setStateCube(StateCube stateCube) {

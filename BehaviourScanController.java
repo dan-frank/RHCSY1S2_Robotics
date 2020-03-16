@@ -32,7 +32,7 @@ public class BehaviourScanController implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return friendCube.getStateCube() == StateCube.UNREAD && !friendMove.getInActionMove();
+		return friendCube.getStateCube() == StateCube.UNREAD && !friendMove.getInActionMove() && friendCube.getStateCubeExists() == StateCubeExists.CUBE;
 	}
 
 	@Override

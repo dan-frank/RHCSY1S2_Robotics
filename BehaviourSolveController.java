@@ -12,7 +12,7 @@ public class BehaviourSolveController implements Behavior {
 	
 	@Override
 	public boolean takeControl() {
-		return friendCube.getStateCube() == StateCube.READ;
+		return friendCube.getStateCube() == StateCube.READ && friendCube.getStateCubeExists() == StateCubeExists.CUBE;
 	}
 
 	@Override
