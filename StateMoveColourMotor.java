@@ -1,7 +1,13 @@
 
 public enum StateMoveColourMotor {
-	CENTRE, 
-	EDGE, 
-	CORNER, 
+	CORNER0,
+	EDGE1,
+	CORNER2,
+	EDGE3,
+	CENTRE4,
+	EDGE5,
+	CORNER6,
+	EDGE7,
+	CORNER8,
 	BACK
 }

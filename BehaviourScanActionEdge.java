@@ -12,12 +12,12 @@ public class BehaviourScanActionEdge implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return friendScan.getStateMoveColourMotor()==StateMoveColourMotor.EDGE;
+		return friendScan.getStateMoveColourMotor()==StateMoveColourMotor.EDGE5;
 	}
 
 	@Override
 	public void action() {
-	     motorColour.run(StateMoveColourMotor.EDGE);
+	     motorColour.run(StateMoveColourMotor.EDGE5);
 
 	}
 

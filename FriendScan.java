@@ -1,4 +1,5 @@
 import lejos.hardware.motor.BaseRegulatedMotor;
+import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 
@@ -27,7 +28,7 @@ public class FriendScan {
 	}
 	
 	public void setActionStep2(int actionStep2) {
-		this.actionStep2 = actionStep;
+		this.actionStep2 = actionStep2;
 	}
 
 	private final BaseRegulatedMotor motorColour = new EV3MediumRegulatedMotor(MotorPort.A);

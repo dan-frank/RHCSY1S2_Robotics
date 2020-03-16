@@ -20,7 +20,7 @@ public class GucciMain {
 		MotorColour motorColour = new MotorColour(friendScan);
 		
 		EV3ColorSensor colourSensor = new EV3ColorSensor(SensorPort.S2);
-		EV3UltrasonicSensor sensorUltrasonic = new EV3UltrasonicSensor(SensorPort.S1);
+		//EV3UltrasonicSensor sensorUltrasonic = new EV3UltrasonicSensor(SensorPort.S1);
 		Delay.msDelay(1000);
 		System.out.println("Rube made some friends along the way...");
 		
@@ -28,7 +28,7 @@ public class GucciMain {
 		Delay.msDelay(1000);
 		System.out.println("Rube made fake friends...");
 		
-		Behavior runningController = new BehaviourRunningController(friendCube, sensorUltrasonic);
+//		Behavior runningController = new BehaviourRunningController(friendCube, sensorUltrasonic);
 		
 		Behavior scanController = new BehaviourScanController(friendCube, friendMove, friendScan, motorColour, motorRotate, motorFlip, colourSensor);
 		Behavior scanActionCenter = new BehaviourScanActionCenter(friendScan, motorColour);
@@ -44,8 +44,10 @@ public class GucciMain {
 		Behavior moveActionBack = new BehaviourMoveActionBack(friendMove, motorRotate, motorFlip);
 		Delay.msDelay(1000);
 		System.out.println("Rube developed behaviours...");
+		
+		//Reset all Motor Positions
 
-		Behavior[] behaviours = new Behavior[] { scanController, scanActionCenter, solveControler, moveController, moveActionUp, moveActionDown, moveActionLeft, moveActionRight, moveActionFront, moveActionBack, runningController };
+		Behavior[] behaviours = new Behavior[] { scanController, scanActionCenter, solveControler, moveController, moveActionUp, moveActionDown, moveActionLeft, moveActionRight, moveActionFront, moveActionBack, }; //runningController };
 		Arbitrator arby = new Arbitrator(behaviours);
 		Delay.msDelay(1000);
 		System.out.println("Rube met arby...");

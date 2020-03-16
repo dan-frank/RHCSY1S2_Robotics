@@ -12,12 +12,12 @@ public class BehaviourScanActionCorner implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return friendScan.getStateMoveColourMotor()==StateMoveColourMotor.CORNER;
+		return friendScan.getStateMoveColourMotor()==StateMoveColourMotor.CORNER2;
 	}
 
 	@Override
 	public void action() {
-	     motorColour.run(StateMoveColourMotor.CORNER);
+	     motorColour.run(StateMoveColourMotor.CORNER2);
 
 	}
 
