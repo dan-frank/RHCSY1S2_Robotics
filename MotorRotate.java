@@ -31,6 +31,10 @@ public class MotorRotate {
 			setRotate(2);
 			rotate();
 			break;
+			
+		case HALF:
+			rotateHalf();
+			break;
 
 		case PAUSE:
 		default:

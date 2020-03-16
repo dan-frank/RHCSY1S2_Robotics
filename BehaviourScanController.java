@@ -59,43 +59,43 @@ public class BehaviourScanController implements Behavior {
 //				scrambledCubeArray[0][actionStep] = sample;
 				break;
 			case 2:
-				motorRotate.run(StateRotate.CLOCKWISE);
+				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER);
 //				sampleProvider.fetchSample(sample, 0);
 //				scrambledCubeArray[0][actionStep] = sample;
 				break;
 			case 3:
-				motorRotate.run(StateRotate.CLOCKWISE);
+				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE);
 //				sampleProvider.fetchSample(sample, 0);
 //				scrambledCubeArray[0][actionStep] = sample;
 				break;
 			case 4:
-				motorRotate.run(StateRotate.CLOCKWISE);
+				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER);
 //				sampleProvider.fetchSample(sample, 0);
 //				scrambledCubeArray[0][actionStep] = sample;
 				break;
 			case 5:
-				motorRotate.run(StateRotate.CLOCKWISE);
+				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE);
 //				sampleProvider.fetchSample(sample, 0);
 //				scrambledCubeArray[0][actionStep] = sample;
 				break;
 			case 6:
-				motorRotate.run(StateRotate.CLOCKWISE);
+				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER);
 //				sampleProvider.fetchSample(sample, 0);
 //				scrambledCubeArray[0][actionStep] = sample;
 				break;
 			case 7:
-				motorRotate.run(StateRotate.CLOCKWISE);
+				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE);
 //				sampleProvider.fetchSample(sample, 0);
 //				scrambledCubeArray[0][actionStep] = sample;
 				break;
 			case 8:
-				motorRotate.run(StateRotate.CLOCKWISE);
+				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER);
 //				sampleProvider.fetchSample(sample, 0);
 //				scrambledCubeArray[0][actionStep] = sample;

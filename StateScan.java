@@ -1,5 +1,6 @@
 
 public enum StateScan {
 	READ, 
-	DONTREAD
+	DONTREAD,
+	
 }

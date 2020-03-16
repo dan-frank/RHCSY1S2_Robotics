@@ -1,5 +1,4 @@
 
-
 public enum StateMoveColourMotor {
 	CENTRE, 
 	EDGE, 

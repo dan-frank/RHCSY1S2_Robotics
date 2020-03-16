@@ -4,5 +4,6 @@ enum StateRotate {
 	PAUSE,
 	CLOCKWISE,
 	ANTICLOCKWISE,
-	UTURN
+	UTURN,
+	HALF
 }
