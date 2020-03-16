@@ -4,7 +4,7 @@ import lejos.hardware.port.MotorPort;
 
 public class MotorColour {
 	
-	private final BaseRegulatedMotor m = new EV3MediumRegulatedMotor(MotorPort.A);
+	private final BaseRegulatedMotor m;
 	
 	private int posExtendFull = -690,
 			posEdge = -560,
@@ -15,6 +15,7 @@ public class MotorColour {
 	
 	public MotorColour(FriendScan friendScan) {
 		this.friendScan = friendScan;
+		this.m = friendScan.getMotorColour();
 	}
 
 	public void run(StateMoveColourMotor state) {

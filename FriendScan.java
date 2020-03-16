@@ -7,7 +7,9 @@ public class FriendScan {
 	private StateScan stateScan;
 	private StateMoveColourMotor stateMoveColourMotor;
 	private boolean inAction;
-	private int actionStep;
+	private int actionStep = 0;
+	private int actionStep2 = 0;
+	private static float[][][] scrambledCubeArray = new float[6][9][3];
 	
 	public int getActionStep() {
 		return actionStep;
@@ -15,6 +17,18 @@ public class FriendScan {
 
 	public void setActionStep(int actionStep) {
 		this.actionStep = actionStep;
+	}
+	
+	public static float[][][] getScrambledCubeArray() {
+		return scrambledCubeArray;
+	}
+	
+	public int getActionStep2() {
+		return actionStep2;
+	}
+	
+	public void setActionStep2(int actionStep2) {
+		this.actionStep2 = actionStep;
 	}
 
 	private final BaseRegulatedMotor motorColour = new EV3MediumRegulatedMotor(MotorPort.A);
@@ -40,6 +54,10 @@ public class FriendScan {
 
 	public void setInAction(boolean inAction) {
 		this.inAction = inAction;
+	}
+	
+	public void resetActionStep() {
+		this.actionStep = 0;
 	}
 
 
