@@ -15,35 +15,23 @@ public class BehaviourMoveActionDown implements Behavior {
 	
 	@Override
 	public boolean takeControl() {
-		return friendMove.getStateMoveAction() == StateMoveAction.UP;
+		return friendMove.getStateMoveAction() == StateMoveAction.DOWN;
 	}
 
 	@Override
 	public void action() {
 		int actionStep = friendMove.getActionStep();
 		
-		if (actionStep < 7 && actionStep >= 0) {
+		if (actionStep < 3 && actionStep >= 0) {
 			switch (actionStep) {
 			case 0:
-				motorFlip.run(StateFlip.FLIP);
-				break;
-			case 1:
-				motorFlip.run(StateFlip.FLIP);
-				break;
-			case 2:
 				motorFlip.run(StateFlip.PIN);
 				break;
-			case 3:
+			case 1:
 				motorRotate.run(friendMove.getTotalRotations());
 				break;
-			case 4:
+			case 2:
 				motorFlip.run(StateFlip.RETRACT);
-				break;
-			case 5:
-				motorFlip.run(StateFlip.FLIP);
-				break;
-			case 6:
-				motorFlip.run(StateFlip.FLIP);
 				break;
 			}
 			
