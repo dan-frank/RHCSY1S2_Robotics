@@ -1,6 +1,4 @@
 import lejos.hardware.motor.BaseRegulatedMotor;
-import lejos.hardware.motor.EV3MediumRegulatedMotor;
-import lejos.hardware.port.MotorPort;
 
 public class MotorColour {
 	
@@ -11,10 +9,7 @@ public class MotorColour {
 			posCorner = -510,
 			posStart = 0;
 	
-	private FriendScan friendScan;
-	
 	public MotorColour(FriendScan friendScan) {
-		this.friendScan = friendScan;
 		this.m = friendScan.getMotorColour();
 	}
 
