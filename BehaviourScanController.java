@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import lejos.hardware.Sound;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.SampleProvider;
@@ -13,7 +16,8 @@ public class BehaviourScanController implements Behavior {
 	private MotorFlip motorFlip;
 	private EV3ColorSensor colourSensor;
 	private SampleProvider sampleProvider;
-	private float[][] cubeValues;
+	private String[][] cubeValues;
+	private float[] squareValue;
 	private String cube;
 
 	public BehaviourScanController(FriendCube friendCube, FriendMove friendMove, FriendScan friendScan,
@@ -26,7 +30,8 @@ public class BehaviourScanController implements Behavior {
 		this.motorFlip = motorFlip;
 		this.colourSensor = colourSensor;
 		this.sampleProvider = colourSensor.getRedMode();
-		this.cubeValues = new float[6][9];
+		this.cubeValues = new String[6][9];
+		this.squareValue = new float[3];
 		this.cube = "";
 	}
 
@@ -84,46 +89,74 @@ public class BehaviourScanController implements Behavior {
 			switch (actionStep) {
 			case 0:
 				motorColour.run(StateMoveColourMotor.CENTRE4);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 4);
+				
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+			
+				cubeValues[actionStep2][4] = valueConverter(squareValue);
 				break;
 			case 1:
 				motorColour.run(StateMoveColourMotor.EDGE5);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 7);
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+				cubeValues[actionStep2][7] = valueConverter(squareValue);
 				break;
 			case 2:
 				motorRotate.run(StateRotate.HALF);
-				motorColour.run(StateMoveColourMotor.CORNER2);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 8);
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+				cubeValues[actionStep2][8] = valueConverter(squareValue);
 				break;
 			case 3:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE1);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 5);
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+				cubeValues[actionStep2][5] = valueConverter(squareValue);
 				break;
 			case 4:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER0);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 2);
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+				cubeValues[actionStep2][2] = valueConverter(squareValue);
 				break;
 			case 5:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE3);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 1);
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+				cubeValues[actionStep2][1] = valueConverter(squareValue);
 				break;
 			case 6:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER6);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 0);
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+				cubeValues[actionStep2][0] = valueConverter(squareValue);
 				break;
 			case 7:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE7);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 3);
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+				cubeValues[actionStep2][3] = valueConverter(squareValue);
 				break;
 			case 8:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER8);
-				sampleProvider.fetchSample(cubeValues[actionStep2], 6);
+				sampleProvider.fetchSample(squareValue, 0);
+				sampleProvider.fetchSample(squareValue, 1);
+				sampleProvider.fetchSample(squareValue, 2);
+				cubeValues[actionStep2][6] = valueConverter(squareValue);
 				motorColour.run(StateMoveColourMotor.BACK);
 				motorRotate.run(StateRotate.HALF);
 				break;
@@ -141,6 +174,12 @@ public class BehaviourScanController implements Behavior {
 				motorFlip.run(StateFlip.FLIP);
 				motorRotate.run(StateRotate.ANTICLOCKWISE);
 				friendCube.setStateCube(StateCube.READ);
+				for (String[] side : cubeValues) {
+					for (String square : side) {
+						cube += square;
+					}
+				}
+				System.out.println(cube);
 			}
 		}
 	}
@@ -149,7 +188,7 @@ public class BehaviourScanController implements Behavior {
 	public void suppress() {
 	}
 
-	public String valueConverter(float[][] cubeValues) {
+	public String valueConverter(float[] squareValue) {
 //			**U**: Upper/Top   = White  (0.85)
 //			**L**: Left        = Green  (0.22)
 //			**F**: Front       = Red    (0.51)
@@ -157,23 +196,27 @@ public class BehaviourScanController implements Behavior {
 //			**B**: Back        = Orange (0.67)
 //			**D**: Down/Bottom = Yellow (0.72)
 
-		for (float[] sideValues : cubeValues) {
-			for (float square : sideValues) {
-				if (square >= 0.80f && square <= 1.00f) {
-					cube += "U";
-				} else if (square >= 0.20f && square <= 0.30f) {
-					cube += "L";
-				} else if (square >= 0.45f && square <= 0.55f) {
-					cube += "F";
-				} else if (square >= 0.10f && square <= 0.20f) {
-					cube += "R";
-				} else if (square >= 0.60f && square <= 0.70f) {
-					cube += "B";
-				} else if (square >= 0.70f && square <= 0.80f) {
-					cube += "D";
+		//for (float[] sideValues : cubeValues) {
+			//for (float square : sideValues) {
+		
+		float square = (squareValue[0] + squareValue[1] + squareValue[2])/3;
+				
+				if (square >= 0.74f && square < 0.84f) {
+					cube = "U";
+				} else if (square >= 0.15f && square < 0.25f) {
+					cube = "L";
+				} else if (square >= 0.55f && square < 0.61f) {
+					cube = "F";
+				} else if (square >= 0.09f && square < 0.15f) {
+					cube = "R";
+				} else if (square >= 0.00f && square < 0.009f) {
+					cube = "B";
+				} else if (square >= 0.61f && square < 0.79f) {
+					cube = "D";
 				}
-			}
-		}
+				System.out.println(cube);
+			//}
+		//}
 
 		return cube;
 	}
