@@ -74,9 +74,7 @@ public class BehaviourScanController implements Behavior {
 				motorFlip.run(StateFlip.FLIP);
 				motorFlip.run(StateFlip.FLIP);
 				break;
-
 			}
-			motorFlip.run(StateFlip.RETRACT);
 		}
 
 		if (actionStep < 9 && actionStep >= 0) {
