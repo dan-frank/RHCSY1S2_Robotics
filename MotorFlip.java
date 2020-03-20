@@ -18,7 +18,9 @@ public class MotorFlip {
 			break;
 			
 		case FLIP:
-			m.rotate(360);
+			m.rotate(180);
+			m.rotate(-90);
+			m.rotate(-90);
 			break;
 			
 		default:
