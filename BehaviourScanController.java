@@ -195,28 +195,24 @@ public class BehaviourScanController implements Behavior {
 //			**R**: Right       = Blue   (0.13)
 //			**B**: Back        = Orange (0.67)
 //			**D**: Down/Bottom = Yellow (0.72)
-
-		//for (float[] sideValues : cubeValues) {
-			//for (float square : sideValues) {
 		
 		float square = (squareValue[0] + squareValue[1] + squareValue[2])/3;
+		System.out.println(square);
 				
-				if (square >= 0.74f && square < 0.84f) {
-					cube = "U";
-				} else if (square >= 0.15f && square < 0.25f) {
-					cube = "L";
-				} else if (square >= 0.55f && square < 0.61f) {
-					cube = "F";
-				} else if (square >= 0.09f && square < 0.15f) {
-					cube = "R";
-				} else if (square >= 0.00f && square < 0.009f) {
-					cube = "B";
-				} else if (square >= 0.61f && square < 0.79f) {
-					cube = "D";
-				}
-				System.out.println(cube);
-			//}
-		//}
+		if (square >= 0.74f && square < 0.84f) {
+			cube = "U";
+		} else if (square >= 0.15f && square < 0.25f) {
+			cube = "L";
+		} else if (square >= 0.55f && square < 0.61f) {
+			cube = "F";
+		} else if (square >= 0.09f && square < 0.15f) {
+			cube = "R";
+		} else if (square >= 0.00f && square < 0.09f) {
+			cube = "B";
+		} else if (square >= 0.61f && square < 0.79f) {
+			cube = "D";
+		}
+		System.out.println(cube);
 
 		return cube;
 	}
