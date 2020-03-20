@@ -13,6 +13,7 @@ public class BehaviourScanController implements Behavior {
 	private MotorFlip motorFlip;
 	private SampleProvider sampleProvider;
 	private String[][] cubeValues;
+	private float[][] cubeFloats;
 	private float[] squareValue;
 	private String cube;
 
@@ -26,6 +27,7 @@ public class BehaviourScanController implements Behavior {
 		this.motorFlip = motorFlip;
 		this.sampleProvider = colourSensor.getRedMode();
 		this.cubeValues = new String[6][9];
+		this.cubeFloats = new float[6][9];
 		this.squareValue = new float[5];
 		this.cube = "";
 	}
@@ -76,7 +78,6 @@ public class BehaviourScanController implements Behavior {
 				break;
 
 			}
-			motorFlip.run(StateFlip.PIN);
 			motorFlip.run(StateFlip.RETRACT);
 		}
 
@@ -185,12 +186,14 @@ public class BehaviourScanController implements Behavior {
 				motorFlip.run(StateFlip.FLIP);
 				motorRotate.run(StateRotate.ANTICLOCKWISE);
 				friendCube.setStateCube(StateCube.READ);
+				int i = 0;
 				for (String[] side : cubeValues) {
 					for (String square : side) {
 						cube += square;
+						i++;
 					}
 				}
-				System.out.println(cube);
+				System.out.println(cube + " , " + i);
 			}
 		}
 	}
@@ -200,14 +203,14 @@ public class BehaviourScanController implements Behavior {
 	}
 
 	public String valueConverter(float[] squareValue) {
-//			**U**: Upper/Top   = White  (0.85)
-//			**L**: Left        = Green  (0.22)
-//			**F**: Front       = Red    (0.51)
-//			**R**: Right       = Blue   (0.13)
-//			**B**: Back        = Orange (0.67)
-//			**D**: Down/Bottom = Yellow (0.72)
+//			**U**: Upper/Top   = White  (0.79)
+//			**L**: Left        = Green  (0.21)
+//			**F**: Front       = Red    (0.59)
+//			**R**: Right       = Blue   (0.10)
+//			**B**: Back        = Black 	(0.08)
+//			**D**: Down/Bottom = Yellow (0.66)
 		
-		float square = (squareValue[0] + squareValue[1] + squareValue[2])/5;
+		float square = (squareValue[0] + squareValue[1] + squareValue[2] + squareValue[3] + squareValue[4])/5;
 		System.out.println(square);
 				
 		if (square >= 0.74f && square < 1.0f) {
