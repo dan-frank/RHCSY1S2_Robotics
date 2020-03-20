@@ -208,8 +208,8 @@ public class BehaviourScanController implements Behavior {
 				System.out.println(cube + " , " + i);
 				
 				if (U > 10 || L > 10 || F > 10 || R  > 10 || B > 10 || D > 10) {
-					actionStep = 0;
-					actionStep2 = 0;
+					friendScan.setActionStep(0);
+					friendScan.setActionStep2(0);
 				}
 				else {
 					friendCube.setScrambledCube(cube);
