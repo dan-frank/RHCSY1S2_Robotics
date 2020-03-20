@@ -1,5 +1,6 @@
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
@@ -10,24 +11,29 @@ public class GucciMain {
 		Delay.msDelay(1000);
 		System.out.println("Rube starts his long and arduous journey...");
 
+		// Init friends
 		FriendCube friendCube = new FriendCube();
 		FriendMove friendMove = new FriendMove();
 		FriendScan friendScan = new FriendScan();
 
+		// Init motors
 		MotorRotate motorRotate = new MotorRotate(friendMove);
 		MotorFlip motorFlip = new MotorFlip(friendMove);
 		MotorColour motorColour = new MotorColour(friendScan);
 		
+		// Init sensors
 		EV3ColorSensor colourSensor = new EV3ColorSensor(SensorPort.S2);
-		//EV3UltrasonicSensor sensorUltrasonic = new EV3UltrasonicSensor(SensorPort.S1);
+		EV3UltrasonicSensor sensorUltrasonic = new EV3UltrasonicSensor(SensorPort.S1);
 		Delay.msDelay(1000);
 		System.out.println("Rube made some friends along the way...");
 		
+		// TODO remove fake data
 		friendCube.setScrambledCube("DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU");
 		Delay.msDelay(1000);
 		System.out.println("Rube made fake friends...");
 		
-//		Behavior runningController = new BehaviourRunningController(friendCube, sensorUltrasonic);
+		// Init behaviours
+		Behavior runningController = new BehaviourRunningController(friendCube, sensorUltrasonic);
 		
 		Behavior scanController = new BehaviourScanController(friendCube, friendMove, friendScan, motorColour, motorRotate, motorFlip, colourSensor);
 		Behavior scanActionCenter = new BehaviourScanActionCenter(friendScan, motorColour);
@@ -44,9 +50,11 @@ public class GucciMain {
 		Delay.msDelay(1000);
 		System.out.println("Rube developed behaviours...");
 		
-		//Reset all Motor Positions
+		// TODO Reset all Motor Positions
+		
 
-		Behavior[] behaviours = new Behavior[] { scanController, scanActionCenter, solveControler, moveController, moveActionUp, moveActionDown, moveActionLeft, moveActionRight, moveActionFront, moveActionBack, }; //runningController };
+		// Init arbitrator
+		Behavior[] behaviours = new Behavior[] { scanController, scanActionCenter, solveControler, moveController, moveActionUp, moveActionDown, moveActionLeft, moveActionRight, moveActionFront, moveActionBack, runningController };
 		Arbitrator arby = new Arbitrator(behaviours);
 		Delay.msDelay(1000);
 		System.out.println("Rube met arby...");

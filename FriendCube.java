@@ -13,7 +13,7 @@ public class FriendCube {
 	private int solvedCubePos;
 	
 	public FriendCube() {
-		stateCubeExists = StateCubeExists.CUBE;
+		stateCubeExists = StateCubeExists.NOCUBE;
 		stateCube = StateCube.UNREAD;
 		solvedCube = new String[1];
 		solvedCubePos = 0;

@@ -18,12 +18,13 @@ public class BehaviourRunningController implements Behavior {
 	@Override
 	public boolean takeControl() {
 		distance.fetchSample(sample, 0);
-		return (sample[0] < 0.15f && friendCube.getStateCubeExists() == StateCubeExists.NOCUBE) && sample[0] > 0.5f;
+		System.out.println("uc:" + sample[0]);
+		return (sample[0] < 0.2f && sample[0] != 0.0f && friendCube.getStateCubeExists() == StateCubeExists.NOCUBE) || sample[0] > 0.3f;
 	}
 
 	@Override
 	public void action() {
-		if (sample[0] < 0.15f) {
+		if (sample[0] < 0.2f) {
 			friendCube.setStateCubeExists(StateCubeExists.CUBE);
 		} else {
 			friendCube.setStateCubeExists(StateCubeExists.NOCUBE);
