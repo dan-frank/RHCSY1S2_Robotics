@@ -1,6 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 import lejos.hardware.Sound;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.SampleProvider;
@@ -14,7 +11,6 @@ public class BehaviourScanController implements Behavior {
 	private MotorColour motorColour;
 	private MotorRotate motorRotate;
 	private MotorFlip motorFlip;
-	private EV3ColorSensor colourSensor;
 	private SampleProvider sampleProvider;
 	private String[][] cubeValues;
 	private float[] squareValue;
@@ -28,7 +24,6 @@ public class BehaviourScanController implements Behavior {
 		this.motorColour = motorColour;
 		this.motorRotate = motorRotate;
 		this.motorFlip = motorFlip;
-		this.colourSensor = colourSensor;
 		this.sampleProvider = colourSensor.getRedMode();
 		this.cubeValues = new String[6][9];
 		this.squareValue = new float[3];
