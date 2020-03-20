@@ -84,11 +84,11 @@ public class BehaviourScanController implements Behavior {
 			switch (actionStep) {
 			case 0:
 				motorColour.run(StateMoveColourMotor.CENTRE4);
-				
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
-			
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][4] = valueConverter(squareValue);
 				break;
 			case 1:
@@ -96,6 +96,8 @@ public class BehaviourScanController implements Behavior {
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][7] = valueConverter(squareValue);
 				break;
 			case 2:
@@ -103,6 +105,8 @@ public class BehaviourScanController implements Behavior {
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][8] = valueConverter(squareValue);
 				break;
 			case 3:
@@ -111,6 +115,8 @@ public class BehaviourScanController implements Behavior {
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][5] = valueConverter(squareValue);
 				break;
 			case 4:
@@ -119,6 +125,8 @@ public class BehaviourScanController implements Behavior {
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][2] = valueConverter(squareValue);
 				break;
 			case 5:
@@ -127,6 +135,8 @@ public class BehaviourScanController implements Behavior {
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][1] = valueConverter(squareValue);
 				break;
 			case 6:
@@ -135,6 +145,8 @@ public class BehaviourScanController implements Behavior {
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][0] = valueConverter(squareValue);
 				break;
 			case 7:
@@ -143,6 +155,8 @@ public class BehaviourScanController implements Behavior {
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][3] = valueConverter(squareValue);
 				break;
 			case 8:
@@ -151,6 +165,8 @@ public class BehaviourScanController implements Behavior {
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
+				sampleProvider.fetchSample(squareValue, 3);
+				sampleProvider.fetchSample(squareValue, 4);
 				cubeValues[actionStep2][6] = valueConverter(squareValue);
 				motorColour.run(StateMoveColourMotor.BACK);
 				motorRotate.run(StateRotate.HALF);
@@ -191,10 +207,10 @@ public class BehaviourScanController implements Behavior {
 //			**B**: Back        = Orange (0.67)
 //			**D**: Down/Bottom = Yellow (0.72)
 		
-		float square = (squareValue[0] + squareValue[1] + squareValue[2])/3;
+		float square = (squareValue[0] + squareValue[1] + squareValue[2])/5;
 		System.out.println(square);
 				
-		if (square >= 0.74f && square < 0.84f) {
+		if (square >= 0.74f && square < 1.0f) {
 			cube = "U";
 		} else if (square >= 0.15f && square < 0.25f) {
 			cube = "L";
