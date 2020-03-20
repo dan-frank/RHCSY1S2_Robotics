@@ -13,7 +13,6 @@ public class BehaviourScanController implements Behavior {
 	private MotorFlip motorFlip;
 	private SampleProvider sampleProvider;
 	private String[][] cubeValues;
-	private float[][] cubeFloats;
 	private float[] squareValue;
 	private String cube;
 
@@ -27,7 +26,6 @@ public class BehaviourScanController implements Behavior {
 		this.motorFlip = motorFlip;
 		this.sampleProvider = colourSensor.getRedMode();
 		this.cubeValues = new String[6][9];
-		this.cubeFloats = new float[6][9];
 		this.squareValue = new float[5];
 		this.cube = "";
 	}
@@ -84,7 +82,7 @@ public class BehaviourScanController implements Behavior {
 		if (actionStep < 9 && actionStep >= 0) {
 			switch (actionStep) {
 			case 0:
-				motorColour.run(StateMoveColourMotor.CENTRE4);
+				motorColour.run(StateMoveColourMotor.CENTRE);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
@@ -93,7 +91,7 @@ public class BehaviourScanController implements Behavior {
 				cubeValues[actionStep2][4] = valueConverter(squareValue);
 				break;
 			case 1:
-				motorColour.run(StateMoveColourMotor.EDGE5);
+				motorColour.run(StateMoveColourMotor.EDGE);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
@@ -103,6 +101,7 @@ public class BehaviourScanController implements Behavior {
 				break;
 			case 2:
 				motorRotate.run(StateRotate.HALF);
+				motorColour.run(StateMoveColourMotor.CORNER);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
@@ -112,7 +111,7 @@ public class BehaviourScanController implements Behavior {
 				break;
 			case 3:
 				motorRotate.run(StateRotate.HALF);
-				motorColour.run(StateMoveColourMotor.EDGE1);
+				motorColour.run(StateMoveColourMotor.EDGE);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
@@ -122,7 +121,7 @@ public class BehaviourScanController implements Behavior {
 				break;
 			case 4:
 				motorRotate.run(StateRotate.HALF);
-				motorColour.run(StateMoveColourMotor.CORNER0);
+				motorColour.run(StateMoveColourMotor.CORNER);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
@@ -132,7 +131,7 @@ public class BehaviourScanController implements Behavior {
 				break;
 			case 5:
 				motorRotate.run(StateRotate.HALF);
-				motorColour.run(StateMoveColourMotor.EDGE3);
+				motorColour.run(StateMoveColourMotor.EDGE);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
@@ -142,7 +141,7 @@ public class BehaviourScanController implements Behavior {
 				break;
 			case 6:
 				motorRotate.run(StateRotate.HALF);
-				motorColour.run(StateMoveColourMotor.CORNER6);
+				motorColour.run(StateMoveColourMotor.CORNER);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
@@ -152,7 +151,7 @@ public class BehaviourScanController implements Behavior {
 				break;
 			case 7:
 				motorRotate.run(StateRotate.HALF);
-				motorColour.run(StateMoveColourMotor.EDGE7);
+				motorColour.run(StateMoveColourMotor.EDGE);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);
@@ -162,7 +161,7 @@ public class BehaviourScanController implements Behavior {
 				break;
 			case 8:
 				motorRotate.run(StateRotate.HALF);
-				motorColour.run(StateMoveColourMotor.CORNER8);
+				motorColour.run(StateMoveColourMotor.CORNER);
 				sampleProvider.fetchSample(squareValue, 0);
 				sampleProvider.fetchSample(squareValue, 1);
 				sampleProvider.fetchSample(squareValue, 2);

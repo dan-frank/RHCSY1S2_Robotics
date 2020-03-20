@@ -4,20 +4,10 @@ public class MotorColour {
 	
 	private final BaseRegulatedMotor m;
 	
-	private int corner = -520,
-			edge = -580,
+	private int start = 0,
+			corner = -540,
+			edge = -570,
 			center = -690;
-	
-	private int posStart = 0,
-			pos0 = corner,	// Corner
-			pos1 = edge,	// Edge
-			pos2 = corner,	// Corner
-			pos3 = edge,	// Edge
-			pos4 = center,	// Centre
-			pos5 = edge,	// Edge
-			pos6 = corner,	// Corner
-			pos7 = edge,	// Edge
-			pos8 = corner;	// Corner
 			
 	
 	public MotorColour(FriendScan friendScan) {
@@ -26,49 +16,19 @@ public class MotorColour {
 
 	public void run(StateMoveColourMotor state) {
 		switch (state) {
-		case CENTRE4:
+		case CENTRE:
 			System.out.println("Motor rotate clockwise");
-			goCentre4();
+			goCentre();
 			break;
 
-		case EDGE5:
+		case EDGE:
 			System.out.println("Motor rotate anticlockwise");
-			goEdge5();
-			break;
-		
-		case EDGE3:
-			System.out.println("Motor rotate anticlockwise");
-			goEdge3();
-			break;
-			
-		case EDGE1:
-			System.out.println("Motor rotate anticlockwise");
-			goEdge1();
-			break;
-		
-		case EDGE7:
-			System.out.println("Motor rotate anticlockwise");
-			goEdge7();
+			goEdge();
 			break;
 
-		case CORNER2:
+		case CORNER:
 			System.out.println("Motor rotate uturn");
-			goCorner2();
-			break;
-			
-		case CORNER6:
-			System.out.println("Motor rotate uturn");
-			goCorner6();
-			break;
-			
-		case CORNER0:
-			System.out.println("Motor rotate uturn");
-			goCorner0();
-			break;
-			
-		case CORNER8:
-			System.out.println("Motor rotate uturn");
-			goCorner8();
+			goCorner();
 			break;
 
 		case BACK:
@@ -80,43 +40,19 @@ public class MotorColour {
 	}
 
 	
-	public void goCentre4() {
-		m.rotateTo(pos4);
+	public void goCentre() {
+		m.rotateTo(center);
 	}
 
-	public void goEdge5() {
-		m.rotateTo(pos5);
-	}
-	
-	public void goEdge3() {
-		m.rotateTo(pos3);
-	}
-	
-	public void goEdge1() {
-		m.rotateTo(pos1);
-	}
-	
-	public void goEdge7() {
-		m.rotateTo(pos7);
+	public void goEdge() {
+		m.rotateTo(edge);
 	}
 
-	public void goCorner2() {
-		m.rotateTo(pos2);
-	}
-	
-	public void goCorner6() {
-		m.rotateTo(pos6);
-	}
-	
-	public void goCorner0() {
-		m.rotateTo(pos0);
-	}
-	
-	public void goCorner8() {
-		m.rotateTo(pos8);
+	public void goCorner() {
+		m.rotateTo(corner);
 	}
 
 	public void returnToStart() {
-		m.rotateTo(posStart);
+		m.rotateTo(start);
 	}
 }
