@@ -8,18 +8,19 @@ public class BehaviourRunningController implements Behavior {
 	private EV3UltrasonicSensor sensorUltrasonic;
 	private SensorMode distance;
 	float[] sample = new float[1];
-	
+
 	public BehaviourRunningController(FriendCube friendCube, EV3UltrasonicSensor sensorUltrasonic) {
 		this.friendCube = friendCube;
 		this.sensorUltrasonic = sensorUltrasonic;
 		this.distance = (SensorMode) this.sensorUltrasonic.getDistanceMode();
 	}
-	
+
 	@Override
 	public boolean takeControl() {
 		distance.fetchSample(sample, 0);
-		System.out.println("uc:" + sample[0]);
-		return !Float.isNaN(sample[0]) && ((sample[0] < 0.2f && sample[0] != 0.0f && friendCube.getStateCubeExists() == StateCubeExists.NOCUBE) || sample[0] > 0.3f);
+		return !Float.isInfinite(sample[0])
+				&& ((sample[0] < 0.2f && sample[0] != 0.0f && friendCube.getStateCubeExists() == StateCubeExists.NOCUBE)
+						|| sample[0] > 0.3f);
 	}
 
 	@Override
@@ -32,6 +33,7 @@ public class BehaviourRunningController implements Behavior {
 	}
 
 	@Override
-	public void suppress() { }
+	public void suppress() {
+	}
 
 }
