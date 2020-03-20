@@ -4,16 +4,20 @@ public class MotorColour {
 	
 	private final BaseRegulatedMotor m;
 	
+	private int corner = -520,
+			edge = -580,
+			center = -690;
+	
 	private int posStart = 0,
-			pos0 = -575,
-			pos1 = -585,
-			pos2 = -520,
-			pos3 = -600,
-			pos4 = -680,		// Centre
-			pos5 = -520,
-			pos6 = -570,
-			pos7 = -575,
-			pos8 = -500;
+			pos0 = corner,	// Corner
+			pos1 = edge,	// Edge
+			pos2 = corner,	// Corner
+			pos3 = edge,	// Edge
+			pos4 = center,	// Centre
+			pos5 = edge,	// Edge
+			pos6 = corner,	// Corner
+			pos7 = edge,	// Edge
+			pos8 = corner;	// Corner
 			
 	
 	public MotorColour(FriendScan friendScan) {
