@@ -19,7 +19,7 @@ public class BehaviourRunningController implements Behavior {
 	public boolean takeControl() {
 		distance.fetchSample(sample, 0);
 		System.out.println("uc:" + sample[0]);
-		return (sample[0] < 0.2f && sample[0] != 0.0f && friendCube.getStateCubeExists() == StateCubeExists.NOCUBE) || sample[0] > 0.3f;
+		return !Float.isNaN(sample[0]) && ((sample[0] < 0.2f && sample[0] != 0.0f && friendCube.getStateCubeExists() == StateCubeExists.NOCUBE) || sample[0] > 0.3f);
 	}
 
 	@Override
