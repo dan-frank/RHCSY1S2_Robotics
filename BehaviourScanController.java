@@ -200,27 +200,27 @@ public class BehaviourScanController implements Behavior {
 	}
 
 	public String valueConverter(float[] squareValue) {
-//			**U**: Upper/Top   = White  (0.79)
+//			**U**: Upper/Top   = White  (0.75)
 //			**L**: Left        = Green  (0.21)
-//			**F**: Front       = Red    (0.59)
+//			**F**: Front       = Red    (0.55)
 //			**R**: Right       = Blue   (0.10)
-//			**B**: Back        = Black 	(0.08)
-//			**D**: Down/Bottom = Yellow (0.66)
+//			**B**: Back        = Black 	(0.065)
+//			**D**: Down/Bottom = Yellow (0.64)
 		
 		float square = (squareValue[0] + squareValue[1] + squareValue[2] + squareValue[3] + squareValue[4])/5;
 		System.out.println(square);
 				
-		if (square >= 0.74f && square < 1.0f) {
+		if (square >= 0.70f && square < 1.0f) {
 			cube = "U";
 		} else if (square >= 0.15f && square < 0.25f) {
 			cube = "L";
-		} else if (square >= 0.55f && square < 0.61f) {
+		} else if (square >= 0.50f && square < 0.60f) {
 			cube = "F";
-		} else if (square >= 0.09f && square < 0.15f) {
+		} else if (square >= 0.08f && square < 0.15f) {
 			cube = "R";
-		} else if (square >= 0.00f && square < 0.09f) {
+		} else if (square >= 0.00f && square < 0.08f) {
 			cube = "B";
-		} else if (square >= 0.61f && square < 0.79f) {
+		} else if (square >= 0.60f && square < 0.70f) {
 			cube = "D";
 		}
 		System.out.println(cube);
