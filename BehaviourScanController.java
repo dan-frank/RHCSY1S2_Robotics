@@ -26,7 +26,7 @@ public class BehaviourScanController implements Behavior {
 		this.motorFlip = motorFlip;
 		this.sampleProvider = colourSensor.getRedMode();
 		this.cubeValues = new String[6][9];
-		this.squareValue = new float[3];
+		this.squareValue = new float[5];
 		this.cube = "";
 	}
 
