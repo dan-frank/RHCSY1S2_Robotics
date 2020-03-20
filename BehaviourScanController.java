@@ -185,13 +185,36 @@ public class BehaviourScanController implements Behavior {
 				motorRotate.run(StateRotate.ANTICLOCKWISE);
 				friendCube.setStateCube(StateCube.READ);
 				int i = 0;
+				int U = 0;
+				int L = 0;
+				int F = 0;
+				int R = 0;
+				int B = 0;
+				int D = 0;
+				
 				for (String[] side : cubeValues) {
 					for (String square : side) {
 						cube += square;
+						if (square == "U") {U++;}
+						else if (square == "L") {L++;}
+						else if (square == "F") {F++;}
+						else if (square == "R") {R++;}
+						else if (square == "B") {B++;}
+						else if (square == "D") {D++;}
 						i++;
 					}
 				}
+				
 				System.out.println(cube + " , " + i);
+				
+				if (U > 10 || L > 10 || F > 10 || R  > 10 || B > 10 || D > 10) {
+					actionStep = 0;
+					actionStep2 = 0;
+				}
+				else {
+					friendCube.setScrambledCube(cube);
+					friendCube.setStateCube(StateCube.READ);
+				}
 			}
 		}
 	}

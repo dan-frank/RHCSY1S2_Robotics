@@ -27,11 +27,6 @@ public class GucciMain {
 		Delay.msDelay(1000);
 		System.out.println("Rube made some friends along the way...");
 		
-		// TODO remove fake data
-		friendCube.setScrambledCube("DFDUUDRULURLDRBDLRFRFDFLLBBBDRLDBRFFLLUBLFBFUBUFRBUDRU");
-		Delay.msDelay(1000);
-		System.out.println("Rube made fake friends...");
-		
 		// Init behaviours
 		Behavior runningController = new BehaviourRunningController(friendCube, sensorUltrasonic);
 		
