@@ -5,8 +5,8 @@ public class MotorColour {
 	private final BaseRegulatedMotor m;
 	
 	private int start = 0,
-			corner = -540,
-			edge = -570,
+			corner = -500,
+			edge = -565,
 			center = -690;
 			
 	
