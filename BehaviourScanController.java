@@ -26,7 +26,7 @@ public class BehaviourScanController implements Behavior {
 		this.motorFlip = motorFlip;
 		this.sampleProvider = colourSensor.getRedMode();
 		this.cubeValues = new String[6][9];
-		this.squareValue = new float[5];
+		this.squareValue = new float[6];
 		this.cube = "";
 	}
 
@@ -207,7 +207,7 @@ public class BehaviourScanController implements Behavior {
 //			**B**: Back        = Orange (0.67)
 //			**D**: Down/Bottom = Yellow (0.72)
 		
-		float square = (squareValue[0] + squareValue[1] + squareValue[2])/5;
+		float square = (squareValue[0] + squareValue[1] + squareValue[2] + squareValue[3] + squareValue[4])/5;
 		System.out.println(square);
 				
 		if (square >= 0.74f && square < 1.0f) {
