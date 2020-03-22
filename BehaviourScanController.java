@@ -31,7 +31,7 @@ public class BehaviourScanController implements Behavior {
 		this.sampleProvider = colourSensor.getRedMode();
 		colourSensor.setFloodlight(true);
 		this.cubeValues = new String[6][9];
-		this.scanNum = 10;
+		this.scanNum = 100;
 		this.squareValue = new float[scanNum];
 		this.square = 0;
 		this.cube = "";
@@ -53,7 +53,7 @@ public class BehaviourScanController implements Behavior {
 
 		int actionStep = friendScan.getActionStep();
 		int actionStep2 = friendScan.getActionStep2();
-		
+
 		if ((actionStep2 < 6 && actionStep2 >= 0) && actionStep == 0) {
 			switch (actionStep2) {
 			case 0:
@@ -161,24 +161,31 @@ public class BehaviourScanController implements Behavior {
 				int R = 0;
 				int B = 0;
 				int D = 0;
-				
+
 				for (String[] side : cubeValues) {
 					for (String square : side) {
 						cube += square;
-						if (square == "U") {U++;}
-						else if (square == "L") {L++;}
-						else if (square == "F") {F++;}
-						else if (square == "R") {R++;}
-						else if (square == "B") {B++;}
-						else if (square == "D") {D++;}
+						if (square == "U") {
+							U++;
+						} else if (square == "L") {
+							L++;
+						} else if (square == "F") {
+							F++;
+						} else if (square == "R") {
+							R++;
+						} else if (square == "B") {
+							B++;
+						} else if (square == "D") {
+							D++;
+						}
 						i++;
 					}
 				}
-				
-				System.out.println(cube + " , " + i);
-				
 
-				if (U == 9 && L == 9 && F == 9 && R  == 9 && B == 9 && D == 9) {
+				System.out.println();
+				System.out.println(cube + " , " + i);
+
+				if (U == 9 && L == 9 && F == 9 && R == 9 && B == 9 && D == 9) {
 					friendCube.setScrambledCube(cube);
 					friendCube.setStateCube(StateCube.READ);
 				} else {
@@ -202,22 +209,22 @@ public class BehaviourScanController implements Behavior {
 //			**R**: Right       = Blue   (0.10)
 //			**B**: Back        = Black 	(0.065)
 //			**D**: Down/Bottom = Yellow (0.64)
-		
+
 		cube = "";
-			
-		while (cube == "" ) {
+
+		while (cube == "") {
 			System.out.println(square);
 			if (square >= 0.70f && square < 1.0f) {
 				cube = "U";
-			} else if (square >= 0.15f && square < 0.25f) {
+			} else if (square >= 0.15f && square < 0.255f) {
 				cube = "L";
-			} else if (square >= 0.50f && square < 0.60f) {
+			} else if (square >= 0.48f && square < 0.605f) {
 				cube = "F";
-			} else if (square >= 0.08f && square < 0.15f) {
+			} else if (square >= 0.08f && square < 0.155f) {
 				cube = "R";
-			} else if (square >= 0.00f && square < 0.08f) {
+			} else if (square >= 0.00f && square < 0.085f) {
 				cube = "B";
-			} else if (square >= 0.60f && square < 0.70f) {
+			} else if (square >= 0.60f && square < 0.705f) {
 				cube = "D";
 			} else {
 				square = getAverageColour();
@@ -227,14 +234,14 @@ public class BehaviourScanController implements Behavior {
 
 		return cube;
 	}
-	
+
 	public float getAverageColour() {
-		
-		for (int i = 0; i < scanNum; i ++) {
-			if (i%2 == 0) {
-				m.rotate(35);
+
+		for (int i = 0; i < scanNum; i++) {
+			if (i % 2 == 0) {
+				m.rotate(25);
 			} else {
-				m.rotate(-35);
+				m.rotate(-25);
 			}
 			sampleProvider.fetchSample(squareValue, i);
 		}
@@ -242,7 +249,7 @@ public class BehaviourScanController implements Behavior {
 		for (float value : squareValue) {
 			total += value;
 		}
-		return total/scanNum;
+		return total / scanNum;
 	}
 
 }

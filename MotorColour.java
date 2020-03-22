@@ -5,9 +5,9 @@ public class MotorColour {
 	private final BaseRegulatedMotor m;
 	
 	private int start = 0,
-			corner = -500,
-			edge = -565,
-			center = -690;
+			corner = -550,
+			edge = -585,
+			center = -710;
 			
 	
 	public MotorColour(FriendScan friendScan) {
