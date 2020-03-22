@@ -1,4 +1,5 @@
 import lejos.hardware.Sound;
+import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.SampleProvider;
 import lejos.robotics.subsumption.Behavior;
@@ -17,6 +18,7 @@ public class BehaviourScanController implements Behavior {
 	private float square;
 	private String cube;
 	private int scanNum;
+	private BaseRegulatedMotor m;
 
 	public BehaviourScanController(FriendCube friendCube, FriendMove friendMove, FriendScan friendScan,
 			MotorColour motorColour, MotorRotate motorRotate, MotorFlip motorFlip, EV3ColorSensor colourSensor) {
@@ -29,10 +31,11 @@ public class BehaviourScanController implements Behavior {
 		this.sampleProvider = colourSensor.getRedMode();
 		colourSensor.setFloodlight(true);
 		this.cubeValues = new String[6][9];
-		this.scanNum = 100;
+		this.scanNum = 10;
 		this.squareValue = new float[scanNum];
 		this.square = 0;
 		this.cube = "";
+		this.m = friendScan.getMotorColour();
 	}
 
 	@Override
@@ -182,7 +185,7 @@ public class BehaviourScanController implements Behavior {
 					friendScan.setActionStep(0);
 					friendScan.setActionStep2(0);
 					cubeValues = new String[6][9];
-					squareValue = new float[5];
+					squareValue = new float[scanNum];
 				}
 			}
 		}
@@ -200,20 +203,25 @@ public class BehaviourScanController implements Behavior {
 //			**B**: Back        = Black 	(0.065)
 //			**D**: Down/Bottom = Yellow (0.64)
 		
-		System.out.println(square);
-				
-		if (square >= 0.70f && square < 1.0f) {
-			cube = "U";
-		} else if (square >= 0.15f && square < 0.25f) {
-			cube = "L";
-		} else if (square >= 0.50f && square < 0.60f) {
-			cube = "F";
-		} else if (square >= 0.08f && square < 0.15f) {
-			cube = "R";
-		} else if (square >= 0.00f && square < 0.08f) {
-			cube = "B";
-		} else if (square >= 0.60f && square < 0.70f) {
-			cube = "D";
+		cube = "";
+			
+		while (cube == "" ) {
+			System.out.println(square);
+			if (square >= 0.70f && square < 1.0f) {
+				cube = "U";
+			} else if (square >= 0.15f && square < 0.25f) {
+				cube = "L";
+			} else if (square >= 0.50f && square < 0.60f) {
+				cube = "F";
+			} else if (square >= 0.08f && square < 0.15f) {
+				cube = "R";
+			} else if (square >= 0.00f && square < 0.08f) {
+				cube = "B";
+			} else if (square >= 0.60f && square < 0.70f) {
+				cube = "D";
+			} else {
+				square = getAverageColour();
+			}
 		}
 		System.out.println(cube);
 
@@ -221,7 +229,13 @@ public class BehaviourScanController implements Behavior {
 	}
 	
 	public float getAverageColour() {
+		
 		for (int i = 0; i < scanNum; i ++) {
+			if (i%2 == 0) {
+				m.rotate(35);
+			} else {
+				m.rotate(-35);
+			}
 			sampleProvider.fetchSample(squareValue, i);
 		}
 		float total = 0;
