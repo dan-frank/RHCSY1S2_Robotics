@@ -19,7 +19,6 @@ public class BehaviourMoveController implements Behavior {
 	@Override
 	public void action() {
 		Delay.msDelay(1000);
-		Sound.beep();
 
 		int solvedCubePos = friendCube.getSolvedCubePos();
 		String[] solvedCube = friendCube.getSolvedCube();

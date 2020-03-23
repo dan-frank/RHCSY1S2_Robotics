@@ -31,7 +31,7 @@ public class BehaviourScanController implements Behavior {
 		this.sampleProvider = colourSensor.getRedMode();
 		colourSensor.setFloodlight(true);
 		this.cubeValues = new String[6][9];
-		this.scanNum = 100;
+		this.scanNum = 500;
 		this.squareValue = new float[scanNum];
 		this.square = 0;
 		this.cube = "";
@@ -95,49 +95,49 @@ public class BehaviourScanController implements Behavior {
 			case 1:
 				motorColour.run(StateMoveColourMotor.EDGE);
 				square = getAverageColour();
-				cubeValues[actionStep2][7] = valueConverter(square);
+				cubeValues[actionStep2][5] = valueConverter(square);
 				break;
 			case 2:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER);
 				square = getAverageColour();
-				cubeValues[actionStep2][8] = valueConverter(square);
+				cubeValues[actionStep2][2] = valueConverter(square);
 				break;
 			case 3:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE);
 				square = getAverageColour();
-				cubeValues[actionStep2][5] = valueConverter(square);
+				cubeValues[actionStep2][1] = valueConverter(square);
 				break;
 			case 4:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER);
 				square = getAverageColour();
-				cubeValues[actionStep2][2] = valueConverter(square);
+				cubeValues[actionStep2][0] = valueConverter(square);
 				break;
 			case 5:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE);
 				square = getAverageColour();
-				cubeValues[actionStep2][1] = valueConverter(square);
+				cubeValues[actionStep2][3] = valueConverter(square);
 				break;
 			case 6:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER);
 				square = getAverageColour();
-				cubeValues[actionStep2][0] = valueConverter(square);
+				cubeValues[actionStep2][6] = valueConverter(square);
 				break;
 			case 7:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.EDGE);
 				square = getAverageColour();
-				cubeValues[actionStep2][3] = valueConverter(square);
+				cubeValues[actionStep2][7] = valueConverter(square);
 				break;
 			case 8:
 				motorRotate.run(StateRotate.HALF);
 				motorColour.run(StateMoveColourMotor.CORNER);
 				square = getAverageColour();
-				cubeValues[actionStep2][6] = valueConverter(square);
+				cubeValues[actionStep2][8] = valueConverter(square);
 				motorColour.run(StateMoveColourMotor.BACK);
 				motorRotate.run(StateRotate.HALF);
 				break;
@@ -162,26 +162,28 @@ public class BehaviourScanController implements Behavior {
 				int B = 0;
 				int D = 0;
 
-				for (String[] side : cubeValues) {
-					for (String square : side) {
-						cube += square;
-						if (square == "U") {
+				cube = "";
+				int[] order = new int[] { 0, 1, 5, 2, 3, 4 };
+				for (int j = 0; j < cubeValues.length; j++) {
+					for (int k = 0; k < cubeValues[j].length; k++) {
+						
+						cube += cubeValues[order[j]][k];
+						if (cubeValues[order[j]][k] == "U") {
 							U++;
-						} else if (square == "L") {
+						} else if (cubeValues[order[j]][k] == "L") {
 							L++;
-						} else if (square == "F") {
+						} else if (cubeValues[order[j]][k] == "F") {
 							F++;
-						} else if (square == "R") {
+						} else if (cubeValues[order[j]][k] == "R") {
 							R++;
-						} else if (square == "B") {
+						} else if (cubeValues[order[j]][k] == "B") {
 							B++;
-						} else if (square == "D") {
+						} else if (cubeValues[order[j]][k] == "D") {
 							D++;
 						}
 						i++;
 					}
 				}
-
 				System.out.println();
 				System.out.println(cube + " , " + i);
 
@@ -214,17 +216,17 @@ public class BehaviourScanController implements Behavior {
 
 		while (cube == "") {
 			System.out.println(square);
-			if (square >= 0.70f && square < 1.0f) {
+			if (square >= 0.69f && square < 1.0f) {
 				cube = "U";
 			} else if (square >= 0.15f && square < 0.255f) {
 				cube = "L";
-			} else if (square >= 0.28f && square < 0.38f) {
+			} else if (square >= 0.27f && square < 0.38f) {
 				cube = "F";
 			} else if (square >= 0.08f && square < 0.155f) {
 				cube = "R";
 			} else if (square >= 0.00f && square < 0.085f) {
 				cube = "B";
-			} else if (square >= 0.38f && square < 0.50f) {
+			} else if (square >= 0.50f && square < 0.69f) {
 				cube = "D";
 			} else {
 				square = getAverageColour();
@@ -238,11 +240,9 @@ public class BehaviourScanController implements Behavior {
 	public float getAverageColour() {
 
 		for (int i = 0; i < scanNum; i++) {
-			if (i % 2 == 0) {
-				m.rotate(25);
-			} else {
-				m.rotate(-25);
-			}
+			/**
+			 * if (i % 2 == 0) { m.rotate(25); } else { m.rotate(-25); }
+			 **/
 			sampleProvider.fetchSample(squareValue, i);
 		}
 		float total = 0;
