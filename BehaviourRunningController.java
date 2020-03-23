@@ -24,6 +24,7 @@ public class BehaviourRunningController implements Behavior {
 
 	@Override
 	public void action() {
+		System.out.println("the sample (" + sample[0] + ") is not infinity (" + !Float.isInfinite(sample[0]) + ")");
 		if (sample[0] < 0.2f && !Float.isInfinite(sample[0])) {
 			friendCube.setStateCubeExists(StateCubeExists.CUBE);
 		} else if (sample[0] > 0.3f && !Float.isInfinite(sample[0])) {

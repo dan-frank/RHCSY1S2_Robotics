@@ -218,13 +218,13 @@ public class BehaviourScanController implements Behavior {
 				cube = "U";
 			} else if (square >= 0.15f && square < 0.255f) {
 				cube = "L";
-			} else if (square >= 0.48f && square < 0.605f) {
+			} else if (square >= 0.28f && square < 0.38f) {
 				cube = "F";
 			} else if (square >= 0.08f && square < 0.155f) {
 				cube = "R";
 			} else if (square >= 0.00f && square < 0.085f) {
 				cube = "B";
-			} else if (square >= 0.60f && square < 0.705f) {
+			} else if (square >= 0.38f && square < 0.50f) {
 				cube = "D";
 			} else {
 				square = getAverageColour();
