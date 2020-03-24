@@ -183,7 +183,7 @@ public class BehaviourScanController implements Behavior {
 						i++;
 					}
 				}
-				System.out.println();
+//				System.out.println();
 				System.out.println(cube + " , " + i);
 
 				if (U == 9 && L == 9 && F == 9 && R == 9 && B == 9 && D == 9) {
@@ -207,7 +207,7 @@ public class BehaviourScanController implements Behavior {
 		cube = "";
 
 		while (cube == "") {
-			System.out.println(square);
+//			System.out.println(square);
 			if (square >= 0.69f && square < 1.0f) {
 				cube = "U";
 			} else if (square >= 0.15f && square < 0.27f) {
@@ -224,7 +224,7 @@ public class BehaviourScanController implements Behavior {
 				square = getAverageColour();
 			}
 		}
-		System.out.println(cube);
+//		System.out.println(cube);
 
 		return cube;
 	}

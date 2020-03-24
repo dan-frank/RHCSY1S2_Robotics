@@ -18,17 +18,17 @@ public class BehaviourSolveController implements Behavior {
 	@Override
 	public void action() {
 		Delay.msDelay(1000);
-		System.out.println("solving");
+		System.out.println("Solving cube");
 
 		String solvedString = simpleSolve(friendCube.getScrambledCube());
-		System.out.println("solvedString:" + solvedString);
+//		System.out.println("solvedString:" + solvedString);
 		String[] solvedCube = new String[0];
 		solvedCube = solvedString.split("\\s+");
 
 		friendCube.setSolvedCube(solvedCube);
 
 		friendCube.setStateCube(StateCube.SOLVED);
-		System.out.println("cube state is StateCube." + friendCube.getStateCube());
+//		System.out.println("cube state is StateCube." + friendCube.getStateCube());
 		Delay.msDelay(1000);
 	}
 

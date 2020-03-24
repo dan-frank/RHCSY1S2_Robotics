@@ -17,24 +17,24 @@ public class MotorColour {
 	public void run(StateMoveColourMotor state) {
 		switch (state) {
 		case CENTRE:
-			System.out.println("Motor rotate clockwise");
+//			System.out.println("Motor rotate clockwise");
 			goCentre();
 			break;
 
 		case EDGE:
-			System.out.println("Motor rotate anticlockwise");
+//			System.out.println("Motor rotate anticlockwise");
 			goEdge();
 			break;
 
 		case CORNER:
-			System.out.println("Motor rotate uturn");
+//			System.out.println("Motor rotate uturn");
 			goCorner();
 			break;
 
 		case RESET:
 			returnToStart();
 		default:
-			System.out.println("Motor rotate pause");
+//			System.out.println("Motor rotate pause");
 			break;
 		}
 	}
