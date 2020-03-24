@@ -1,6 +1,5 @@
-
-
 enum StateFlip {
+	RESET,
 	PAUSE,
 	PIN,
 	FLIP,

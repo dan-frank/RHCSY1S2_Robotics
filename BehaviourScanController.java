@@ -135,7 +135,7 @@ public class BehaviourScanController implements Behavior {
 				motorColour.run(StateMoveColourMotor.CORNER);
 				square = getAverageColour();
 				cubeValues[actionStep2][8] = valueConverter(square);
-				motorColour.run(StateMoveColourMotor.BACK);
+				motorColour.run(StateMoveColourMotor.RESET);
 				motorRotate.run(StateRotate.HALF);
 				break;
 			}

@@ -9,6 +9,10 @@ public class MotorFlip {
 
 	public void run(StateFlip state) {
 		switch (state) {
+		case RESET:
+			m.rotateTo(0);
+			break;
+		
 		case RETRACT:
 			m.rotate(-90);
 			break;

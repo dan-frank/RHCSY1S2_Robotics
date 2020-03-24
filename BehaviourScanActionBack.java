@@ -12,12 +12,12 @@ public class BehaviourScanActionBack implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return friendScan.getStateMoveColourMotor()==StateMoveColourMotor.BACK;
+		return friendScan.getStateMoveColourMotor()==StateMoveColourMotor.RESET;
 	}
 
 	@Override
 	public void action() {
-	     motorColour.run(StateMoveColourMotor.BACK);
+	     motorColour.run(StateMoveColourMotor.RESET);
 
 	}
 

@@ -33,7 +33,7 @@ public class FriendScan {
 	private final BaseRegulatedMotor motorColour = new EV3MediumRegulatedMotor(MotorPort.A);
 	
 	public FriendScan() {
-		this.stateMoveColourMotor = StateMoveColourMotor.BACK;
+		this.stateMoveColourMotor = StateMoveColourMotor.RESET;
 		this.stateScan = StateScan.DONTREAD;
 		this.inAction = false;
 		this.actionStep = 0;

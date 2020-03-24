@@ -31,7 +31,7 @@ public class MotorColour {
 			goCorner();
 			break;
 
-		case BACK:
+		case RESET:
 			returnToStart();
 		default:
 			System.out.println("Motor rotate pause");

@@ -1,5 +1,3 @@
-
-
 enum StateCube {
 	UNREAD,
 	READ,

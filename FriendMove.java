@@ -22,6 +22,7 @@ public class FriendMove {
 	private StateRotate totalRotations;
 	private boolean inAction;
 	private boolean inActionMove;
+	private int exitStep = 0;
 
 	private final BaseRegulatedMotor motorFlip = new EV3LargeRegulatedMotor(MotorPort.B);
 	private final BaseRegulatedMotor motorRotate = new EV3LargeRegulatedMotor(MotorPort.C);
@@ -76,6 +77,18 @@ public class FriendMove {
 
 	public int getActionStep() {
 		return this.actionStep;
+	}
+
+	public void setExitStep(int exitStep) {
+		this.exitStep = exitStep;
+	}
+	
+	public void resetExitStep() {
+		this.exitStep = 0;
+	}
+
+	public int getExitStep() {
+		return this.exitStep;
 	}
 
 	public void setStateMoveAction(StateMoveAction stateMoveAction) {

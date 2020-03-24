@@ -18,6 +18,10 @@ public class MotorRotate {
 
 	public void run(StateRotate state) {
 		switch (state) {
+		case RESET:
+			returnToDefault();
+			break;
+			
 		case CLOCKWISE:
 			rotate();
 			break;
@@ -65,5 +69,9 @@ public class MotorRotate {
 	public void resetVars() {
 		rotate = ninetyDegrees;
 		speed = speedDefault;
+	}
+	
+	public void returnToDefault() {
+		m.rotateTo(0);
 	}
 }

@@ -1,6 +1,5 @@
-
-
 enum StateRotate {
+	RESET,
 	PAUSE,
 	CLOCKWISE,
 	ANTICLOCKWISE,
