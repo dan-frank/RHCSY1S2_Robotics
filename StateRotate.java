@@ -1,0 +1,8 @@
+enum StateRotate {
+	RESET,
+	PAUSE,
+	CLOCKWISE,
+	ANTICLOCKWISE,
+	UTURN,
+	HALF
+}

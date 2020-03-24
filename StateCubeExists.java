@@ -1,0 +1,4 @@
+enum StateCubeExists {
+	CUBE,
+	NOCUBE,
+}
