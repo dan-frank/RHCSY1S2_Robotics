@@ -10,31 +10,25 @@
 ## Rube's Rubiks Plan
 
 - [x] Initialise Rube!
-- [ ] Motors
+- [x] Motors
 	- [x] Flip cube
 		- [x] Flip cube
 		- [x] Pin Cube
 		- [x] Return to default
 	- [x] Rotate cube
 		- [x] Rotate cube 90deg clockwise
-	- [ ] Scan colour
-		- [ ] Lift sensor
-			- [ ] (2, 2)
-			- [ ] (2, 3)
-			- [ ] (1, 3)
-			- [ ] (1, 2)
-			- [ ] (1, 1)
-			- [ ] (2, 1)
-			- [ ] (3, 1)
-			- [ ] (3, 2)
-			- [ ] (3, 3)
-		- [ ] Return to default
-- [ ] Store colours in
+	- [x] Scan colour
+		- [x] Move sensor to
+			- [x] Center
+			- [x] Edge
+			- [x] Corner
+		- [x] Return to default
+- [x] Store colours
 - [x] Link [cs0x7f's rubiks algorith](https://github.com/cs0x7f/min2phase)
-- [ ] Read if cube is put in
+- [x] Read if cube is put in
 - [x] Program cube moves
-- [ ] Show Rube's face while solving Cube
-- [ ] Make everything a behaviour
+- [x] Show Rube's face while solving Cube
+- [x] Make everything a behaviour
 
 ### Behaviours
 
