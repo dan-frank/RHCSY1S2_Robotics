@@ -12,18 +12,17 @@ public class MotorFlip {
 		case RETRACT:
 			m.rotate(-90);
 			break;
-			
+
 		case PIN:
 			m.rotate(90);
 			break;
-			
-		case FLIP:
-			m.rotate(180);
+
+		case FLIP:			
+			m.rotate(190);
 			m.rotate(-90);
-			m.rotate(30);
-			m.rotate(-120);
+			m.rotate(-100);
 			break;
-			
+
 		default:
 			break;
 		}

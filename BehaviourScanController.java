@@ -1,5 +1,4 @@
 import lejos.hardware.Sound;
-import lejos.hardware.motor.BaseRegulatedMotor;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.SampleProvider;
 import lejos.robotics.subsumption.Behavior;
@@ -18,8 +17,7 @@ public class BehaviourScanController implements Behavior {
 	private float square;
 	private String cube;
 	private int scanNum;
-	private BaseRegulatedMotor m;
-
+	
 	public BehaviourScanController(FriendCube friendCube, FriendMove friendMove, FriendScan friendScan,
 			MotorColour motorColour, MotorRotate motorRotate, MotorFlip motorFlip, EV3ColorSensor colourSensor) {
 		this.friendCube = friendCube;
@@ -35,7 +33,7 @@ public class BehaviourScanController implements Behavior {
 		this.squareValue = new float[scanNum];
 		this.square = 0;
 		this.cube = "";
-		this.m = friendScan.getMotorColour();
+		friendScan.getMotorColour();
 	}
 
 	@Override
@@ -72,7 +70,6 @@ public class BehaviourScanController implements Behavior {
 				motorFlip.run(StateFlip.FLIP);
 				motorRotate.run(StateRotate.ANTICLOCKWISE);
 				break;
-
 			case 4:
 				motorRotate.run(StateRotate.UTURN);
 				motorFlip.run(StateFlip.FLIP);
@@ -166,21 +163,23 @@ public class BehaviourScanController implements Behavior {
 				int[] order = new int[] { 0, 1, 5, 2, 3, 4 };
 				for (int j = 0; j < cubeValues.length; j++) {
 					for (int k = 0; k < cubeValues[j].length; k++) {
+						String cell = cubeValues[order[j]][k];
 						
-						cube += cubeValues[order[j]][k];
-						if (cubeValues[order[j]][k] == "U") {
+						cube += cell;
+						if (cell == "U") {
 							U++;
-						} else if (cubeValues[order[j]][k] == "L") {
+						} else if (cell == "L") {
 							L++;
-						} else if (cubeValues[order[j]][k] == "F") {
+						} else if (cell == "F") {
 							F++;
-						} else if (cubeValues[order[j]][k] == "R") {
+						} else if (cell == "R") {
 							R++;
-						} else if (cubeValues[order[j]][k] == "B") {
+						} else if (cell == "B") {
 							B++;
-						} else if (cubeValues[order[j]][k] == "D") {
+						} else if (cell == "D") {
 							D++;
 						}
+						
 						i++;
 					}
 				}
@@ -205,28 +204,21 @@ public class BehaviourScanController implements Behavior {
 	}
 
 	public String valueConverter(float square) {
-//			**U**: Upper/Top   = White  (0.75)
-//			**L**: Left        = Green  (0.21)
-//			**F**: Front       = Red    (0.55)
-//			**R**: Right       = Blue   (0.10)
-//			**B**: Back        = Black 	(0.065)
-//			**D**: Down/Bottom = Yellow (0.64)
-
 		cube = "";
 
 		while (cube == "") {
 			System.out.println(square);
 			if (square >= 0.69f && square < 1.0f) {
 				cube = "U";
-			} else if (square >= 0.15f && square < 0.255f) {
+			} else if (square >= 0.15f && square < 0.27f) {
 				cube = "L";
-			} else if (square >= 0.27f && square < 0.38f) {
+			} else if (square >= 0.27f && square < 0.39f) {
 				cube = "F";
-			} else if (square >= 0.08f && square < 0.155f) {
+			} else if (square >= 0.099998f && square < 0.155f) {
 				cube = "R";
-			} else if (square >= 0.00f && square < 0.085f) {
+			} else if (square >= 0.00f && square < 0.099998f) {
 				cube = "B";
-			} else if (square >= 0.50f && square < 0.69f) {
+			} else if (square >= 0.41f && square < 0.69f) {
 				cube = "D";
 			} else {
 				square = getAverageColour();
@@ -240,9 +232,6 @@ public class BehaviourScanController implements Behavior {
 	public float getAverageColour() {
 
 		for (int i = 0; i < scanNum; i++) {
-			/**
-			 * if (i % 2 == 0) { m.rotate(25); } else { m.rotate(-25); }
-			 **/
 			sampleProvider.fetchSample(squareValue, i);
 		}
 		float total = 0;

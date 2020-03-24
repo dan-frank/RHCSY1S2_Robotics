@@ -1,4 +1,3 @@
-import lejos.hardware.Sound;
 import lejos.robotics.subsumption.Behavior;
 import lejos.utility.Delay;
 
@@ -32,7 +31,7 @@ public class BehaviourMoveController implements Behavior {
 			
 			switch (move) {
 			case "U":
-				friendMove.setTotalRotations(StateRotate.CLOCKWISE);
+				friendMove.setTotalRotations(StateRotate.ANTICLOCKWISE);
 				friendMove.setStateMoveAction(StateMoveAction.UP);
 				break;
 			case "U2":
@@ -40,12 +39,12 @@ public class BehaviourMoveController implements Behavior {
 				friendMove.setStateMoveAction(StateMoveAction.UP);
 				break;
 			case "U'":
-				friendMove.setTotalRotations(StateRotate.ANTICLOCKWISE);
+				friendMove.setTotalRotations(StateRotate.CLOCKWISE);
 				friendMove.setStateMoveAction(StateMoveAction.UP);
 				break;
 
 			case "D":
-				friendMove.setTotalRotations(StateRotate.CLOCKWISE);
+				friendMove.setTotalRotations(StateRotate.ANTICLOCKWISE);
 				friendMove.setStateMoveAction(StateMoveAction.DOWN);
 				break;
 			case "D2":
@@ -53,7 +52,7 @@ public class BehaviourMoveController implements Behavior {
 				friendMove.setStateMoveAction(StateMoveAction.DOWN);
 				break;
 			case "D'":
-				friendMove.setTotalRotations(StateRotate.ANTICLOCKWISE);
+				friendMove.setTotalRotations(StateRotate.CLOCKWISE);
 				friendMove.setStateMoveAction(StateMoveAction.DOWN);
 				break;
 
