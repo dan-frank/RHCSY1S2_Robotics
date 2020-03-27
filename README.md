@@ -7,6 +7,68 @@
 - Rumen [ragnar764](https://github.com/ragnar764)
 - Megan [meganhardman](https://github.com/meganhardman)
 
+## What is each file?
+
+- **BehaviourEndController** - This behaviours handles the ending/finishing/shutting down process of the robot based off of is escape button was pressed, the battery is low, or the cube has been solved 
+
+- **BehaviourMoveActionBack** - This behaviour handles moving the 'back' face of the Rubik's Cube
+
+- **BehaviourMoveActionDown** - This behaviour handles moving the 'down' face of the Rubik's Cube
+
+- **BehaviourMoveActionFront** - This behaviour handles moving the 'front' face of the Rubik's Cube
+
+- **BehaviourMoveActionLeft** - This behaviour handles moving the 'left' face of the Rubik's Cube
+
+- **BehaviourMoveActionRight** - This behaviour handles moving the 'right' face of the Rubik's Cube
+
+- **BehaviourMoveActionUp** - This behaviour handles moving the 'up' face of the Rubik's Cube
+
+- **BehaviourMoveController** - This behaviour handles which move action to trigger depending on the list of moves provided to solve the cube
+
+- **BehaviourRunningController** - This behaviour will start and pause the robot depending on if the cube is in the cage
+
+- **BehaviourScanActionBack** - This behaviour will move the colour sensor to the 'back' position of the cube
+
+- **BehaviourScanActionCenter** - This behaviour will move the colour sensor to the 'center' position of the cube
+
+- **BehaviourScanActionCorner** - This behaviour will move the colour sensor to the 'corner' position of the cube
+
+- **BehaviourScanActionEdge** - This behaviour will move the colour sensor to the 'edge' position of the cube
+
+- **BehaviourScanController** - This behaviour handles which move scan action to trigger depending specific order to scan the cube
+
+- **BehaviourSolveController** - This behaviour handles solving the cube and is triggered when the cube has been scanned successfully
+
+- **FriendCube** - This object handles variables and states that need to be passed between specific behaviours, typically higher level behaviours
+
+- **FriendMove** - This object handles variables and states that need to be passed between specific behaviours, typically cube manipulating behaviours 
+
+- **FriendScan** - This object handles variables and states that need to be passed between specific behaviours, typically colour focused behaviours
+
+- **Main** - This initialises all the behaviours, motors and sensors and starts the robot
+
+- **MotorColour** - This is motor that controls the position of the colour sensor
+
+- **MotorFlip** - This motor controls the flipping mechanism that flips the cube
+
+- **MotorRotate** - This motor controls the rotating mechanism that rotates the cube
+
+- **StateCube** - This enum declares the state of the cube
+
+- **StateCubeExists** - This enum declares the state of the cube's existance
+
+- **StateFlip** - This enum declares the state for the flip action
+
+- **StateMoveAction** - This enum declares the state for the move action 
+
+- **StateMoveColourAction** - This enum declares the state for the colour motor action
+
+- **StateRotate** - This enum declares the state for the flip motor action
+
+- **StateScan** - This enum declares the state for for triggering the colour sensor 
+
+- **solve/\*** - This folder and all code inside contains the algorithm to solve the rubiks cube
+
 ## Rube's Rubiks Plan
 
 - [x] Initialise Rube!
